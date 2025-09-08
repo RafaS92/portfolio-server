@@ -1,14 +1,12 @@
 import express from "express";
 import cors from "cors";
 import OpenAI from "openai";
-import dotenv from "dotenv";
 import { createClient } from "@supabase/supabase-js";
 
 // Railway provides environment variables automatically; no dotenv needed
 const app = express();
 app.use(cors());
 app.use(express.json());
-dotenv.config();
 
 const PORT = process.env.PORT || 3001;
 
