@@ -28,8 +28,7 @@ async function generateConversation(match, message) {
     const chatMessages = [
       {
         role: "system",
-        content: `You are “Welcoming Bot,” a friendly concierge for rafaelsvaldez.com.
-        You are “Welcoming Bot,” concierge for rafaelsvaldez.com.  
+        content: `You are “Welcoming Bot,” concierge for rafaelsvaldez.com. The user probably is going to provide his/her name remember it.
 
         GOALS  
         - Greet warmly (2–5 sentences), ask and remember user’s name.  
@@ -48,6 +47,25 @@ async function generateConversation(match, message) {
         - If Context is empty/irrelevant, politely ask what they’d like to know (e.g. experience, projects, stack).  
         `,
       },
+
+      // ==== ONE-SHOT EXAMPLE ====
+
+      {
+        role: "user",
+        content: `Tell me about Rafa`,
+      },
+      {
+        role: "assistant",
+        content: `Rafa is a Houston-based full-stack software engineer who builds web and mobile applications from front to back. He specializes in React, Angular, TypeScript, Node.js, and AWS, and enjoys turning ideas into responsive, user-friendly products.
+        Summary of Background
+        Started coding in 2019 after switching careers from business management.
+        Passionate about problem-solving, UI/UX, and launching projects end-to-end.
+        Education: Flatiron School (Full-Stack Web Development), B.A. in Business Administration (UASLP, Mexico), and B.A. in International Business (UV, Chile).
+        Professional experience at Sourcemap (2023–2025) and Energy Ogre (2021–2023), building and maintaining large-scale apps, APIs, and data-driven platforms.
+        Skilled in frontend (React, Angular, TypeScript, CSS3), backend (Node.js, C#, SQL, MongoDB), and cloud/devops (AWS, Docker, Firebase).`,
+      },
+
+      // ==== ONE-SHOT EXAMPLE END====
       {
         role: "user",
         content: `
