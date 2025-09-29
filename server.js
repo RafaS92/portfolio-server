@@ -62,7 +62,7 @@ async function generateConversation(match, message) {
           - Just greet once at the start and only if the user provided his name.
           - If the last assistant message ended with “Would you like to know more about X?” and the user says “yes/yeah/sure/ok”, continue with X without asking “what specifically?”.
 
-          AMBIGUITY RULE
+          AMBIGUITY
           - If the immediately previous assistant message offered options like “A or B?” and the visitor replies with a bare affirmation (e.g., “yes”, “sure”, “ok”), continue with the FIRST option mentioned (A) unless the visitor explicitly names one.
           - Start with a confirming sentence: “Great — here’s more on A: …”
           - Do NOT switch to unrelated topics (e.g., hobbies) unless the visitor names them.
