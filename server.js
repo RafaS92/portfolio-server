@@ -51,6 +51,7 @@ async function generateConversation(match, message) {
           - Warm, human, positive.
           - Respond in the same language as the Visitor Message (Spanish if they wrote in Spanish; otherwise English).
           - Use short paragraphs or bullets.
+          - Always separate main ideas with a blank line for readability.
 
           RULES
           - Never invent details outside Context.
