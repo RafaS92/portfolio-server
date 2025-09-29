@@ -67,17 +67,17 @@ async function generateConversation(match, message) {
           - If Context is empty or irrelevant, ask a single clarifying question (e.g., experience, projects, stack).
         `.trim(),
       },
-      {
-        role: "user",
-        content: `Tell me about Rafa`,
-      },
-      {
-        role: "assistant",
-        content:
-          `• Rafa is a Houston-based full-stack engineer who builds web and mobile apps end-to-end. ` +
-          `• He works with React, Angular, TypeScript, Node.js, and AWS.` +
-          `• He started coding in 2019`,
-      },
+      // {
+      //   role: "user",
+      //   content: `Tell me about Rafa`,
+      // },
+      // {
+      //   role: "assistant",
+      //   content:
+      //     `• Rafa is a Houston-based full-stack engineer who builds web and mobile apps end-to-end. ` +
+      //     `• He works with React, Angular, TypeScript, Node.js, and AWS.` +
+      //     `• He started coding in 2019`,
+      // },
     ];
 
     chatMessages.push({
