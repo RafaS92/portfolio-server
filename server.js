@@ -5,26 +5,17 @@ import { createClient } from "@supabase/supabase-js";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
 const allowedOrigins = [
   "https://www.rafaelsvaldez.com",
   "http://localhost:3000",
 ];
 
-const corsOptions = {
-  origin(origin, cb) {
-    if (!origin) return cb(null, true);
-    return allowedOrigins.includes(origin)
-      ? cb(null, true)
-      : cb(new Error("CORS: Origin not allowed"));
-  },
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: false,
-  optionsSuccessStatus: 204,
-};
-
-app.use(cors(corsOptions));
-app.options("/*", cors(corsOptions));
+app.use(
+  cors({
+    origin: allowedOrigins,
+  })
+);
 
 app.use(express.json());
 
