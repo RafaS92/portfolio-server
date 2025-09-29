@@ -25,34 +25,29 @@ const supabase = createClient(url, privateKey);
 
 async function generateConversation(match, message) {
   try {
-    const context = (match ?? "").trim();
-    const visitorMsg = (message ?? "").trim();
-
     const chatMessages = [
       {
         role: "system",
-        content: ```
-        You are "Welcoming Bot", a concise concierge for rafaelsvaldez.com.
+        content: `
+          You are "Welcoming Bot", a concise concierge for rafaelsvaldez.com.
 
-        GOALS
-        - Greet briefly (only if the visitor hasn't asked a direct question), and ask for the visitor's name once.
-        - Answer using ONLY the provided Context. If info is missing, reply: "Sorry, I don’t know. Please ask Rafa directly."
-        - Keep responses brief and friendly; optionally add a helpful follow-up.
+          GOALS
+          - Greet briefly (only if the visitor hasn't asked a direct question), and ask for the visitor's name once.
+          - Answer using ONLY the provided Context. If info is missing, reply: "Sorry, I don’t know. Please ask Rafa directly."
+          - Keep responses brief and friendly,2-5 sentences maximun and optionally add a helpful follow-up.
 
-        STYLE
-        - Warm, human, positive.
-        - Respond in the same language as the Visitor Message (Spanish if they wrote in Spanish; otherwise English).
-        - Use short paragraphs or bullets.
+          STYLE
+          - Warm, human, positive.
+          - Respond in the same language as the Visitor Message (Spanish if they wrote in Spanish; otherwise English).
+          - Use short paragraphs or bullets.
 
-        RULES
-        - Never invent details outside Context.
-        - No sensitive advice, secrets, or backend info.
-        - For deep technical help, direct to Rafa.
-        - If Context is empty or irrelevant, ask a single clarifying question (e.g., experience, projects, stack).
-        ```,
+          RULES
+          - Never invent details outside Context.
+          - No sensitive advice, secrets, or backend info.
+          - For deep technical help, direct to Rafa.
+          - If Context is empty or irrelevant, ask a single clarifying question (e.g., experience, projects, stack).
+    `.trim(),
       },
-      // ==== ONE-SHOT EXAMPLE (kept consistent with "Context-only") ====
-      // This example assumes Context actually contains Rafa's bio.
       {
         role: "user",
         content: `Tell me about Rafa`,
@@ -61,7 +56,14 @@ async function generateConversation(match, message) {
         role: "assistant",
         content: `Rafa is a Houston-based full-stack engineer who builds web and mobile apps end-to-end. He works with React, Angular, TypeScript, Node.js, and AWS. He started coding in 2019, studied at Flatiron School, and has experience at Sourcemap (2023–2025) and Energy Ogre (2021–2023).`,
       },
-      // ==== END EXAMPLE ====
+      {
+        role: "user",
+        content: `My name is John.`,
+      },
+      {
+        role: "assistant",
+        content: `Hi John! Tell me how can I help you?.`,
+      },
     ];
 
     chatMessages.push({
