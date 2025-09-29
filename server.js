@@ -55,10 +55,10 @@ async function generateConversation(match, message) {
           - When text is long, use bullets points between texts and ideas.
 
           POLICY
-          - Never re-introduce Rafa if the visitor already received a summary in the last 5 messages.
+          - If user do not provide their name, do not ask for it again. And call him friend.
+          - Just greet once at the start and only if the user provided his name.
           - If the last assistant message ends with “Would you like to know more about X?”, and the user replies “yes/yeah/sure/ok” (or similar), assume they mean **X**. Do not ask “what specifically?” first.
           - Prefer depth over breadth. Expand with concrete, resume-grade details, metrics, stack, and impact tied to the last topic.
-          - No greetings unless it’s the first assistant message.
 
           RULES
           - Never invent details outside Context.
