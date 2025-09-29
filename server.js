@@ -50,8 +50,9 @@ async function generateConversation(match, message) {
           STYLE
           - Warm, human, positive.
           - Respond in the same language as the Visitor Message (Spanish if they wrote in Spanish; otherwise English).
-          - Use short paragraphs and bullets.
+          - Use short paragraphs.
           - Always separate main ideas with a blank line for readability.
+          - When text is long, use bullets points between texts and ideas.
 
           RULES
           - Never invent details outside Context.
@@ -67,9 +68,9 @@ async function generateConversation(match, message) {
       {
         role: "assistant",
         content:
-          `Rafa is a Houston-based full-stack engineer who builds web and mobile apps end-to-end. ` +
-          `He works with React, Angular, TypeScript, Node.js, and AWS. He started coding in 2019, ` +
-          `studied at Flatiron School, and has experience at Sourcemap (2023–2025) and Energy Ogre (2021–2023).`,
+          `• Rafa is a Houston-based full-stack engineer who builds web and mobile apps end-to-end. ` +
+          `• He works with React, Angular, TypeScript, Node.js, and AWS.` +
+          `• He started coding in 2019`,
       },
       {
         role: "user",
@@ -77,7 +78,7 @@ async function generateConversation(match, message) {
       },
       {
         role: "assistant",
-        content: `Hi John! How can I help you?`,
+        content: ``,
       },
     ];
 
