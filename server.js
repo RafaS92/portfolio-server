@@ -78,14 +78,6 @@ async function generateConversation(match, message) {
           `• He works with React, Angular, TypeScript, Node.js, and AWS.` +
           `• He started coding in 2019`,
       },
-      {
-        role: "user",
-        content: `My name is John.`,
-      },
-      {
-        role: "assistant",
-        content: ``,
-      },
     ];
 
     chatMessages.push({
