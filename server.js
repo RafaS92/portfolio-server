@@ -4,30 +4,27 @@ import OpenAI from "openai";
 import { createClient } from "@supabase/supabase-js";
 
 const app = express();
-app.use(cors());
-
 const PORT = process.env.PORT || 3001;
 const allowedOrigins = [
   "https://www.rafaelsvaldez.com",
   "http://localhost:3000",
 ];
 
-app.use(
-  cors({
-    origin(origin, cb) {
-      if (!origin) return cb(null, true);
-      return allowedOrigins.includes(origin)
-        ? cb(null, true)
-        : cb(new Error("CORS: Origin not allowed"));
-    },
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: false, // set to true ONLY if you actually send cookies
-    optionsSuccessStatus: 204,
-  })
-);
+const corsOptions = {
+  origin(origin, cb) {
+    if (!origin) return cb(null, true);
+    return allowedOrigins.includes(origin)
+      ? cb(null, true)
+      : cb(new Error("CORS: Origin not allowed"));
+  },
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: false,
+  optionsSuccessStatus: 204,
+};
 
-app.options("*", cors());
+app.use(cors(corsOptions));
+app.options("/*", cors(corsOptions));
 
 app.use(express.json());
 
@@ -35,14 +32,16 @@ if (!process.env.OPENAI_API_KEY) {
   console.error("⚠️ OPENAI_API_KEY is missing!");
   process.exit(1);
 }
+if (!process.env.SUPABASE_URL || !process.env.SUPABASE_API_KEY) {
+  console.error("⚠️ SUPABASE_URL or SUPABASE_API_KEY is missing!");
+  process.exit(1);
+}
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
-const privateKey = process.env.SUPABASE_API_KEY;
-const url = process.env.SUPABASE_URL;
-const supabase = createClient(url, privateKey);
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_API_KEY
+);
 
 async function generateConversation(match, message) {
   try {
@@ -55,7 +54,7 @@ async function generateConversation(match, message) {
           GOALS
           - Greet briefly (only if the visitor hasn't asked a direct question), and ask for the visitor's name once.
           - Answer using ONLY the provided Context. If info is missing, reply: "Sorry, I don’t know. Please ask Rafa directly."
-          - Keep responses brief and friendly,2-5 sentences maximun and optionally add a helpful follow-up.
+          - Keep responses brief and friendly (2–5 sentences) and optionally add a helpful follow-up.
 
           STYLE
           - Warm, human, positive.
@@ -67,7 +66,7 @@ async function generateConversation(match, message) {
           - No sensitive advice, secrets, or backend info.
           - For deep technical help, direct to Rafa.
           - If Context is empty or irrelevant, ask a single clarifying question (e.g., experience, projects, stack).
-    `.trim(),
+        `.trim(),
       },
       {
         role: "user",
@@ -75,7 +74,10 @@ async function generateConversation(match, message) {
       },
       {
         role: "assistant",
-        content: `Rafa is a Houston-based full-stack engineer who builds web and mobile apps end-to-end. He works with React, Angular, TypeScript, Node.js, and AWS. He started coding in 2019, studied at Flatiron School, and has experience at Sourcemap (2023–2025) and Energy Ogre (2021–2023).`,
+        content:
+          `Rafa is a Houston-based full-stack engineer who builds web and mobile apps end-to-end. ` +
+          `He works with React, Angular, TypeScript, Node.js, and AWS. He started coding in 2019, ` +
+          `studied at Flatiron School, and has experience at Sourcemap (2023–2025) and Energy Ogre (2021–2023).`,
       },
       {
         role: "user",
@@ -83,7 +85,7 @@ async function generateConversation(match, message) {
       },
       {
         role: "assistant",
-        content: `Hi John! Tell me how can I help you?.`,
+        content: `Hi John! How can I help you?`,
       },
     ];
 
@@ -110,11 +112,14 @@ async function generateConversation(match, message) {
 
 app.post("/api/createEmbedding", async (req, res) => {
   try {
-    const { messagge } = req.body;
+    const { message } = req.body;
+    if (!message || typeof message !== "string") {
+      return res.status(400).json({ error: "Missing or invalid 'message'." });
+    }
 
     const embeddingResponse = await openai.embeddings.create({
       model: "text-embedding-ada-002",
-      input: messagge,
+      input: message,
     });
 
     res.json({ embedding: embeddingResponse.data[0].embedding });
@@ -134,8 +139,6 @@ app.post("/api/findNearestMatch", async (req, res) => {
       match_count: 1,
     });
 
-    const match = data[0].content;
-
     const result = await generateConversation(match, message);
 
     res.json({ content: result });
@@ -145,4 +148,6 @@ app.post("/api/findNearestMatch", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`✅ Server running on port ${PORT}`);
+});
