@@ -50,7 +50,7 @@ async function generateConversation(match, message) {
           STYLE
           - Warm, human, positive.
           - Respond in the same language as the Visitor Message (Spanish if they wrote in Spanish; otherwise English).
-          - Use short paragraphs or bullets.
+          - Use short paragraphs and bullets.
           - Always separate main ideas with a blank line for readability.
 
           RULES
