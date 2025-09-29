@@ -130,6 +130,8 @@ app.post("/api/findNearestMatch", async (req, res) => {
       match_count: 1,
     });
 
+    const match = data[0].content;
+
     const result = await generateConversation(match, message);
 
     res.json({ content: result });
