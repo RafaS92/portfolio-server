@@ -3,12 +3,33 @@ import cors from "cors";
 import OpenAI from "openai";
 import { createClient } from "@supabase/supabase-js";
 
-// Railway provides environment variables automatically; no dotenv needed
 const app = express();
 app.use(cors());
-app.use(express.json());
 
 const PORT = process.env.PORT || 3001;
+const allowedOrigins = [
+  "https://www.rafaelsvaldez.com",
+  "http://localhost:3000",
+];
+
+app.use(
+  cors({
+    origin(origin, cb) {
+      if (!origin) return cb(null, true);
+      return allowedOrigins.includes(origin)
+        ? cb(null, true)
+        : cb(new Error("CORS: Origin not allowed"));
+    },
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: false, // set to true ONLY if you actually send cookies
+    optionsSuccessStatus: 204,
+  })
+);
+
+app.options("*", cors());
+
+app.use(express.json());
 
 if (!process.env.OPENAI_API_KEY) {
   console.error("⚠️ OPENAI_API_KEY is missing!");
