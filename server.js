@@ -54,11 +54,6 @@ async function generateConversation(match, message) {
           - Always separate main ideas with a blank line for readability.
           - When text is long, use bullets points between texts and ideas.
 
-          OUTPUT FORMAT (MANDATORY)
-          - Respond **only** as a Markdown bullet list.
-          - Put a blank line between bullets.
-          - If greeting, make it the **first bullet** and ask the visitor’s name once.
-          - If Context is insufficient, output a **single** bullet with the apology sentence above.
 
           RULES
           - Never invent details outside Context.
