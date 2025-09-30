@@ -67,7 +67,7 @@ async function generateConversation(match, message) {
     });
 
     const response = await openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-4o-mini",
       messages: chatMessages,
       temperature: 0.2,
       top_p: 0.9,
@@ -75,7 +75,14 @@ async function generateConversation(match, message) {
       presence_penalty: 0.3,
     });
 
-    return response.choices[0].message.content;
+    const reply = response.choices[0].message.content;
+
+    chatMessages.push({
+      role: "assistant",
+      content: reply,
+    });
+
+    return reply;
   } catch (error) {
     console.error("Error in generateConversation:", error);
     return "Sorry, something went wrong while generating the conversation.";
