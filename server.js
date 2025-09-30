@@ -34,16 +34,16 @@ const supabase = createClient(
   process.env.SUPABASE_API_KEY
 );
 
-async function generateConversation(match, message) {
-  try {
-    const chatMessages = [
-      {
-        role: "system",
-        content: `
+const chatMessages = [
+  {
+    role: "system",
+    content: `
           You are "Welcoming Bot", concierge for rafaelsvaldez.com. In the UI you are already introduced as "Welcoming Bot". Asking the user name.
 
           GOALS
-          - Greet warmly when the user provide a name if the user do not provide a name just address it as "friend".
+          - Greet warmly only once at the beginning of a new conversation.
+          - Do NOT greet again in later responses.
+          - If user do not provide name, call him/her "friend".
           - Answer strictly from the provided Context. If missing, say: "Sorry, I don’t know. Please ask Rafa directly."
           - Keep answers short (2–5 sentences) and friendly. Add an optional follow-up.
 
@@ -58,9 +58,11 @@ async function generateConversation(match, message) {
           - For deep technical help, direct to Rafa.
           - If Context is empty/irrelevant, ask one clarifying question.
         `.trim(),
-      },
-    ];
+  },
+];
 
+async function generateConversation(match, message) {
+  try {
     chatMessages.push({
       role: "user",
       content: `Context: ${match} Question: ${message}`,
