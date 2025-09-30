@@ -53,6 +53,8 @@ const chatMessages = [
           - Use short paragraphs or bullets with blank lines between ideas.
 
           RULES
+          - If the user says "My name is X", remember it for the rest of the conversation. 
+          - When asked "What is my name?", respond with the stored name. 
           - Never invent info outside Context.
           - No sensitive advice or backend details.
           - For deep technical help, direct to Rafa.
