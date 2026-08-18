@@ -35,6 +35,18 @@ Run the automated tests with:
 npm test
 ```
 
+Validate the bilingual portfolio source data and inspect the semantic chunks:
+
+```bash
+npm run content:validate
+npm run chunks:inspect
+```
+
+The canonical portfolio knowledge lives in `content/portfolio.json`. Each item
+contains semantic sections instead of one large résumé string. The chunking
+step creates a separate English and Spanish record for every section and adds
+metadata that will later support Pinecone retrieval and filtering.
+
 ## Current API
 
 - `POST /api/createEmbedding` creates an embedding for a visitor question.

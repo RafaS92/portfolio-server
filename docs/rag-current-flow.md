@@ -10,12 +10,14 @@ an online question-answering flow.
 
 ## Ingestion flow
 
-The ingestion script in `embeddings.js` is intended to prepare Rafa's portfolio
-information before visitors use the chatbot.
+The canonical knowledge in `content/portfolio.json` contains bilingual,
+structured portfolio items and hand-authored semantic sections. The ingestion
+script in `embeddings.js` can prepare those sections before visitors use the
+chatbot.
 
 ```text
-Portfolio text
-    -> split into text chunks
+Structured portfolio items
+    -> generate localized semantic chunks
     -> create one embedding for each chunk with OpenAI
     -> store the chunk and its embedding in Supabase
 ```
@@ -24,10 +26,9 @@ An **embedding** is a list of numbers representing the meaning of some text.
 Texts with related meanings usually produce vectors that are close to one
 another. Supabase stores the vectors so they can be searched later.
 
-The current chunked ingestion function is not runnable yet because it refers to
-an undefined `splitDocument()` function. Another function stores the full
-portfolio text as a single vector. We will address the ingestion design in a
-later learning step.
+Run `npm run chunks:inspect` to see every chunk before it is embedded. The
+current `embeddings.js` remains a legacy Supabase helper and is not executed
+automatically; a later learning step will replace it with Pinecone ingestion.
 
 ## Question-answering flow
 
@@ -74,7 +75,9 @@ provided context and admit when the answer is not available.
 - `src/routes/chat.js` contains the two existing HTTP endpoints.
 - `src/routes/health.js` contains the process health endpoint.
 - `src/services/conversation.js` builds the prompt and generates the answer.
-- `embeddings.js` contains the current offline ingestion experiment.
+- `src/content/portfolio.js` loads and validates canonical portfolio content.
+- `src/rag/chunkPortfolio.js` creates localized semantic chunks and metadata.
+- `embeddings.js` contains the legacy Supabase ingestion helper.
 
 ## Known limitations intentionally left for later steps
 
@@ -82,9 +85,8 @@ provided context and admit when the answer is not available.
 - The browser makes two requests when the backend should own the full RAG flow.
 - Retrieval requests only one document and does not handle an empty match.
 - Supabase errors are not inspected before reading returned data.
-- Most portfolio content is stored as one large vector rather than meaningful
-  chunks.
-- The ingestion code duplicates content and its chunking path is incomplete.
+- The currently deployed Supabase data may still contain the previous large
+  vector until the index is migrated.
 - The embedding model is from an older generation.
 
 These limitations remain visible in this baseline so each subsequent change can
