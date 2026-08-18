@@ -70,8 +70,9 @@ provided context and admit when the answer is not available.
 - `server.js` starts the HTTP server.
 - `src/app.js` configures Express, CORS, JSON parsing, and routes.
 - `src/config/env.js` loads and validates environment variables.
-- `src/lib/openai.js` and `src/lib/supabase.js` create external service clients.
+- `src/lib/clients.js` creates the OpenAI and Supabase service clients.
 - `src/routes/chat.js` contains the two existing HTTP endpoints.
+- `src/routes/health.js` contains the process health endpoint.
 - `src/services/conversation.js` builds the prompt and generates the answer.
 - `embeddings.js` contains the current offline ingestion experiment.
 
