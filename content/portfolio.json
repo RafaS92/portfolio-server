@@ -1,0 +1,329 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "profile-overview",
+      "type": "profile",
+      "title": {
+        "en": "About Rafa",
+        "es": "Sobre Rafa"
+      },
+      "tags": ["biography", "personal"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "career-change",
+          "topic": "career journey",
+          "text": {
+            "en": "Rafa started coding in 2019 after deciding to change careers. His journey began with a simple Hello World and grew into a passion for building impactful software. Although he studied business management, he taught himself to code so he could create meaningful solutions.",
+            "es": "Rafa comenzó a programar en 2019 después de decidir cambiar de carrera. Su camino comenzó con un sencillo Hello World y se convirtió en una pasión por crear software de impacto. Aunque estudió administración de empresas, aprendió programación por su cuenta para poder crear soluciones significativas."
+          }
+        },
+        {
+          "id": "engineering-interests",
+          "topic": "engineering interests",
+          "text": {
+            "en": "Rafa is a full-stack engineer who enjoys building projects from scratch, solving complex problems, exploring new technologies, and designing user experiences from initial concept through launch. He is especially interested in responsive applications and visually engaging interfaces.",
+            "es": "Rafa es un ingeniero full stack que disfruta crear proyectos desde cero, resolver problemas complejos, explorar nuevas tecnologías y diseñar experiencias de usuario desde el concepto inicial hasta el lanzamiento. Le interesan especialmente las aplicaciones responsivas y las interfaces visualmente atractivas."
+          },
+          "technologies": ["TypeScript", "Angular", "React", "Node.js", "OpenAI API"]
+        },
+        {
+          "id": "origin-location-languages",
+          "topic": "location and languages",
+          "text": {
+            "en": "Rafa was born in Houston, Texas, raised in San Luis Potosí, Mexico, and later moved back to Houston, where he is currently based. He speaks English and Spanish, including several dialects.",
+            "es": "Rafa nació en Houston, Texas, creció en San Luis Potosí, México, y posteriormente regresó a Houston, donde vive actualmente. Habla inglés y español, incluyendo varios dialectos."
+          },
+          "tags": ["Houston", "San Luis Potosí", "English", "Spanish"]
+        },
+        {
+          "id": "personal-interests",
+          "topic": "personal interests",
+          "text": {
+            "en": "Rafa's hobbies include Tae Kwon Do, cooking, traveling, technology, video games, and video editing. His favorite color is green, and his favorite foods include tacos, pho, wings, and pozole. His favorite countries for hiking are Switzerland, Guatemala, and Colombia.",
+            "es": "Los pasatiempos de Rafa incluyen Tae Kwon Do, cocinar, viajar, la tecnología, los videojuegos y la edición de video. Su color favorito es el verde y entre sus comidas favoritas están los tacos, el pho, las alitas y el pozole. Sus países favoritos para hacer senderismo son Suiza, Guatemala y Colombia."
+          },
+          "tags": ["travel", "hiking", "food", "hobbies"]
+        }
+      ]
+    },
+    {
+      "id": "education-flatiron",
+      "type": "education",
+      "title": {
+        "en": "Flatiron School",
+        "es": "Flatiron School"
+      },
+      "organization": "Flatiron School",
+      "location": {
+        "en": "Houston, United States",
+        "es": "Houston, Estados Unidos"
+      },
+      "tags": ["education", "software development"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "program",
+          "topic": "education",
+          "text": {
+            "en": "Rafa completed the Full Stack Web Development program at Flatiron School in Houston, United States.",
+            "es": "Rafa completó el programa de Desarrollo Web Full Stack en Flatiron School en Houston, Estados Unidos."
+          }
+        }
+      ]
+    },
+    {
+      "id": "education-uaslp",
+      "type": "education",
+      "title": {
+        "en": "Business Administration",
+        "es": "Administración de Empresas"
+      },
+      "organization": "UASLP",
+      "location": {
+        "en": "San Luis Potosí, Mexico",
+        "es": "San Luis Potosí, México"
+      },
+      "tags": ["education", "business"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "degree",
+          "topic": "education",
+          "text": {
+            "en": "Rafa earned a Bachelor of Arts in Business Administration from UASLP in San Luis Potosí, Mexico.",
+            "es": "Rafa obtuvo una licenciatura en Administración de Empresas en la UASLP, en San Luis Potosí, México."
+          }
+        }
+      ]
+    },
+    {
+      "id": "education-uv",
+      "type": "education",
+      "title": {
+        "en": "International Business",
+        "es": "Negocios Internacionales"
+      },
+      "organization": "UV",
+      "location": {
+        "en": "Valparaíso, Chile",
+        "es": "Valparaíso, Chile"
+      },
+      "tags": ["education", "business"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "degree",
+          "topic": "education",
+          "text": {
+            "en": "Rafa earned a Bachelor of Arts in International Business from UV in Valparaíso, Chile.",
+            "es": "Rafa obtuvo una licenciatura en Negocios Internacionales en la UV, en Valparaíso, Chile."
+          }
+        }
+      ]
+    },
+    {
+      "id": "skills-toolkit",
+      "type": "skill",
+      "title": {
+        "en": "Technical toolkit",
+        "es": "Herramientas técnicas"
+      },
+      "tags": ["skills", "technologies"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "frontend",
+          "topic": "frontend technologies",
+          "text": {
+            "en": "Rafa's frontend experience includes Angular, React, TypeScript, JavaScript, HTML5, CSS3, React Native, Redux, Styled Components, jQuery, Material UI, and Sass.",
+            "es": "La experiencia frontend de Rafa incluye Angular, React, TypeScript, JavaScript, HTML5, CSS3, React Native, Redux, Styled Components, jQuery, Material UI y Sass."
+          },
+          "technologies": ["Angular", "React", "TypeScript", "JavaScript", "HTML5", "CSS3", "React Native", "Redux", "Styled Components", "jQuery", "Material UI", "Sass"]
+        },
+        {
+          "id": "backend",
+          "topic": "backend technologies",
+          "text": {
+            "en": "Rafa's backend and data experience includes Node.js, C#, MongoDB, Neo4j, the Microsoft .NET Framework, Microsoft SQL Server, and SQL.",
+            "es": "La experiencia de Rafa en backend y datos incluye Node.js, C#, MongoDB, Neo4j, Microsoft .NET Framework, Microsoft SQL Server y SQL."
+          },
+          "technologies": ["Node.js", "C#", "MongoDB", "Neo4j", ".NET", "Microsoft SQL Server", "SQL"]
+        },
+        {
+          "id": "platforms-tools",
+          "topic": "platforms and tools",
+          "text": {
+            "en": "Rafa has worked with Amazon Web Services, Docker, Firebase, Git, Netlify, and Expo.",
+            "es": "Rafa ha trabajado con Amazon Web Services, Docker, Firebase, Git, Netlify y Expo."
+          },
+          "technologies": ["AWS", "Docker", "Firebase", "Git", "Netlify", "Expo"]
+        },
+        {
+          "id": "methodologies",
+          "topic": "software methodologies",
+          "text": {
+            "en": "Rafa has experience with object-oriented programming, MVC, REST APIs, and AJAX.",
+            "es": "Rafa tiene experiencia con programación orientada a objetos, MVC, APIs REST y AJAX."
+          },
+          "technologies": ["OOP", "MVC", "REST API", "AJAX"]
+        }
+      ]
+    },
+    {
+      "id": "experience-sourcemap",
+      "type": "experience",
+      "title": {
+        "en": "Full Stack Developer at Sourcemap",
+        "es": "Desarrollador Full Stack en Sourcemap"
+      },
+      "organization": "Sourcemap",
+      "role": {
+        "en": "Full Stack Developer",
+        "es": "Desarrollador Full Stack"
+      },
+      "location": {
+        "en": "New York City, remote",
+        "es": "Nueva York, remoto"
+      },
+      "startDate": "2023-07",
+      "endDate": "2025-07",
+      "tags": ["employment", "full time", "supply chain"],
+      "technologies": ["Jest", "Mapbox.js", "REST API"],
+      "sections": [
+        {
+          "id": "frontend-apis",
+          "topic": "frontend and API development",
+          "text": {
+            "en": "Rafa implemented Figma-based designs as performant, accessible, and user-friendly frontend applications. He also developed and integrated RESTful APIs for maps, dashboards, tables, and interfaces that supported data-driven decisions.",
+            "es": "Rafa implementó diseños de Figma como aplicaciones frontend rápidas, accesibles y fáciles de usar. También desarrolló e integró APIs REST para mapas, paneles, tablas e interfaces que apoyaban decisiones basadas en datos."
+          },
+          "technologies": ["Figma", "REST API"]
+        },
+        {
+          "id": "testing-reliability",
+          "topic": "testing and production reliability",
+          "text": {
+            "en": "Rafa built extensive Jest test suites that raised test coverage to 60 percent and reduced production bugs. He also delivered urgent client hotfixes to minimize downtime and maintain customer satisfaction.",
+            "es": "Rafa creó suites extensas de pruebas con Jest que elevaron la cobertura al 60 por ciento y redujeron errores en producción. También entregó correcciones urgentes para clientes con el fin de minimizar el tiempo de inactividad y mantener su satisfacción."
+          },
+          "technologies": ["Jest"],
+          "tags": ["testing", "hotfixes"]
+        },
+        {
+          "id": "legacy-refactoring",
+          "topic": "legacy application refactoring",
+          "text": {
+            "en": "Rafa refactored legacy applications using a fat-model, thin-controller design. This work reduced technical debt by 60 percent and improved application maintainability.",
+            "es": "Rafa refactorizó aplicaciones heredadas mediante un diseño de modelo robusto y controlador ligero. Este trabajo redujo la deuda técnica en un 60 por ciento y mejoró la mantenibilidad de las aplicaciones."
+          },
+          "tags": ["refactoring", "technical debt"]
+        },
+        {
+          "id": "mapbox-visualization",
+          "topic": "mapping and data visualization",
+          "text": {
+            "en": "Rafa integrated Mapbox.js and other services into supply-chain applications, giving users better supply-chain visibility through intuitive geographic data visualizations.",
+            "es": "Rafa integró Mapbox.js y otros servicios en aplicaciones de cadena de suministro, brindando a los usuarios mayor visibilidad mediante visualizaciones geográficas de datos intuitivas."
+          },
+          "technologies": ["Mapbox.js"],
+          "tags": ["maps", "data visualization"]
+        }
+      ]
+    },
+    {
+      "id": "experience-energy-ogre",
+      "type": "experience",
+      "title": {
+        "en": "Full Stack Developer at Energy Ogre",
+        "es": "Desarrollador Full Stack en Energy Ogre"
+      },
+      "organization": "Energy Ogre",
+      "role": {
+        "en": "Full Stack Developer",
+        "es": "Desarrollador Full Stack"
+      },
+      "location": {
+        "en": "Houston, remote",
+        "es": "Houston, remoto"
+      },
+      "startDate": "2021-01",
+      "endDate": "2023-07",
+      "tags": ["employment", "full time", "energy"],
+      "technologies": ["React", "React Native", ".NET", "SQL"],
+      "sections": [
+        {
+          "id": "application-development",
+          "topic": "web and mobile development",
+          "text": {
+            "en": "Rafa developed and maintained web, mobile, and internal applications using React, React Native, and .NET. He led rebuilds of core applications to improve their performance and maintainability.",
+            "es": "Rafa desarrolló y mantuvo aplicaciones web, móviles e internas con React, React Native y .NET. Lideró reconstrucciones de aplicaciones principales para mejorar su rendimiento y mantenibilidad."
+          },
+          "technologies": ["React", "React Native", ".NET"]
+        },
+        {
+          "id": "collaboration",
+          "topic": "cross-functional collaboration",
+          "text": {
+            "en": "Rafa collaborated with engineers, analysts, and managers to deliver high-impact software solutions.",
+            "es": "Rafa colaboró con ingenieros, analistas y gerentes para entregar soluciones de software de alto impacto."
+          },
+          "tags": ["collaboration"]
+        },
+        {
+          "id": "sql-data",
+          "topic": "SQL database development",
+          "text": {
+            "en": "Rafa worked with SQL databases by creating stored procedures, updating schemas, and managing database tables.",
+            "es": "Rafa trabajó con bases de datos SQL mediante la creación de procedimientos almacenados, la actualización de esquemas y la administración de tablas."
+          },
+          "technologies": ["SQL"],
+          "tags": ["databases"]
+        }
+      ]
+    },
+    {
+      "id": "experience-becoming-you",
+      "type": "experience",
+      "title": {
+        "en": "Front End Developer at Becoming You",
+        "es": "Desarrollador Frontend en Becoming You"
+      },
+      "organization": "Becoming You",
+      "role": {
+        "en": "Front End Developer",
+        "es": "Desarrollador Frontend"
+      },
+      "location": {
+        "en": "Houston, remote",
+        "es": "Houston, remoto"
+      },
+      "startDate": "2021-05",
+      "endDate": "2021-07",
+      "tags": ["employment", "contract"],
+      "technologies": ["React"],
+      "sections": [
+        {
+          "id": "responsive-landing-pages",
+          "topic": "responsive frontend development",
+          "text": {
+            "en": "Rafa built responsive React landing pages optimized for mobile and desktop experiences.",
+            "es": "Rafa creó páginas de destino responsivas con React, optimizadas para experiencias móviles y de escritorio."
+          },
+          "technologies": ["React"],
+          "tags": ["responsive design", "landing pages"]
+        },
+        {
+          "id": "quality-scalability",
+          "topic": "frontend quality and scalability",
+          "text": {
+            "en": "Rafa refactored and tested frontend codebases to improve performance and reliability. He designed scalable applications and integrated third-party services to enhance the user experience.",
+            "es": "Rafa refactorizó y probó bases de código frontend para mejorar el rendimiento y la confiabilidad. Diseñó aplicaciones escalables e integró servicios de terceros para mejorar la experiencia del usuario."
+          },
+          "tags": ["refactoring", "testing", "scalability"]
+        }
+      ]
+    }
+  ]
+}
