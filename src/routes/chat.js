@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { openai, supabase } from "../lib/clients.js";
+import { getOpenAIClient, getSupabaseClient } from "../lib/clients.js";
 import { generateConversation } from "../services/conversation.js";
 
 export const chatRouter = Router();
@@ -11,7 +11,7 @@ chatRouter.post("/createEmbedding", async (req, res) => {
       return res.status(400).json({ error: "Missing or invalid 'message'." });
     }
 
-    const embeddingResponse = await openai.embeddings.create({
+    const embeddingResponse = await getOpenAIClient().embeddings.create({
       model: "text-embedding-ada-002",
       input: message,
     });
@@ -27,7 +27,7 @@ chatRouter.post("/findNearestMatch", async (req, res) => {
   try {
     const { embedding, message } = req.body;
 
-    const { data } = await supabase.rpc("match_documents", {
+    const { data } = await getSupabaseClient().rpc("match_documents", {
       query_embedding: embedding,
       match_threshold: 0.5,
       match_count: 1,

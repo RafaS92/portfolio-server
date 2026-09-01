@@ -1,0 +1,229 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "career-change-en",
+      "locale": "en",
+      "category": "profile",
+      "question": "When did Rafa start coding and why?",
+      "expectedChunkIds": ["profile-overview-career-change-en"]
+    },
+    {
+      "id": "career-change-es",
+      "locale": "es",
+      "category": "profile",
+      "question": "¿Cuándo comenzó Rafa a programar y por qué?",
+      "expectedChunkIds": ["profile-overview-career-change-es"]
+    },
+    {
+      "id": "current-location-en",
+      "locale": "en",
+      "category": "profile",
+      "question": "Where is Rafa currently based?",
+      "expectedChunkIds": ["profile-overview-origin-location-languages-en"]
+    },
+    {
+      "id": "current-location-es",
+      "locale": "es",
+      "category": "profile",
+      "question": "¿Dónde vive Rafa actualmente?",
+      "expectedChunkIds": ["profile-overview-origin-location-languages-es"]
+    },
+    {
+      "id": "favorite-foods-en",
+      "locale": "en",
+      "category": "profile",
+      "question": "What are Rafa's favorite foods?",
+      "expectedChunkIds": ["profile-overview-personal-interests-en"]
+    },
+    {
+      "id": "favorite-foods-es",
+      "locale": "es",
+      "category": "profile",
+      "question": "¿Cuáles son las comidas favoritas de Rafa?",
+      "expectedChunkIds": ["profile-overview-personal-interests-es"]
+    },
+    {
+      "id": "hiking-en",
+      "locale": "en",
+      "category": "profile",
+      "question": "Which countries does Rafa like for hiking?",
+      "expectedChunkIds": ["profile-overview-personal-interests-en"]
+    },
+    {
+      "id": "hiking-es",
+      "locale": "es",
+      "category": "profile",
+      "question": "¿En qué países le gusta hacer senderismo a Rafa?",
+      "expectedChunkIds": ["profile-overview-personal-interests-es"]
+    },
+    {
+      "id": "flatiron-en",
+      "locale": "en",
+      "category": "education",
+      "question": "What did Rafa study at Flatiron School?",
+      "expectedChunkIds": ["education-flatiron-program-en"]
+    },
+    {
+      "id": "flatiron-es",
+      "locale": "es",
+      "category": "education",
+      "question": "¿Qué estudió Rafa en Flatiron School?",
+      "expectedChunkIds": ["education-flatiron-program-es"]
+    },
+    {
+      "id": "business-degree-en",
+      "locale": "en",
+      "category": "education",
+      "question": "Where did Rafa study Business Administration?",
+      "expectedChunkIds": ["education-uaslp-degree-en"]
+    },
+    {
+      "id": "business-degree-es",
+      "locale": "es",
+      "category": "education",
+      "question": "¿Dónde estudió Rafa Administración de Empresas?",
+      "expectedChunkIds": ["education-uaslp-degree-es"]
+    },
+    {
+      "id": "frontend-skills-en",
+      "locale": "en",
+      "category": "skills",
+      "question": "Which frontend technologies has Rafa used?",
+      "expectedChunkIds": ["skills-toolkit-frontend-en"]
+    },
+    {
+      "id": "frontend-skills-es",
+      "locale": "es",
+      "category": "skills",
+      "question": "¿Qué tecnologías frontend ha utilizado Rafa?",
+      "expectedChunkIds": ["skills-toolkit-frontend-es"]
+    },
+    {
+      "id": "backend-skills-en",
+      "locale": "en",
+      "category": "skills",
+      "question": "Does Rafa have backend and database experience?",
+      "expectedChunkIds": ["skills-toolkit-backend-en"]
+    },
+    {
+      "id": "backend-skills-es",
+      "locale": "es",
+      "category": "skills",
+      "question": "¿Rafa tiene experiencia en backend y bases de datos?",
+      "expectedChunkIds": ["skills-toolkit-backend-es"]
+    },
+    {
+      "id": "sourcemap-apis-en",
+      "locale": "en",
+      "category": "experience",
+      "question": "What kinds of APIs and interfaces did Rafa build at Sourcemap?",
+      "expectedChunkIds": ["experience-sourcemap-frontend-apis-en"]
+    },
+    {
+      "id": "sourcemap-apis-es",
+      "locale": "es",
+      "category": "experience",
+      "question": "¿Qué tipos de APIs e interfaces creó Rafa en Sourcemap?",
+      "expectedChunkIds": ["experience-sourcemap-frontend-apis-es"]
+    },
+    {
+      "id": "sourcemap-testing-en",
+      "locale": "en",
+      "category": "experience",
+      "question": "How did Rafa improve testing at Sourcemap?",
+      "expectedChunkIds": ["experience-sourcemap-testing-reliability-en"]
+    },
+    {
+      "id": "sourcemap-testing-es",
+      "locale": "es",
+      "category": "experience",
+      "question": "¿Cómo mejoró Rafa las pruebas en Sourcemap?",
+      "expectedChunkIds": ["experience-sourcemap-testing-reliability-es"]
+    },
+    {
+      "id": "sourcemap-refactoring-en",
+      "locale": "en",
+      "category": "experience",
+      "question": "How much technical debt did Rafa reduce at Sourcemap?",
+      "expectedChunkIds": ["experience-sourcemap-legacy-refactoring-en"]
+    },
+    {
+      "id": "sourcemap-refactoring-es",
+      "locale": "es",
+      "category": "experience",
+      "question": "¿Cuánta deuda técnica redujo Rafa en Sourcemap?",
+      "expectedChunkIds": ["experience-sourcemap-legacy-refactoring-es"]
+    },
+    {
+      "id": "sourcemap-mapbox-en",
+      "locale": "en",
+      "category": "experience",
+      "question": "Has Rafa worked with Mapbox?",
+      "expectedChunkIds": ["experience-sourcemap-mapbox-visualization-en"]
+    },
+    {
+      "id": "sourcemap-mapbox-es",
+      "locale": "es",
+      "category": "experience",
+      "question": "¿Rafa ha trabajado con Mapbox?",
+      "expectedChunkIds": ["experience-sourcemap-mapbox-visualization-es"]
+    },
+    {
+      "id": "energy-ogre-apps-en",
+      "locale": "en",
+      "category": "experience",
+      "question": "What applications did Rafa build at Energy Ogre?",
+      "expectedChunkIds": ["experience-energy-ogre-application-development-en"]
+    },
+    {
+      "id": "energy-ogre-apps-es",
+      "locale": "es",
+      "category": "experience",
+      "question": "¿Qué aplicaciones desarrolló Rafa en Energy Ogre?",
+      "expectedChunkIds": ["experience-energy-ogre-application-development-es"]
+    },
+    {
+      "id": "energy-ogre-sql-en",
+      "locale": "en",
+      "category": "experience",
+      "question": "What SQL work did Rafa do at Energy Ogre?",
+      "expectedChunkIds": ["experience-energy-ogre-sql-data-en"]
+    },
+    {
+      "id": "energy-ogre-sql-es",
+      "locale": "es",
+      "category": "experience",
+      "question": "¿Qué trabajo de SQL realizó Rafa en Energy Ogre?",
+      "expectedChunkIds": ["experience-energy-ogre-sql-data-es"]
+    },
+    {
+      "id": "becoming-you-responsive-en",
+      "locale": "en",
+      "category": "experience",
+      "question": "Did Rafa build responsive React landing pages?",
+      "expectedChunkIds": ["experience-becoming-you-responsive-landing-pages-en"]
+    },
+    {
+      "id": "becoming-you-responsive-es",
+      "locale": "es",
+      "category": "experience",
+      "question": "¿Rafa creó páginas de destino responsivas con React?",
+      "expectedChunkIds": ["experience-becoming-you-responsive-landing-pages-es"]
+    },
+    {
+      "id": "unknown-salary-en",
+      "locale": "en",
+      "category": "unknown",
+      "question": "What is Rafa's current salary?",
+      "expectedChunkIds": []
+    },
+    {
+      "id": "unknown-salary-es",
+      "locale": "es",
+      "category": "unknown",
+      "question": "¿Cuál es el salario actual de Rafa?",
+      "expectedChunkIds": []
+    }
+  ]
+}

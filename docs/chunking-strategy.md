@@ -29,3 +29,8 @@ lacks context, improve the source item or context builder.
 Chunk size is only a starting hypothesis. Once retrieval exists, an evaluation
 set will tell us whether the expected chunk appears in the top results for real
 English and Spanish questions.
+
+The initial evaluation set lives in `evals/retrieval.json`. Positive cases name
+the expected chunk, while out-of-scope cases deliberately have no expected
+chunk. Run `npm run evals:validate` to catch stale chunk references whenever
+content or chunk IDs change.

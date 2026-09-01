@@ -1,4 +1,7 @@
-import { openai, supabase } from "./src/lib/clients.js";
+import {
+  getOpenAIClient,
+  getSupabaseClient,
+} from "./src/lib/clients.js";
 import { createPortfolioChunks } from "./src/rag/chunkPortfolio.js";
 
 // Legacy Supabase ingestion helper. It is intentionally not executed
@@ -8,7 +11,7 @@ export async function createAndStoreEmbeddings() {
 
   const rows = await Promise.all(
     chunks.map(async (chunk) => {
-      const embeddingResponse = await openai.embeddings.create({
+      const embeddingResponse = await getOpenAIClient().embeddings.create({
         model: "text-embedding-ada-002",
         input: chunk.text,
       });
@@ -20,7 +23,7 @@ export async function createAndStoreEmbeddings() {
     }),
   );
 
-  const { error } = await supabase.from("rafainfo").insert(rows);
+  const { error } = await getSupabaseClient().from("rafainfo").insert(rows);
 
   if (error) throw error;
 

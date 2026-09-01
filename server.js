@@ -1,5 +1,11 @@
 import { createApp } from "./src/app.js";
-import { env } from "./src/config/env.js";
+import { env, requireEnvironmentVariables } from "./src/config/env.js";
+
+requireEnvironmentVariables([
+  "OPENAI_API_KEY",
+  "SUPABASE_URL",
+  "SUPABASE_API_KEY",
+]);
 
 const app = createApp();
 

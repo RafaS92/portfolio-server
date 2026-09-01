@@ -8,12 +8,17 @@
     "test": "node --test",
     "test:watch": "node --test --watch",
     "content:validate": "node scripts/validateContent.js",
-    "chunks:inspect": "node scripts/inspectChunks.js"
+    "chunks:inspect": "node scripts/inspectChunks.js",
+    "evals:validate": "node scripts/validateRetrievalEvals.js",
+    "pinecone:sync": "node scripts/syncPinecone.js",
+    "pinecone:search": "node scripts/searchPinecone.js",
+    "evals:retrieval": "node scripts/evaluateRetrieval.js"
   },
   "engines": {
     "node": ">=22.12.0"
   },
   "dependencies": {
+    "@pinecone-database/pinecone": "^8.2.0",
     "@supabase/supabase-js": "^2.57.2",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",

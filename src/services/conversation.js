@@ -1,4 +1,4 @@
-import { openai } from "../lib/clients.js";
+import { getOpenAIClient } from "../lib/clients.js";
 
 const chatMessages = [
   {
@@ -37,7 +37,7 @@ export async function generateConversation(match, message) {
       content: `Context: ${match} Question: ${message}`,
     });
 
-    const response = await openai.chat.completions.create({
+    const response = await getOpenAIClient().chat.completions.create({
       model: "gpt-4o-mini",
       messages: chatMessages,
       temperature: 0.2,
