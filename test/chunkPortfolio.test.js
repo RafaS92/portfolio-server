@@ -42,6 +42,37 @@ test("portfolio knowledge contains all 15 published project IDs", () => {
   );
 });
 
+test("portfolio knowledge identifies independent AI development as the current role", () => {
+  const experiences = loadPortfolio().items.filter(
+    (item) => item.type === "experience",
+  );
+  const currentRole = experiences[0];
+
+  assert.equal(currentRole.id, "experience-independent-contractor");
+  assert.equal(currentRole.startDate, "2025-09");
+  assert.equal(currentRole.endDate, undefined);
+  assert.deepEqual(
+    currentRole.sections.map((section) => section.id),
+    [
+      "ai-applications",
+      "agent-automation",
+      "generative-media",
+      "client-websites",
+    ],
+  );
+
+  const currentRoleChunks = createPortfolioChunks().filter(
+    (chunk) => chunk.itemId === currentRole.id,
+  );
+  assert.equal(currentRoleChunks.length, 8);
+  assert.ok(currentRoleChunks.every((chunk) => chunk.endDate === null));
+  assert.ok(
+    currentRoleChunks
+      .find((chunk) => chunk.id.endsWith("ai-applications-en"))
+      .text.includes("to present"),
+  );
+});
+
 test("every project has a unique archiveOrder importance ranking", () => {
   const projects = loadPortfolio().items
     .filter((item) => item.type === "project")

@@ -6,10 +6,12 @@ import {
   ChatValidationError,
   getGuidedTopic,
   isAboutRafaQuery,
+  isFutureGoalQuery,
   isProjectDiscoveryQuery,
   parseChatRequest,
   prioritizeProjectHitsByArchiveOrder,
   prioritizeProjectSourceSlots,
+  selectFutureGoalHits,
   selectGuidedTopicHits,
 } from "../src/services/ragChat.js";
 
@@ -78,6 +80,42 @@ test("recognizes the guided About Rafa questions in both languages", () => {
   assert.equal(isAboutRafaQuery("Who is Rafael Nadal?"), false);
 });
 
+test("recognizes future career-goal questions in English and Spanish", () => {
+  assert.equal(
+    isFutureGoalQuery("What future project is Rafa working toward?"),
+    true,
+  );
+  assert.equal(isFutureGoalQuery("What are Rafa's long-term goals?"), true);
+  assert.equal(
+    isFutureGoalQuery("¿Cuáles son las metas profesionales de Rafa?"),
+    true,
+  );
+  assert.equal(
+    isFutureGoalQuery("¿En qué quiere convertirse Rafa en el futuro?"),
+    true,
+  );
+  assert.equal(isFutureGoalQuery("Tell me about the Load Balancer."), false);
+});
+
+test("future-goal selection returns only the dedicated profile section", () => {
+  const hits = [
+    {
+      item_id: "profile-overview",
+      section_id: "engineering-interests",
+    },
+    {
+      item_id: "profile-overview",
+      section_id: "future-career-goal",
+    },
+    {
+      item_id: "loadbalancer",
+      section_id: "overview",
+    },
+  ];
+
+  assert.deepEqual(selectFutureGoalHits(hits), [hits[1]]);
+});
+
 test("recognizes guided skill, experience, and service topics", () => {
   assert.equal(
     getGuidedTopic("What are Rafa’s strongest technical skills?"),
@@ -142,6 +180,37 @@ test("guided Explore Rafa requests retrieve and generate from the requested topi
       ),
     );
   }
+});
+
+test("future project questions use the local career-goal section instead of project discovery", async () => {
+  let generationInput;
+
+  const result = await answerPortfolioQuestion(
+    {
+      message: "What future project is Rafa working toward?",
+      locale: "en",
+      history: [],
+    },
+    {
+      async search() {
+        assert.fail("future-goal questions should not call semantic search");
+      },
+      async generate(input) {
+        generationInput = input;
+        return "Rafa is working toward Staff Engineer and Architect roles.";
+      },
+    },
+  );
+
+  assert.equal(generationInput.projectDiscovery, false);
+  assert.deepEqual(
+    generationInput.hits.map((hit) => `${hit.item_id}:${hit.section_id}`),
+    ["profile-overview:future-career-goal"],
+  );
+  assert.deepEqual(
+    result.sources.map((source) => `${source.itemId}:${source.sectionId}`),
+    ["profile-overview:future-career-goal"],
+  );
 });
 
 test("project recommendations follow archiveOrder instead of similarity", () => {

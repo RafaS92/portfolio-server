@@ -20,6 +20,15 @@ const rankedProjectIds = [...projectItems]
 const PROJECT_DISCOVERY_PATTERN =
   /\b(projects?|portfolio work|work samples?|showcase|built|build|created|recommend(?:ed|ation|ations)?|suggest(?:ed|ion|ions)?|proyectos?|trabajos?|muestras?|construy[oó]|cre[oó]|recomienda|recomendar|sugiere|sugerencias)\b/iu;
 const ABOUT_RAFA_QUERIES = new Set(["who is rafa", "quien es rafa"]);
+const FUTURE_GOAL_PATTERNS = [
+  /\b(?:future|long term|career|professional) (?:goal|goals|plan|plans|direction|aspiration|aspirations|project|projects)\b/u,
+  /\b(?:working|work) toward\b/u,
+  /\b(?:want|wants|plan|plans|hope|hopes|aim|aims) to (?:become|grow|work|build|learn|achieve)\b/u,
+  /\bnext (?:career|professional) step\b/u,
+  /\b(?:futuro|futura|futuros|futuras|largo plazo|meta profesional|metas profesionales|objetivo profesional|objetivos profesionales|aspiracion|aspiraciones|planes profesionales|proximo paso profesional)\b/u,
+  /\b(?:trabaja|trabajando) para (?:convertirse|llegar a ser|alcanzar)\b/u,
+  /\b(?:quiere|planea|espera|aspira a) (?:convertirse|crecer|trabajar|crear|aprender|lograr)\b/u,
+];
 const GUIDED_TOPIC_QUERIES = new Map([
   ["what are rafa s strongest technical skills", "skill"],
   ["cuales son las principales habilidades tecnicas de rafa", "skill"],
@@ -159,6 +168,11 @@ export function isAboutRafaQuery(message) {
   return ABOUT_RAFA_QUERIES.has(normalizeProjectReference(message));
 }
 
+export function isFutureGoalQuery(message) {
+  const normalizedMessage = normalizeProjectReference(message);
+  return FUTURE_GOAL_PATTERNS.some((pattern) => pattern.test(normalizedMessage));
+}
+
 export function getGuidedTopic(message) {
   return GUIDED_TOPIC_QUERIES.get(normalizeProjectReference(message)) ?? null;
 }
@@ -171,6 +185,14 @@ export function selectGuidedTopicHits(hits, contentType) {
         (contentOrder.get(`${left.item_id}:${left.section_id}`) ?? Infinity) -
         (contentOrder.get(`${right.item_id}:${right.section_id}`) ?? Infinity),
     );
+}
+
+export function selectFutureGoalHits(hits) {
+  return hits.filter(
+    (hit) =>
+      hit.item_id === "profile-overview" &&
+      hit.section_id === "future-career-goal",
+  );
 }
 
 export function prioritizeProjectHitsByArchiveOrder(
@@ -223,10 +245,12 @@ export async function answerPortfolioQuestion(
     generate = generateGroundedAnswer,
   } = {},
 ) {
-  const projectDiscovery = isProjectDiscoveryQuery(request.message);
+  const futureGoal = isFutureGoalQuery(request.message);
+  const projectDiscovery =
+    !futureGoal && isProjectDiscoveryQuery(request.message);
   const aboutRafa = isAboutRafaQuery(request.message);
   const guidedTopic = getGuidedTopic(request.message);
-  const retrievedHits = guidedTopic
+  const retrievedHits = guidedTopic || futureGoal
     ? localPortfolioHits.filter((hit) => hit.locale === request.locale)
     : await search(buildRetrievalQuery(request), {
         locale: request.locale,
@@ -235,6 +259,8 @@ export async function answerPortfolioQuestion(
       });
   const hits = projectDiscovery
     ? prioritizeProjectHitsByArchiveOrder(retrievedHits)
+    : futureGoal
+      ? selectFutureGoalHits(retrievedHits)
     : guidedTopic
       ? selectGuidedTopicHits(retrievedHits, guidedTopic)
       : aboutRafa
