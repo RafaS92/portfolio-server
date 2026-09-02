@@ -160,7 +160,12 @@
       "locale": "en",
       "category": "experience",
       "question": "Has Rafa worked with Mapbox?",
-      "expectedChunkIds": ["experience-sourcemap-mapbox-visualization-en"]
+      "expectedChunkIds": [
+        "experience-sourcemap-mapbox-visualization-en",
+        "profile-overview-feature-ownership-en",
+        "profile-overview-project-case-studies-en",
+        "profile-overview-senior-level-project-en"
+      ]
     },
     {
       "id": "sourcemap-mapbox-es",

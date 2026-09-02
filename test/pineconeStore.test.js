@@ -5,7 +5,12 @@ process.env.OPENAI_API_KEY ??= "test-openai-key";
 process.env.SUPABASE_URL ??= "https://example.supabase.co";
 process.env.SUPABASE_API_KEY ??= "test-supabase-key";
 
-const { searchPortfolio, syncPortfolioChunks } = await import(
+const {
+  RERANK_CANDIDATE_TOP_K,
+  rerankPortfolioHits,
+  searchPortfolio,
+  syncPortfolioChunks,
+} = await import(
   "../src/rag/pineconeStore.js"
 );
 
@@ -99,7 +104,70 @@ test("search embeds text inside Pinecone and applies the language filter", async
   });
 
   assert.deepEqual(searchOptions.query.inputs, { text: "¿Quién es Rafa?" });
+  assert.equal(searchOptions.query.topK, RERANK_CANDIDATE_TOP_K);
   assert.deepEqual(searchOptions.query.filter, { locale: { $eq: "es" } });
   assert.equal(results[0].id, "rafa-summary-es");
   assert.equal(results[0].score, 0.91);
+});
+
+test("reranking favors focused topic and concept matches", () => {
+  const hits = [
+    {
+      id: "general",
+      score: 0.52,
+      topic: "general engineering lessons",
+      tags: ["engineering"],
+      technologies: [],
+      chunk_text: "Rafa has learned from production systems.",
+    },
+    {
+      id: "ownership",
+      score: 0.4,
+      topic: "end-to-end feature ownership and independent delivery",
+      tags: ["feature ownership", "independent engineering"],
+      technologies: [],
+      chunk_text:
+        "Rafa was responsible for feature development and production support.",
+    },
+  ];
+
+  assert.equal(
+    rerankPortfolioHits(
+      "What feature did Rafa own independently through production support?",
+      hits,
+      1,
+    )[0].id,
+    "ownership",
+  );
+});
+
+test("reranking recognizes Spanish autonomy and end-to-end ownership", () => {
+  const hits = [
+    {
+      id: "general",
+      score: 0.51,
+      topic: "estilo de trabajo",
+      tags: ["producción"],
+      technologies: [],
+      chunk_text: "Rafa brinda soporte a aplicaciones en producción.",
+    },
+    {
+      id: "ownership",
+      score: 0.4,
+      topic: "end-to-end feature ownership and independent delivery",
+      tags: ["independent engineering"],
+      technologies: [],
+      chunk_text:
+        "Rafa fue responsable con poca supervisión desde el desarrollo hasta producción.",
+    },
+  ];
+
+  assert.equal(
+    rerankPortfolioHits(
+      "¿Qué funcionalidad manejó Rafa de forma independiente desde el desarrollo hasta producción?",
+      hits,
+      1,
+    )[0].id,
+    "ownership",
+  );
 });
