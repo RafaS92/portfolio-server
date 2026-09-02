@@ -1,4 +1,6 @@
-# RafaBot portfolio server
+![RafaBot RAG chatbot architecture and request flow](assets/rafabot-rag-architecture.png)
+
+# RafaBot
 
 RafaBot is the Node.js backend for the chatbot on Rafa's portfolio. It uses a
 retrieval-augmented generation (RAG) pipeline to answer questions from a
