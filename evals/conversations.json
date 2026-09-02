@@ -275,7 +275,7 @@
           "message": "¿Rafa necesita patrocinio de visa para trabajar en Estados Unidos?",
           "expectedSourceIds": ["profile-overview-work-authorization-es"],
           "requiredConcepts": [
-            { "label": "no sponsorship", "anyOf": ["no requiere", "sin patrocinio"] }
+            { "label": "no sponsorship", "anyOf": ["no requiere", "sin patrocinio", "sin necesidad de patrocinio"] }
           ],
           "expectsFallback": false
         },

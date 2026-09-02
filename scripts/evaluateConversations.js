@@ -21,9 +21,20 @@ if (
 
 try {
   const evaluations = loadConversationEvals();
+  const requestedIds = process.argv.slice(2);
+  const conversations = requestedIds.length === 0
+    ? evaluations.conversations
+    : evaluations.conversations.filter(({ id }) => requestedIds.includes(id));
+  const missingIds = requestedIds.filter(
+    (id) => !evaluations.conversations.some((conversation) => conversation.id === id),
+  );
+
+  if (missingIds.length > 0) {
+    throw new Error(`Unknown conversation IDs: ${missingIds.join(", ")}`);
+  }
   const results = [];
 
-  for (const conversation of evaluations.conversations) {
+  for (const conversation of conversations) {
     const result = await evaluateConversation(conversation);
     results.push(result);
     console.log(`${result.passed ? "PASS" : "FAIL"} ${result.id}`);

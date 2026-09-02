@@ -62,6 +62,12 @@ npm run evals:conversation:validate
 npm run evals:conversation
 ```
 
+To rerun only one failed scenario and avoid unnecessary API usage:
+
+```bash
+npm run evals:conversation -- prompt-injection-es
+```
+
 The suite runs 10 conversations containing 25 total turns. It checks pronoun
 follow-ups, deliberate topic changes, English/Spanish switching, unsupported
 questions, prompt injection, and the 10-message history limit. It uses the same
