@@ -11,6 +11,14 @@ test("answer evaluations contain 10 English and 10 Spanish cases", () => {
   assert.equal(evaluations.cases.length, 20);
   assert.equal(evaluations.cases.filter(({ locale }) => locale === "en").length, 10);
   assert.equal(evaluations.cases.filter(({ locale }) => locale === "es").length, 10);
+  assert.equal(
+    evaluations.cases.filter(({ locale, judge }) => locale === "en" && judge).length,
+    5,
+  );
+  assert.equal(
+    evaluations.cases.filter(({ locale, judge }) => locale === "es" && judge).length,
+    5,
+  );
 });
 
 test("answer scoring checks facts, sources, language, and project order", () => {

@@ -35,6 +35,25 @@ Run the automated tests with:
 npm test
 ```
 
+Run the deterministic answer checks after meaningful RAG changes:
+
+```bash
+npm run evals:answers:validate
+npm run evals:answers
+```
+
+The optional groundedness judge evaluates 10 high-risk English and Spanish
+answers for unsupported claims, correctness, relevance, and completeness:
+
+```bash
+npm run evals:answers:judge
+```
+
+The judge command makes 10 normal chatbot generation requests and 10 additional
+OpenAI grading requests. It is intended for release checks, not normal server
+startup or production chat traffic. `OPENAI_EVAL_MODEL` can select a separate
+grader model; by default it uses `OPENAI_MODEL`.
+
 Validate the bilingual portfolio source data and inspect the semantic chunks:
 
 ```bash
