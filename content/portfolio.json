@@ -172,6 +172,43 @@
       ]
     },
     {
+      "id": "services-overview",
+      "type": "service",
+      "title": {
+        "en": "Professional services",
+        "es": "Servicios profesionales"
+      },
+      "tags": ["services", "web development", "AI", "software development"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "website-development",
+          "topic": "website development services",
+          "text": {
+            "en": "Rafa offers modern, responsive website development designed to make businesses look professional, load quickly, and convert visitors into customers. This includes business websites, landing pages, and portfolios.",
+            "es": "Rafa ofrece desarrollo de sitios web modernos y responsivos para que los negocios luzcan profesionales, carguen rápido y conviertan visitantes en clientes. Esto incluye sitios web empresariales, páginas de aterrizaje y portafolios."
+          }
+        },
+        {
+          "id": "ai-products",
+          "topic": "AI product services",
+          "text": {
+            "en": "Rafa offers AI products that automate repetitive work, reduce operational costs, and help businesses operate more efficiently. These services include chatbots, personal assistants, and retrieval-augmented generation systems.",
+            "es": "Rafa ofrece productos de IA que automatizan tareas repetitivas, reducen costos operativos y ayudan a que los negocios funcionen con mayor eficiencia. Estos servicios incluyen chatbots, asistentes personales y sistemas de generación aumentada por recuperación."
+          },
+          "technologies": ["AI", "RAG"]
+        },
+        {
+          "id": "code-projects",
+          "topic": "custom software development services",
+          "text": {
+            "en": "Rafa offers custom coding solutions that add needed features, connect systems, and streamline business operations. This includes full-stack applications, integrations, and APIs.",
+            "es": "Rafa ofrece soluciones de programación a medida que agregan funciones necesarias, conectan sistemas y optimizan las operaciones de un negocio. Esto incluye aplicaciones full-stack, integraciones y APIs."
+          }
+        }
+      ]
+    },
+    {
       "id": "experience-sourcemap",
       "type": "experience",
       "title": {
@@ -328,6 +365,8 @@
     {
       "id": "loadbalancer",
       "type": "project",
+      "archiveOrder": 10,
+      "featuredRank": 1,
       "title": { "en": "Load Balancer", "es": "Load Balancer" },
       "tags": ["project", "load balancing", "routing", "monitoring"],
       "technologies": ["Python", "React", "TypeScript", "Docker", "Nginx"],
@@ -345,6 +384,8 @@
     {
       "id": "scraper",
       "type": "project",
+      "archiveOrder": 11,
+      "featuredRank": 2,
       "title": { "en": "Scraper and API Project", "es": "Proyecto de Scraper y API" },
       "tags": ["project", "scraper", "data pipeline", "well data"],
       "technologies": ["Python", "FastAPI", "SQLite"],
@@ -362,6 +403,8 @@
     {
       "id": "website-creation-workflow",
       "type": "project",
+      "archiveOrder": 12,
+      "featuredRank": 3,
       "title": { "en": "Website Creation Workflow", "es": "Flujo de Creación de Sitios Web" },
       "tags": ["project", "AI", "workflow", "human review"],
       "technologies": ["Codex", "Google Stitch"],
@@ -379,6 +422,7 @@
     {
       "id": "rafaglot",
       "type": "project",
+      "archiveOrder": 13,
       "title": { "en": "RafaGlot!", "es": "RafaGlot!" },
       "tags": ["project", "AI", "translation", "image generation"],
       "technologies": [],
@@ -396,6 +440,8 @@
     {
       "id": "eo-pages",
       "type": "project",
+      "archiveOrder": 20,
+      "featuredRank": 4,
       "title": { "en": "EO Pages", "es": "Páginas de EO" },
       "tags": ["project", "landing pages", "collaboration", "responsive design"],
       "technologies": [],
@@ -413,6 +459,7 @@
     {
       "id": "chillflix",
       "type": "project",
+      "archiveOrder": 30,
       "title": { "en": "Chillflix", "es": "Chillflix" },
       "tags": ["project", "movies", "trailers", "responsive design"],
       "technologies": [],
@@ -430,6 +477,7 @@
     {
       "id": "hermes",
       "type": "project",
+      "archiveOrder": 40,
       "title": { "en": "Hermes", "es": "Hermes" },
       "tags": ["project", "real-time", "messaging", "teams"],
       "technologies": [],
@@ -447,6 +495,7 @@
     {
       "id": "sell-it",
       "type": "project",
+      "archiveOrder": 50,
       "title": { "en": "Sell it", "es": "Véndelo" },
       "tags": ["project", "mobile", "marketplace", "Android", "iOS"],
       "technologies": ["React Native"],
@@ -464,6 +513,7 @@
     {
       "id": "shopper",
       "type": "project",
+      "archiveOrder": 60,
       "title": { "en": "Shopper", "es": "Shopper" },
       "tags": ["project", "e-commerce", "authentication", "technology products"],
       "technologies": [],
@@ -481,6 +531,7 @@
     {
       "id": "picpock",
       "type": "project",
+      "archiveOrder": 70,
       "title": { "en": "Picpock", "es": "Picpock" },
       "tags": ["project", "social media", "real-time", "responsive design"],
       "technologies": [],
@@ -498,6 +549,7 @@
     {
       "id": "master-query",
       "type": "project",
+      "archiveOrder": 80,
       "title": { "en": "Master Query", "es": "Master Query" },
       "tags": ["project", "search", "Google", "responsive design"],
       "technologies": [],
@@ -515,6 +567,7 @@
     {
       "id": "budget-app",
       "type": "project",
+      "archiveOrder": 90,
       "title": { "en": "Budget App", "es": "Aplicación de Presupuesto" },
       "tags": ["project", "expenses", "finance", "React Hooks"],
       "technologies": ["React", "React Hooks"],
@@ -532,6 +585,7 @@
     {
       "id": "pet-life",
       "type": "project",
+      "archiveOrder": 100,
       "title": { "en": "Pet Life", "es": "Pet Life" },
       "tags": ["project", "pet care", "business", "booking"],
       "technologies": [],
@@ -549,6 +603,7 @@
     {
       "id": "vidly",
       "type": "project",
+      "archiveOrder": 110,
       "title": { "en": "Vidly", "es": "Vidly" },
       "tags": ["project", "movies", "authentication", "validation"],
       "technologies": [],
@@ -566,6 +621,7 @@
     {
       "id": "shoptastic",
       "type": "project",
+      "archiveOrder": 120,
       "title": { "en": "Shoptastic", "es": "Shoptastic" },
       "tags": ["project", "e-commerce", "product search", "store locations"],
       "technologies": [],

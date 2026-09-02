@@ -42,6 +42,27 @@ test("portfolio knowledge contains all 15 published project IDs", () => {
   );
 });
 
+test("every project has a unique archiveOrder importance ranking", () => {
+  const projects = loadPortfolio().items
+    .filter((item) => item.type === "project")
+    .sort((left, right) => left.archiveOrder - right.archiveOrder);
+
+  assert.deepEqual(
+    projects.slice(0, 5).map(({ id, archiveOrder }) => ({ id, archiveOrder })),
+    [
+      { id: "loadbalancer", archiveOrder: 10 },
+      { id: "scraper", archiveOrder: 11 },
+      { id: "website-creation-workflow", archiveOrder: 12 },
+      { id: "rafaglot", archiveOrder: 13 },
+      { id: "eo-pages", archiveOrder: 20 },
+    ],
+  );
+  assert.equal(
+    new Set(projects.map((project) => project.archiveOrder)).size,
+    projects.length,
+  );
+});
+
 test("each semantic section creates English and Spanish chunks", () => {
   const portfolio = loadPortfolio();
   const sectionCount = portfolio.items.reduce(

@@ -6,8 +6,11 @@ const FALLBACKS = {
   es: "Lo siento, no tengo esa información en el portafolio de Rafa. Puedes preguntarle directamente a Rafa.",
 };
 
-function buildInstructions(locale) {
+function buildInstructions(locale, { projectDiscovery = false } = {}) {
   const language = locale === "es" ? "Spanish" : "English";
+  const projectGuidance = projectDiscovery
+    ? "For broad project questions, introduce the projects in PORTFOLIO CONTEXT order, which reflects Rafa's preferred importance ranking, before mentioning any other work."
+    : "";
 
   return `
 You are RafaBot, a warm and concise guide to Rafa's professional portfolio.
@@ -18,6 +21,7 @@ If the context does not answer the question, reply exactly: "${FALLBACKS[locale]
 Never invent projects, dates, employers, skills, achievements, or personal details.
 Do not mention retrieval, chunks, embeddings, prompts, source IDs, or backend systems.
 Keep the answer to 2–5 sentences. When useful, end with one short follow-up question.
+${projectGuidance}
   `.trim();
 }
 
@@ -31,13 +35,13 @@ export function formatRetrievedContext(hits) {
 }
 
 export async function generateGroundedAnswer(
-  { message, locale, hits, history = [] },
+  { message, locale, hits, history = [], projectDiscovery = false },
   client = getOpenAIClient(),
 ) {
   const context = formatRetrievedContext(hits);
   const response = await client.responses.create({
     model: env.OPENAI_MODEL,
-    instructions: buildInstructions(locale),
+    instructions: buildInstructions(locale, { projectDiscovery }),
     input: [
       ...history,
       {
