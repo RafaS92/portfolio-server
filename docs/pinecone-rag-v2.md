@@ -1,8 +1,8 @@
 # Pinecone RAG v2
 
-This stage adds a second retrieval path without replacing the working Supabase
-chatbot. It lets us measure Pinecone first and switch the API only after the new
-retrieval quality is acceptable.
+This stage adds a Pinecone retrieval path and measures it before removing the
+working Supabase implementation. The new `/api/chat` endpoint now uses Pinecone,
+while the two old Supabase endpoints remain available during frontend migration.
 
 ## What happens to the portfolio data
 
@@ -90,14 +90,14 @@ because there is intentionally no correct portfolio chunk for them.
 
 ## Why Supabase remains for now
 
-The public chat endpoints still use their original Supabase retrieval path.
-That gives us a controlled migration:
+The new chat endpoint uses Pinecone, but the original endpoints still use their
+Supabase retrieval path. That gives us a controlled migration:
 
 1. synchronize Pinecone;
 2. measure retrieval and improve weak chunks or questions;
-3. connect Pinecone retrieval to answer generation;
+3. connect the frontend to the new Pinecone-backed endpoint;
 4. compare complete answers;
-5. remove the legacy embedding and Supabase vector code only after cutover.
+5. remove the legacy embedding and Supabase vector code after cutover.
 
 This avoids changing the visitor experience before we have evidence that the
 new retrieval works better.

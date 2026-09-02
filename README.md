@@ -1,8 +1,8 @@
 # RafaBot portfolio server
 
-RafaBot is the backend for the chatbot on Rafa's portfolio. The current version
-uses retrieval-augmented generation (RAG) to find relevant portfolio information
-in Supabase and provide it to OpenAI before generating an answer.
+RafaBot is the backend for the chatbot on Rafa's portfolio. RAG v2 searches
+bilingual portfolio chunks in Pinecone and provides the retrieved context to
+OpenAI before generating a grounded answer.
 
 ## Learn the current RAG pipeline
 
@@ -16,9 +16,8 @@ Requirements:
 
 - Node.js 22.12 or newer
 - An OpenAI API key
-- A Supabase project containing the current vector table and
-  `match_documents` function
-- A Pinecone API key for the optional RAG v2 synchronization and evaluation
+- A Pinecone API key for RAG v2 synchronization and retrieval
+- A Supabase project only while the legacy chat endpoints are retained
 
 Copy `.env.example` to `.env` and replace the placeholder values. The server
 loads `.env` automatically and reports all missing required variables together.
@@ -55,8 +54,8 @@ cases will measure whether the expected result appears near the top of search.
 
 ## Try the Pinecone RAG v2 retrieval
 
-The new Pinecone path is available for synchronization, manual search, and
-retrieval evaluation while the public chat API continues using Supabase:
+The Pinecone path supports synchronization, manual search, evaluation, and the
+new single-request chat API:
 
 ```bash
 npm run pinecone:sync
@@ -69,10 +68,12 @@ commands, and the reason for evaluating before switching the chatbot.
 
 ## Current API
 
+- `POST /api/chat` retrieves Pinecone context and generates a grounded answer.
 - `POST /api/createEmbedding` creates an embedding for a visitor question.
 - `POST /api/findNearestMatch` retrieves portfolio context and generates the
   RafaBot answer.
 - `GET /healthz` reports whether the HTTP process is running.
 
-These endpoints remain unchanged during the baseline refactor so the existing
-frontend continues to work.
+The last two POST endpoints are retained only so the existing frontend keeps
+working during migration. See [RAG v2 chat API](docs/rag-v2-chat-api.md) for the
+new request, response, conversation history, and source metadata contract.

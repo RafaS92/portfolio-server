@@ -63,3 +63,27 @@ test("POST /api/createEmbedding rejects a non-string message", async () => {
   assert.equal(response.status, 400);
   assert.deepEqual(body, { error: "Missing or invalid 'message'." });
 });
+
+test("POST /api/chat rejects a missing message before calling external services", async () => {
+  const response = await fetch(`${baseUrl}/api/chat`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ locale: "en" }),
+  });
+  const body = await response.json();
+
+  assert.equal(response.status, 400);
+  assert.deepEqual(body, { error: "message must be a non-empty string." });
+});
+
+test("POST /api/chat rejects an unsupported locale", async () => {
+  const response = await fetch(`${baseUrl}/api/chat`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ message: "Hello", locale: "fr" }),
+  });
+  const body = await response.json();
+
+  assert.equal(response.status, 400);
+  assert.deepEqual(body, { error: 'locale must be either "en" or "es".' });
+});

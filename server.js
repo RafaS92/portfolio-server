@@ -3,8 +3,7 @@ import { env, requireEnvironmentVariables } from "./src/config/env.js";
 
 requireEnvironmentVariables([
   "OPENAI_API_KEY",
-  "SUPABASE_URL",
-  "SUPABASE_API_KEY",
+  "PINECONE_API_KEY",
 ]);
 
 const app = createApp();
