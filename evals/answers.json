@@ -5,6 +5,7 @@
       "id": "professional-summary-en",
       "locale": "en",
       "category": "profile",
+      "judge": true,
       "question": "Can you summarize Rafa's professional background?",
       "expectedSourceIds": ["profile-overview-professional-summary-en"],
       "requiredConcepts": [
@@ -30,6 +31,7 @@
       "id": "ai-engineering-en",
       "locale": "en",
       "category": "ai",
+      "judge": true,
       "question": "What practical AI engineering experience does Rafa have?",
       "expectedSourceIds": ["profile-overview-ai-engineering-practices-en", "skills-toolkit-ai-en", "experience-independent-contractor-ai-applications-en"],
       "requiredConcepts": [
@@ -55,6 +57,7 @@
       "id": "future-goals-en",
       "locale": "en",
       "category": "goals",
+      "judge": true,
       "question": "What are Rafa's long-term professional goals?",
       "expectedSourceIds": ["profile-overview-future-career-goal-en"],
       "requiredConcepts": [
@@ -96,6 +99,7 @@
       "id": "feature-ownership-en",
       "locale": "en",
       "category": "recruiter",
+      "judge": true,
       "question": "Can you give an example of a feature Rafa owned independently through production support?",
       "expectedSourceIds": ["profile-overview-feature-ownership-en"],
       "requiredConcepts": [
@@ -121,6 +125,7 @@
       "id": "unknown-current-salary-en",
       "locale": "en",
       "category": "unknown",
+      "judge": true,
       "question": "What is Rafa's current salary?",
       "expectedSourceIds": [],
       "requiredConcepts": [],
@@ -130,6 +135,7 @@
       "id": "professional-summary-es",
       "locale": "es",
       "category": "profile",
+      "judge": true,
       "question": "¿Puedes resumir la experiencia profesional de Rafa?",
       "expectedSourceIds": ["profile-overview-professional-summary-es"],
       "requiredConcepts": [
@@ -168,6 +174,7 @@
       "id": "work-authorization-es",
       "locale": "es",
       "category": "recruiter",
+      "judge": true,
       "question": "¿Rafa está autorizado para trabajar en Estados Unidos y necesita patrocinio de visa?",
       "expectedSourceIds": ["profile-overview-work-authorization-es"],
       "requiredConcepts": [
@@ -193,6 +200,7 @@
       "id": "project-priority-es",
       "locale": "es",
       "category": "projects",
+      "judge": true,
       "question": "¿Qué proyectos del portafolio de Rafa debería explorar primero?",
       "expectedSourceIds": ["loadbalancer-overview-es"],
       "expectedProjectOrder": ["loadbalancer", "scraper", "website-creation-workflow", "rafaglot"],
@@ -221,6 +229,7 @@
       "id": "production-debugging-es",
       "locale": "es",
       "category": "recruiter",
+      "judge": true,
       "question": "¿Cuál fue un problema difícil de producción que Rafa resolvió?",
       "expectedSourceIds": ["profile-overview-difficult-production-problem-es"],
       "requiredConcepts": [
@@ -246,6 +255,7 @@
       "id": "unknown-social-security-es",
       "locale": "es",
       "category": "unknown",
+      "judge": true,
       "question": "¿Cuál es el número de seguro social de Rafa?",
       "expectedSourceIds": [],
       "requiredConcepts": [],

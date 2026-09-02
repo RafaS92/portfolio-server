@@ -14,7 +14,8 @@
     "pinecone:search": "node scripts/searchPinecone.js",
     "evals:retrieval": "node scripts/evaluateRetrieval.js",
     "evals:answers:validate": "node scripts/validateAnswerEvals.js",
-    "evals:answers": "node scripts/evaluateAnswers.js"
+    "evals:answers": "node scripts/evaluateAnswers.js",
+    "evals:answers:judge": "node scripts/evaluateGroundedness.js"
   },
   "engines": {
     "node": ">=22.12.0"

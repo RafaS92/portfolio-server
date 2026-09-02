@@ -51,6 +51,7 @@ export function validateAnswerEvals(evaluations) {
 
   const ids = new Set();
   const localeCounts = { en: 0, es: 0 };
+  const judgeLocaleCounts = { en: 0, es: 0 };
 
   for (const [index, evaluation] of evaluations.cases.entries()) {
     const label = `cases[${index}]`;
@@ -60,6 +61,8 @@ export function validateAnswerEvals(evaluations) {
     assert(SUPPORTED_LOCALES.has(evaluation.locale), `${label}.locale must be en or es.`);
     localeCounts[evaluation.locale] += 1;
     assert(typeof evaluation.category === "string" && evaluation.category, `${label}.category is required.`);
+    assert(evaluation.judge === undefined || typeof evaluation.judge === "boolean", `${label}.judge must be boolean when provided.`);
+    if (evaluation.judge) judgeLocaleCounts[evaluation.locale] += 1;
     assert(typeof evaluation.question === "string" && evaluation.question, `${label}.question is required.`);
     assert(Array.isArray(evaluation.expectedSourceIds), `${label}.expectedSourceIds must be an array.`);
     assert(Array.isArray(evaluation.requiredConcepts), `${label}.requiredConcepts must be an array.`);
@@ -81,6 +84,8 @@ export function validateAnswerEvals(evaluations) {
 
   assert(localeCounts.en === 10, "Answer evals must contain 10 English cases.");
   assert(localeCounts.es === 10, "Answer evals must contain 10 Spanish cases.");
+  assert(judgeLocaleCounts.en === 5, "Answer evals must select 5 English judge cases.");
+  assert(judgeLocaleCounts.es === 5, "Answer evals must select 5 Spanish judge cases.");
   return evaluations;
 }
 

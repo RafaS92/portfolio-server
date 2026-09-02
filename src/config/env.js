@@ -13,6 +13,8 @@ export const env = Object.freeze({
   PORT: parsedPort,
   OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   OPENAI_MODEL: process.env.OPENAI_MODEL ?? "gpt-4o-mini",
+  OPENAI_EVAL_MODEL:
+    process.env.OPENAI_EVAL_MODEL ?? process.env.OPENAI_MODEL ?? "gpt-4o-mini",
   SUPABASE_URL: process.env.SUPABASE_URL,
   SUPABASE_API_KEY: process.env.SUPABASE_API_KEY,
   PINECONE_API_KEY: process.env.PINECONE_API_KEY,
