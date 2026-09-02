@@ -8,7 +8,7 @@ import {
 test("retrieval evaluations reference valid same-language chunks", () => {
   const evaluations = loadRetrievalEvals();
 
-  assert.equal(evaluations.cases.length, 62);
+  assert.equal(evaluations.cases.length, 94);
 });
 
 test("positive retrieval evaluations are balanced by language", () => {
@@ -22,8 +22,8 @@ test("positive retrieval evaluations are balanced by language", () => {
     (evaluation) => evaluation.locale === "es",
   );
 
-  assert.equal(englishCases.length, 30);
-  assert.equal(spanishCases.length, 30);
+  assert.equal(englishCases.length, 46);
+  assert.equal(spanishCases.length, 46);
 });
 
 test("project retrieval evaluations cover all projects in both languages", () => {

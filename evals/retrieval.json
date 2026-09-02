@@ -422,6 +422,230 @@
       "expectedChunkIds": ["shoptastic-overview-es"]
     },
     {
+      "id": "recruiter-feature-ownership-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "Can you give an example of a feature or application Rafa owned independently from development through production support?",
+      "expectedChunkIds": ["profile-overview-feature-ownership-en"]
+    },
+    {
+      "id": "recruiter-feature-ownership-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Puedes dar un ejemplo de una funcionalidad o aplicación que Rafa manejó de forma independiente desde el desarrollo hasta soporte en producción?",
+      "expectedChunkIds": ["profile-overview-feature-ownership-es"]
+    },
+    {
+      "id": "recruiter-production-problem-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "What is one of the most difficult production problems Rafa has debugged?",
+      "expectedChunkIds": ["profile-overview-difficult-production-problem-en"]
+    },
+    {
+      "id": "recruiter-production-problem-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Cuál es uno de los problemas de producción más difíciles que Rafa ha investigado y resuelto?",
+      "expectedChunkIds": ["profile-overview-difficult-production-problem-es"]
+    },
+    {
+      "id": "recruiter-performance-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "How has Rafa improved application performance and maintainability?",
+      "expectedChunkIds": ["profile-overview-performance-improvement-en"]
+    },
+    {
+      "id": "recruiter-performance-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Cómo ha mejorado Rafa el rendimiento y la mantenibilidad de aplicaciones?",
+      "expectedChunkIds": ["profile-overview-performance-improvement-es"]
+    },
+    {
+      "id": "recruiter-database-problem-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "Tell me about a difficult SQL Server performance problem Rafa handled.",
+      "expectedChunkIds": ["profile-overview-difficult-database-problem-en"]
+    },
+    {
+      "id": "recruiter-database-problem-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "Cuéntame sobre un problema difícil de rendimiento en SQL Server que Rafa haya resuelto.",
+      "expectedChunkIds": ["profile-overview-difficult-database-problem-es"]
+    },
+    {
+      "id": "recruiter-api-design-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "How does Rafa design REST APIs and decide where data transformations should happen?",
+      "expectedChunkIds": ["profile-overview-api-design-en"]
+    },
+    {
+      "id": "recruiter-api-design-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Cómo diseña Rafa APIs REST y decide dónde deben realizarse las transformaciones de datos?",
+      "expectedChunkIds": ["profile-overview-api-design-es"]
+    },
+    {
+      "id": "recruiter-disagreement-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "How does Rafa handle a technical disagreement during a code review?",
+      "expectedChunkIds": ["profile-overview-code-review-disagreement-en"]
+    },
+    {
+      "id": "recruiter-disagreement-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Cómo maneja Rafa un desacuerdo técnico durante un code review?",
+      "expectedChunkIds": ["profile-overview-code-review-disagreement-es"]
+    },
+    {
+      "id": "recruiter-mentoring-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "How has Rafa mentored or supported less-experienced engineers?",
+      "expectedChunkIds": ["profile-overview-mentoring-engineers-en"]
+    },
+    {
+      "id": "recruiter-mentoring-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Cómo ha orientado o apoyado Rafa a ingenieros con menos experiencia?",
+      "expectedChunkIds": ["profile-overview-mentoring-engineers-es"]
+    },
+    {
+      "id": "recruiter-unclear-requirements-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "What does Rafa do when product requirements are ambiguous or incomplete?",
+      "expectedChunkIds": ["profile-overview-unclear-requirements-en"]
+    },
+    {
+      "id": "recruiter-unclear-requirements-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Qué hace Rafa cuando los requerimientos de producto son ambiguos o están incompletos?",
+      "expectedChunkIds": ["profile-overview-unclear-requirements-es"]
+    },
+    {
+      "id": "recruiter-feature-estimation-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "How does Rafa estimate and break down a large software feature?",
+      "expectedChunkIds": ["profile-overview-feature-estimation-en"]
+    },
+    {
+      "id": "recruiter-feature-estimation-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Cómo estima y divide Rafa una funcionalidad grande de software?",
+      "expectedChunkIds": ["profile-overview-feature-estimation-es"]
+    },
+    {
+      "id": "recruiter-incident-response-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "How does Rafa respond to an urgent production incident under a strict SLA?",
+      "expectedChunkIds": ["profile-overview-urgent-production-incident-en"]
+    },
+    {
+      "id": "recruiter-incident-response-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Cómo responde Rafa ante un incidente urgente de producción con un SLA estricto?",
+      "expectedChunkIds": ["profile-overview-urgent-production-incident-es"]
+    },
+    {
+      "id": "recruiter-senior-capabilities-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "Which experience best demonstrates that Rafa can operate as a Senior Software Engineer?",
+      "expectedChunkIds": ["profile-overview-senior-level-project-en"]
+    },
+    {
+      "id": "recruiter-senior-capabilities-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Qué experiencia demuestra mejor que Rafa puede trabajar como Senior Software Engineer?",
+      "expectedChunkIds": ["profile-overview-senior-level-project-es"]
+    },
+    {
+      "id": "recruiter-job-search-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "Why is Rafa looking for a new software engineering position?",
+      "expectedChunkIds": ["profile-overview-reason-for-job-search-en"]
+    },
+    {
+      "id": "recruiter-job-search-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Por qué está buscando Rafa una nueva posición de ingeniería de software?",
+      "expectedChunkIds": ["profile-overview-reason-for-job-search-es"]
+    },
+    {
+      "id": "recruiter-leaving-positions-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "Why did Rafa leave Sourcemap, Energy Ogre, and Becoming You?",
+      "expectedChunkIds": ["profile-overview-reasons-for-leaving-positions-en"]
+    },
+    {
+      "id": "recruiter-leaving-positions-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Por qué dejó Rafa sus posiciones en Sourcemap, Energy Ogre y Becoming You?",
+      "expectedChunkIds": ["profile-overview-reasons-for-leaving-positions-es"]
+    },
+    {
+      "id": "recruiter-compensation-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "What compensation range is Rafa targeting for full-time and contract opportunities?",
+      "expectedChunkIds": ["profile-overview-compensation-expectations-en"]
+    },
+    {
+      "id": "recruiter-compensation-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Qué rango de compensación busca Rafa para oportunidades full-time y por contrato?",
+      "expectedChunkIds": ["profile-overview-compensation-expectations-es"]
+    },
+    {
+      "id": "recruiter-start-date-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "When would Rafa be available to start a new position?",
+      "expectedChunkIds": ["profile-overview-start-date-en"]
+    },
+    {
+      "id": "recruiter-start-date-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Cuándo estaría disponible Rafa para comenzar una nueva posición?",
+      "expectedChunkIds": ["profile-overview-start-date-es"]
+    },
+    {
+      "id": "recruiter-environment-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "What type of Senior Engineer role, team, and company environment is Rafa seeking?",
+      "expectedChunkIds": ["profile-overview-preferred-senior-engineer-environment-en"]
+    },
+    {
+      "id": "recruiter-environment-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Qué tipo de posición Senior, equipo y ambiente de empresa está buscando Rafa?",
+      "expectedChunkIds": ["profile-overview-preferred-senior-engineer-environment-es"]
+    },
+    {
       "id": "unknown-salary-en",
       "locale": "en",
       "category": "unknown",
