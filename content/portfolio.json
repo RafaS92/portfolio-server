@@ -324,6 +324,261 @@
           "tags": ["refactoring", "testing", "scalability"]
         }
       ]
+    },
+    {
+      "id": "loadbalancer",
+      "type": "project",
+      "title": { "en": "Load Balancer", "es": "Load Balancer" },
+      "tags": ["project", "load balancing", "routing", "monitoring"],
+      "technologies": ["Python", "React", "TypeScript", "Docker", "Nginx"],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "production load balancer architecture",
+          "text": {
+            "en": "Rafa built a production-minded load balancer from scratch with Python, React, TypeScript, Docker, and Nginx. It demonstrates round-robin and least-connections routing, automatic health checks, safe retries, failure isolation, metrics, structured logs, and a real-time monitoring dashboard.",
+            "es": "Rafa construyó desde cero un balanceador de carga orientado a producción con Python, React, TypeScript, Docker y Nginx. Demuestra enrutamiento round-robin y por menor número de conexiones, verificaciones automáticas de estado, reintentos seguros, aislamiento de fallos, métricas, registros estructurados y un panel de monitoreo en tiempo real."
+          }
+        }
+      ]
+    },
+    {
+      "id": "scraper",
+      "type": "project",
+      "title": { "en": "Scraper and API Project", "es": "Proyecto de Scraper y API" },
+      "tags": ["project", "scraper", "data pipeline", "well data"],
+      "technologies": ["Python", "FastAPI", "SQLite"],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "web scraping data pipeline and API",
+          "text": {
+            "en": "Rafa built a complete data pipeline that scrapes publicly available well data, normalizes and validates the results, stores them in SQLite, and exposes the data through a FastAPI REST API.",
+            "es": "Rafa construyó un pipeline completo que extrae datos públicos de pozos, normaliza y valida los resultados, los almacena en SQLite y expone la información mediante una API REST con FastAPI."
+          }
+        }
+      ]
+    },
+    {
+      "id": "website-creation-workflow",
+      "type": "project",
+      "title": { "en": "Website Creation Workflow", "es": "Flujo de Creación de Sitios Web" },
+      "tags": ["project", "AI", "workflow", "human review"],
+      "technologies": ["Codex", "Google Stitch"],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "approval-based website creation workflow",
+          "text": {
+            "en": "Rafa designed a structured, approval-based workflow for creating professional websites with Codex and Google Stitch. It covers client discovery, visual design, technical handoff, development, final quality assurance, human review, and reliable documentation.",
+            "es": "Rafa diseñó un flujo estructurado y basado en aprobaciones para crear sitios web profesionales con Codex y Google Stitch. Incluye descubrimiento del cliente, diseño visual, entrega técnica, desarrollo, control final de calidad, revisión humana y documentación confiable."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rafaglot",
+      "type": "project",
+      "title": { "en": "RafaGlot!", "es": "RafaGlot!" },
+      "tags": ["project", "AI", "translation", "image generation"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "AI translation and image generation application",
+          "text": {
+            "en": "RafaGlot is Rafa's AI application where users enter text, translate it into selected languages, and generate an image based on that text.",
+            "es": "RafaGlot es la aplicación de IA de Rafa donde los usuarios ingresan texto, lo traducen a los idiomas seleccionados y generan una imagen basada en ese texto."
+          }
+        }
+      ]
+    },
+    {
+      "id": "eo-pages",
+      "type": "project",
+      "title": { "en": "EO Pages", "es": "Páginas de EO" },
+      "tags": ["project", "landing pages", "collaboration", "responsive design"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "collaborative responsive landing pages",
+          "text": {
+            "en": "EO Pages is a collection of landing pages Rafa built in collaboration with engineers and marketing teams. He integrated features, made the pages responsive on mobile, and ensured strong overall performance.",
+            "es": "Páginas de EO es una colección de páginas que Rafa creó en colaboración con ingenieros y equipos de marketing. Integró funciones, adaptó las páginas para dispositivos móviles y aseguró un buen rendimiento general."
+          }
+        }
+      ]
+    },
+    {
+      "id": "chillflix",
+      "type": "project",
+      "title": { "en": "Chillflix", "es": "Chillflix" },
+      "tags": ["project", "movies", "trailers", "responsive design"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "trending movie trailer website",
+          "text": {
+            "en": "Chillflix is Rafa's mobile-friendly website where users can discover trailers for movies that are trending in the United States.",
+            "es": "Chillflix es el sitio web adaptable a dispositivos móviles de Rafa donde los usuarios pueden descubrir avances de las películas más populares en Estados Unidos."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hermes",
+      "type": "project",
+      "title": { "en": "Hermes", "es": "Hermes" },
+      "tags": ["project", "real-time", "messaging", "teams"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "real-time messaging application",
+          "text": {
+            "en": "Hermes is Rafa's web application where users can message each other in real time. It is designed for teams or groups of friends.",
+            "es": "Hermes es la aplicación web de Rafa donde los usuarios pueden enviarse mensajes en tiempo real. Está diseñada para equipos o grupos de amigos."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sell-it",
+      "type": "project",
+      "title": { "en": "Sell it", "es": "Véndelo" },
+      "tags": ["project", "mobile", "marketplace", "Android", "iOS"],
+      "technologies": ["React Native"],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "cross-platform mobile marketplace",
+          "text": {
+            "en": "Sell it is Rafa's marketplace application where users can buy and sell products from other users. It was built with React Native and works on Android and iOS.",
+            "es": "Véndelo es la aplicación de mercado de Rafa donde los usuarios pueden comprar y vender productos a otros usuarios. Fue creada con React Native y funciona en Android e iOS."
+          }
+        }
+      ]
+    },
+    {
+      "id": "shopper",
+      "type": "project",
+      "title": { "en": "Shopper", "es": "Shopper" },
+      "tags": ["project", "e-commerce", "authentication", "technology products"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "authenticated technology e-commerce website",
+          "text": {
+            "en": "Shopper is Rafa's e-commerce website where users can register and buy technology products online.",
+            "es": "Shopper es el sitio de comercio electrónico de Rafa donde los usuarios pueden registrarse y comprar productos tecnológicos en línea."
+          }
+        }
+      ]
+    },
+    {
+      "id": "picpock",
+      "type": "project",
+      "title": { "en": "Picpock", "es": "Picpock" },
+      "tags": ["project", "social media", "real-time", "responsive design"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "real-time social media application",
+          "text": {
+            "en": "Picpock is Rafa's mobile-friendly social media application where users share pictures, publish comments, and like posts in real time.",
+            "es": "Picpock es la aplicación de red social adaptable a móviles de Rafa donde los usuarios comparten imágenes, publican comentarios y dan me gusta en tiempo real."
+          }
+        }
+      ]
+    },
+    {
+      "id": "master-query",
+      "type": "project",
+      "title": { "en": "Master Query", "es": "Master Query" },
+      "tags": ["project", "search", "Google", "responsive design"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "mobile-friendly Google search application",
+          "text": {
+            "en": "Master Query is Rafa's mobile-friendly application where users can search for terms using the Google search engine.",
+            "es": "Master Query es la aplicación adaptable a móviles de Rafa donde los usuarios pueden buscar términos mediante el motor de búsqueda de Google."
+          }
+        }
+      ]
+    },
+    {
+      "id": "budget-app",
+      "type": "project",
+      "title": { "en": "Budget App", "es": "Aplicación de Presupuesto" },
+      "tags": ["project", "expenses", "finance", "React Hooks"],
+      "technologies": ["React", "React Hooks"],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "expense calculator built to practice React Hooks",
+          "text": {
+            "en": "Budget App is Rafa's expense calculator. He created the project primarily to practice using React Hooks.",
+            "es": "Aplicación de Presupuesto es la calculadora de gastos de Rafa. Creó el proyecto principalmente para practicar el uso de React Hooks."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pet-life",
+      "type": "project",
+      "title": { "en": "Pet Life", "es": "Pet Life" },
+      "tags": ["project", "pet care", "business", "booking"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "pet care franchise business website",
+          "text": {
+            "en": "Pet Life is a business website Rafa built for a pet care franchise. Users can book a visit, review services, find locations, and join the community.",
+            "es": "Pet Life es el sitio web empresarial que Rafa creó para una franquicia de cuidado de mascotas. Los usuarios pueden reservar una visita, consultar servicios, encontrar ubicaciones y unirse a la comunidad."
+          }
+        }
+      ]
+    },
+    {
+      "id": "vidly",
+      "type": "project",
+      "title": { "en": "Vidly", "es": "Vidly" },
+      "tags": ["project", "movies", "authentication", "validation"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "movie browsing authentication and validation application",
+          "text": {
+            "en": "Vidly is Rafa's application for browsing a list of movies. He built it to strengthen his authentication and validation skills.",
+            "es": "Vidly es la aplicación de Rafa para consultar una lista de películas. La creó para fortalecer sus habilidades de autenticación y validación."
+          }
+        }
+      ]
+    },
+    {
+      "id": "shoptastic",
+      "type": "project",
+      "title": { "en": "Shoptastic", "es": "Shoptastic" },
+      "tags": ["project", "e-commerce", "product search", "store locations"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "e-commerce product and store location website",
+          "text": {
+            "en": "Shoptastic is an e-commerce website Rafa worked on where users can search for products, see available store locations in cities across the United States, and buy items.",
+            "es": "Shoptastic es un sitio de comercio electrónico en el que trabajó Rafa, donde los usuarios pueden buscar productos, ver tiendas disponibles en ciudades de Estados Unidos y comprar artículos."
+          }
+        }
+      ]
     }
   ]
 }

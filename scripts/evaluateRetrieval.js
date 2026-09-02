@@ -41,6 +41,9 @@ try {
   }
 
   const score = scoreRetrievalResults(results);
+  const projectScore = scoreRetrievalResults(
+    results.filter((result) => result.category === "project"),
+  );
   const negativeResults = results.filter(
     (result) => result.expectedChunkIds.length === 0,
   );
@@ -49,6 +52,9 @@ try {
     `\nRecall@${TOP_K}: ${(score.recall * 100).toFixed(1)}% (${score.passed}/${score.total})`,
   );
   console.log(`Minimum required: ${(minimumRecall * 100).toFixed(1)}%`);
+  console.log(
+    `Project Recall@${TOP_K}: ${(projectScore.recall * 100).toFixed(1)}% (${projectScore.passed}/${projectScore.total})`,
+  );
 
   for (const result of negativeResults) {
     const scoreLabel =
@@ -56,7 +62,9 @@ try {
     console.log(`Out-of-scope ${result.id}: top score ${scoreLabel}`);
   }
 
-  if (score.recall < minimumRecall) process.exitCode = 1;
+  if (score.recall < minimumRecall || projectScore.recall < minimumRecall) {
+    process.exitCode = 1;
+  }
 } catch (error) {
   console.error(`Retrieval evaluation failed: ${error.message}`);
   process.exitCode = 1;

@@ -13,6 +13,35 @@ test("portfolio content passes validation", () => {
   assert.ok(portfolio.items.length > 0);
 });
 
+test("portfolio knowledge contains all 15 published project IDs", () => {
+  const expectedProjectIds = new Set([
+    "loadbalancer",
+    "scraper",
+    "website-creation-workflow",
+    "rafaglot",
+    "eo-pages",
+    "chillflix",
+    "hermes",
+    "sell-it",
+    "shopper",
+    "picpock",
+    "master-query",
+    "budget-app",
+    "pet-life",
+    "vidly",
+    "shoptastic",
+  ]);
+  const projectItems = loadPortfolio().items.filter(
+    (item) => item.type === "project",
+  );
+
+  assert.equal(projectItems.length, 15);
+  assert.deepEqual(
+    new Set(projectItems.map((project) => project.id)),
+    expectedProjectIds,
+  );
+});
+
 test("each semantic section creates English and Spanish chunks", () => {
   const portfolio = loadPortfolio();
   const sectionCount = portfolio.items.reduce(

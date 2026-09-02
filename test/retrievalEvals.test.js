@@ -8,7 +8,7 @@ import {
 test("retrieval evaluations reference valid same-language chunks", () => {
   const evaluations = loadRetrievalEvals();
 
-  assert.equal(evaluations.cases.length, 32);
+  assert.equal(evaluations.cases.length, 62);
 });
 
 test("positive retrieval evaluations are balanced by language", () => {
@@ -22,8 +22,22 @@ test("positive retrieval evaluations are balanced by language", () => {
     (evaluation) => evaluation.locale === "es",
   );
 
-  assert.equal(englishCases.length, 15);
-  assert.equal(spanishCases.length, 15);
+  assert.equal(englishCases.length, 30);
+  assert.equal(spanishCases.length, 30);
+});
+
+test("project retrieval evaluations cover all projects in both languages", () => {
+  const projectCases = loadRetrievalEvals().cases.filter(
+    (evaluation) => evaluation.category === "project",
+  );
+
+  assert.equal(projectCases.length, 30);
+  assert.equal(
+    new Set(
+      projectCases.flatMap((evaluation) => evaluation.expectedChunkIds),
+    ).size,
+    30,
+  );
 });
 
 test("retrieval evaluations include out-of-scope questions", () => {

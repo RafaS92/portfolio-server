@@ -8,6 +8,9 @@ const MAX_HISTORY_MESSAGES = 10;
 
 export class ChatValidationError extends Error {}
 
+const FOLLOW_UP_REFERENCE_PATTERN =
+  /\b(it|its|that|this|those|these|he|his|she|her|they|them|their|also|more)\b|\b(eso|esa|ese|esto|este|esta|estos|estas|él|ella|ellos|ellas|su|sus|también|más)\b/iu;
+
 function validateMessage(message, fieldName) {
   if (typeof message !== "string" || !message.trim()) {
     throw new ChatValidationError(`${fieldName} must be a non-empty string.`);
@@ -65,11 +68,25 @@ export function parseChatRequest(body) {
 function toPublicSource(hit) {
   return {
     id: hit.id,
+    itemId: hit.item_id,
     score: hit.score,
     title: hit.title,
     contentType: hit.content_type,
+    sectionId: hit.section_id,
     topic: hit.topic,
   };
+}
+
+export function buildRetrievalQuery({ message, history = [] }) {
+  if (!FOLLOW_UP_REFERENCE_PATTERN.test(message)) return message;
+
+  const previousUserMessage = [...history]
+    .reverse()
+    .find((entry) => entry.role === "user")?.content;
+
+  return previousUserMessage
+    ? `${previousUserMessage}\nFollow-up: ${message}`
+    : message;
 }
 
 export async function answerPortfolioQuestion(
@@ -79,7 +96,7 @@ export async function answerPortfolioQuestion(
     generate = generateGroundedAnswer,
   } = {},
 ) {
-  const hits = await search(request.message, {
+  const hits = await search(buildRetrievalQuery(request), {
     locale: request.locale,
     topK: 3,
   });

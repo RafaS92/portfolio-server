@@ -212,6 +212,216 @@
       "expectedChunkIds": ["experience-becoming-you-responsive-landing-pages-es"]
     },
     {
+      "id": "loadbalancer-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which Rafa project demonstrates round-robin routing, health checks, and a monitoring dashboard?",
+      "expectedChunkIds": ["loadbalancer-overview-en"]
+    },
+    {
+      "id": "loadbalancer-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué proyecto de Rafa demuestra enrutamiento round-robin, verificaciones de estado y un panel de monitoreo?",
+      "expectedChunkIds": ["loadbalancer-overview-es"]
+    },
+    {
+      "id": "scraper-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which project scrapes public well data and exposes it through FastAPI?",
+      "expectedChunkIds": ["scraper-overview-en"]
+    },
+    {
+      "id": "scraper-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué proyecto extrae datos públicos de pozos y los expone mediante FastAPI?",
+      "expectedChunkIds": ["scraper-overview-es"]
+    },
+    {
+      "id": "website-workflow-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "How does Rafa's Website Creation Workflow use Codex and Google Stitch?",
+      "expectedChunkIds": ["website-creation-workflow-overview-en"]
+    },
+    {
+      "id": "website-workflow-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Cómo utiliza Codex y Google Stitch el Flujo de Creación de Sitios Web de Rafa?",
+      "expectedChunkIds": ["website-creation-workflow-overview-es"]
+    },
+    {
+      "id": "rafaglot-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which Rafa AI app translates text and generates an image from it?",
+      "expectedChunkIds": ["rafaglot-overview-en"]
+    },
+    {
+      "id": "rafaglot-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué aplicación de IA de Rafa traduce texto y genera una imagen a partir de él?",
+      "expectedChunkIds": ["rafaglot-overview-es"]
+    },
+    {
+      "id": "eo-pages-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which landing page project did Rafa build with engineering and marketing teams?",
+      "expectedChunkIds": ["eo-pages-overview-en"]
+    },
+    {
+      "id": "eo-pages-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué proyecto de páginas creó Rafa con equipos de ingeniería y marketing?",
+      "expectedChunkIds": ["eo-pages-overview-es"]
+    },
+    {
+      "id": "chillflix-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which mobile-friendly project helps users find trending movie trailers?",
+      "expectedChunkIds": ["chillflix-overview-en"]
+    },
+    {
+      "id": "chillflix-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué proyecto adaptable a móviles permite encontrar avances de películas populares?",
+      "expectedChunkIds": ["chillflix-overview-es"]
+    },
+    {
+      "id": "hermes-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which Rafa project provides real-time messaging for teams and friends?",
+      "expectedChunkIds": ["hermes-overview-en"]
+    },
+    {
+      "id": "hermes-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué proyecto de Rafa ofrece mensajería en tiempo real para equipos y amigos?",
+      "expectedChunkIds": ["hermes-overview-es"]
+    },
+    {
+      "id": "sell-it-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which React Native marketplace by Rafa works on Android and iOS?",
+      "expectedChunkIds": ["sell-it-overview-en"]
+    },
+    {
+      "id": "sell-it-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué mercado creado por Rafa con React Native funciona en Android e iOS?",
+      "expectedChunkIds": ["sell-it-overview-es"]
+    },
+    {
+      "id": "shopper-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which e-commerce project lets users register and buy technology products?",
+      "expectedChunkIds": ["shopper-overview-en"]
+    },
+    {
+      "id": "shopper-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué proyecto de comercio electrónico permite registrarse y comprar productos tecnológicos?",
+      "expectedChunkIds": ["shopper-overview-es"]
+    },
+    {
+      "id": "picpock-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which social app lets users share pictures, comment, and like posts in real time?",
+      "expectedChunkIds": ["picpock-overview-en"]
+    },
+    {
+      "id": "picpock-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué aplicación social permite compartir imágenes, comentar y dar me gusta en tiempo real?",
+      "expectedChunkIds": ["picpock-overview-es"]
+    },
+    {
+      "id": "master-query-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which mobile-friendly project searches for terms with the Google search engine?",
+      "expectedChunkIds": ["master-query-overview-en"]
+    },
+    {
+      "id": "master-query-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué proyecto adaptable a móviles busca términos con el motor de Google?",
+      "expectedChunkIds": ["master-query-overview-es"]
+    },
+    {
+      "id": "budget-app-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which expense calculator did Rafa build to practice React Hooks?",
+      "expectedChunkIds": ["budget-app-overview-en"]
+    },
+    {
+      "id": "budget-app-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué calculadora de gastos creó Rafa para practicar React Hooks?",
+      "expectedChunkIds": ["budget-app-overview-es"]
+    },
+    {
+      "id": "pet-life-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which pet care franchise website supports bookings, services, and locations?",
+      "expectedChunkIds": ["pet-life-overview-en"]
+    },
+    {
+      "id": "pet-life-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué sitio para una franquicia de mascotas permite reservar visitas, consultar servicios y encontrar ubicaciones?",
+      "expectedChunkIds": ["pet-life-overview-es"]
+    },
+    {
+      "id": "vidly-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which movie browsing project helped Rafa practice authentication and validation?",
+      "expectedChunkIds": ["vidly-overview-en"]
+    },
+    {
+      "id": "vidly-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué proyecto para consultar películas ayudó a Rafa a practicar autenticación y validación?",
+      "expectedChunkIds": ["vidly-overview-es"]
+    },
+    {
+      "id": "shoptastic-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which e-commerce project combines product search with US store locations?",
+      "expectedChunkIds": ["shoptastic-overview-en"]
+    },
+    {
+      "id": "shoptastic-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué proyecto de comercio electrónico combina búsqueda de productos con tiendas en Estados Unidos?",
+      "expectedChunkIds": ["shoptastic-overview-es"]
+    },
+    {
       "id": "unknown-salary-en",
       "locale": "en",
       "category": "unknown",
