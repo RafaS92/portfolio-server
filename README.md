@@ -54,6 +54,22 @@ OpenAI grading requests. It is intended for release checks, not normal server
 startup or production chat traffic. `OPENAI_EVAL_MODEL` can select a separate
 grader model; by default it uses `OPENAI_MODEL`.
 
+Run the multi-turn conversation checks after changing history handling,
+follow-up resolution, retrieval, or prompts:
+
+```bash
+npm run evals:conversation:validate
+npm run evals:conversation
+```
+
+The suite runs 10 conversations containing 25 total turns. It checks pronoun
+follow-ups, deliberate topic changes, English/Spanish switching, unsupported
+questions, prompt injection, and the 10-message history limit. It uses the same
+`message`, `locale`, and explicit `history` contract as `POST /api/chat`; the
+command is manual and does not add grading requests to production traffic. The
+default required turn pass rate is 90%, configurable with
+`EVAL_MIN_CONVERSATION_TURN_PASS_RATE`.
+
 Validate the bilingual portfolio source data and inspect the semantic chunks:
 
 ```bash
