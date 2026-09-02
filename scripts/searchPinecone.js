@@ -1,4 +1,4 @@
-import { searchPortfolio } from "../src/rag/pineconeStore.js";
+import { createPineconeRuntime } from "./runtime.js";
 
 function parseArguments(argumentsList) {
   let locale = "en";
@@ -24,6 +24,7 @@ if (!question) {
   process.exitCode = 1;
 } else {
   try {
+    const { searchPortfolio } = createPineconeRuntime();
     const results = await searchPortfolio(question, { locale, topK: 3 });
 
     if (results.length === 0) {

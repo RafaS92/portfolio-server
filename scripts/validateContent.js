@@ -1,5 +1,5 @@
-import { loadPortfolio } from "../src/content/portfolio.js";
-import { createPortfolioChunks } from "../src/rag/chunkPortfolio.js";
+import { createPortfolioChunks } from "../src/portfolio/chunks.js";
+import { loadPortfolio } from "../src/portfolio/content.js";
 
 const portfolio = loadPortfolio();
 const chunks = createPortfolioChunks(portfolio);

@@ -1,10 +1,10 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { createPortfolioChunks } from "../src/rag/chunkPortfolio.js";
+import { createPortfolioChunks } from "../src/portfolio/chunks.js";
 import {
   PINECONE_TEXT_FIELD,
   toPineconeRecord,
-} from "../src/rag/pineconeRecords.js";
+} from "../src/portfolio/pinecone-records.js";
 
 test("portfolio chunks become flat Pinecone integrated-embedding records", () => {
   const chunk = createPortfolioChunks().find(

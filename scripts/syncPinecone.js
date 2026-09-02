@@ -1,7 +1,8 @@
-import { syncPortfolioChunks } from "../src/rag/pineconeStore.js";
+import { createPineconeRuntime } from "./runtime.js";
 
 try {
-  const result = await syncPortfolioChunks();
+  const { indexManager } = createPineconeRuntime();
+  const result = await indexManager.syncPortfolioChunks();
 
   console.log(`Pinecone index: ${result.indexName}`);
   console.log(`Namespace: ${result.namespace}`);

@@ -1,8 +1,11 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { withTimeout, OperationTimeoutError } from "../src/lib/async.js";
-import { createRateLimiter } from "../src/middleware/requestProtection.js";
-import { createGracefulShutdown } from "../src/serverLifecycle.js";
+import { createRateLimiter } from "../src/http/request-middleware.js";
+import {
+  OperationTimeoutError,
+  withTimeout,
+} from "../src/platform/timeout.js";
+import { createGracefulShutdown } from "../src/platform/server-lifecycle.js";
 
 function createResponse() {
   return {

@@ -4,7 +4,7 @@ import {
   evaluateAnswerResult,
   loadAnswerEvals,
   scoreAnswerResults,
-} from "../src/rag/answerEvals.js";
+} from "../src/evaluation/answers.js";
 
 test("answer evaluations contain 10 English and 10 Spanish cases", () => {
   const evaluations = loadAnswerEvals();

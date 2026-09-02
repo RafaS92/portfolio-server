@@ -1,8 +1,8 @@
 import { readFileSync } from "node:fs";
-import { createPortfolioChunks } from "./chunkPortfolio.js";
+import { createPortfolioChunks } from "../portfolio/chunks.js";
+import { SUPPORTED_LOCALES } from "../portfolio/content.js";
 
 const ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const SUPPORTED_LOCALES = new Set(["en", "es"]);
 const evalsUrl = new URL("../../evals/retrieval.json", import.meta.url);
 
 function assert(condition, message) {
@@ -24,7 +24,7 @@ export function validateRetrievalEvals(evaluations) {
     caseIds.add(evaluation.id);
 
     assert(
-      SUPPORTED_LOCALES.has(evaluation.locale),
+      SUPPORTED_LOCALES.includes(evaluation.locale),
       `${evaluation.id} has an unsupported locale`,
     );
     assert(

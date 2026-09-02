@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { createLogger, sanitizeLogValue } from "../src/lib/logger.js";
+import { createLogger, sanitizeLogValue } from "../src/platform/logger.js";
 
 test("structured logger emits JSON records with stable fields", () => {
   const output = [];

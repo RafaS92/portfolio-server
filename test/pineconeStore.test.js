@@ -1,15 +1,17 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-process.env.OPENAI_API_KEY ??= "test-openai-key";
-
 const {
-  RERANK_CANDIDATE_TOP_K,
-  rerankPortfolioHits,
-  searchPortfolio,
-  syncPortfolioChunks,
+  createPineconeIndexManager,
 } = await import(
-  "../src/rag/pineconeStore.js"
+  "../src/portfolio/pinecone-index.js"
+);
+const {
+  createPineconeSearch,
+  RERANK_CANDIDATE_TOP_K,
+} = await import("../src/portfolio/pinecone-search.js");
+const { rerankPortfolioHits } = await import(
+  "../src/portfolio/reranker.js"
 );
 
 function createClient(namespace) {
@@ -61,10 +63,12 @@ test("sync upserts current records and deletes stale IDs", async () => {
     },
   ];
 
-  const result = await syncPortfolioChunks({
-    client: createClient(namespace),
-    chunks,
+  const indexManager = createPineconeIndexManager({
+    pineconeClient: createClient(namespace),
+    indexName: "rafa-portfolio",
+    namespace: "test-v1",
   });
+  const result = await indexManager.syncPortfolioChunks(chunks);
 
   assert.deepEqual(calls.deleted, ["removed-en"]);
   assert.equal(calls.upserted.length, 1);
@@ -95,10 +99,14 @@ test("search embeds text inside Pinecone and applies the language filter", async
     },
   };
 
+  const searchPortfolio = createPineconeSearch({
+    pineconeClient: createClient(namespace),
+    indexName: "rafa-portfolio",
+    namespace: "test-v1",
+  });
   const results = await searchPortfolio("¿Quién es Rafa?", {
     locale: "es",
     topK: 3,
-    client: createClient(namespace),
   });
 
   assert.deepEqual(searchOptions.query.inputs, { text: "¿Quién es Rafa?" });

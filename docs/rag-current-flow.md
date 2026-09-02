@@ -55,13 +55,19 @@ contain the answer. Response storage is disabled.
 ## Current module map
 
 - `server.js` starts the HTTP server.
-- `src/app.js` configures Express, CORS, JSON parsing, and routes.
-- `src/config/env.js` loads and validates environment variables.
-- `src/lib/clients.js` creates the OpenAI and Pinecone clients.
-- `src/routes/chat.js` exposes the single-request chat endpoint.
-- `src/routes/health.js` exposes liveness and readiness endpoints.
-- `src/services/ragChat.js` coordinates validation, retrieval, and generation.
-- `src/services/conversation.js` builds the grounded prompt and answer.
-- `src/content/portfolio.js` loads and validates canonical portfolio content.
-- `src/rag/chunkPortfolio.js` creates localized chunks and metadata.
-- `src/rag/pineconeStore.js` synchronizes, searches, and reranks records.
+- `src/platform` owns configuration, provider clients, logging, timeouts, and
+  server lifecycle support.
+- `src/http` configures Express and owns routes, request middleware, safe
+  errors, rate limiting, and readiness.
+- `src/chat` validates requests, plans retrieval, coordinates answers, and
+  builds the grounded OpenAI input.
+- `src/portfolio` loads canonical content, creates localized chunks, and owns
+  Pinecone synchronization, search, record mapping, and reranking.
+- `src/evaluation` owns offline retrieval, answer, conversation, and
+  groundedness evaluation behavior; the production server does not import it.
+- `scripts/runtime.js` explicitly assembles the dependencies required by live
+  Pinecone and OpenAI commands.
+
+The allowed production dependency direction is
+`http -> chat -> portfolio -> platform`. See `docs/ARCHITECTURE.md` for the full
+boundary and extension rules.

@@ -1,9 +1,29 @@
 import dotenv from "dotenv";
 
-dotenv.config();
-
 const ENVIRONMENTS = new Set(["development", "test", "production"]);
 const SIZE_PATTERN = /^\d+(?:b|kb|mb)$/i;
+
+/**
+ * @typedef {Readonly<{
+ *   NODE_ENV: "development" | "test" | "production",
+ *   PORT: number,
+ *   HOST: string,
+ *   TRUST_PROXY: boolean,
+ *   CORS_ALLOWED_ORIGINS: readonly string[],
+ *   JSON_BODY_LIMIT: string,
+ *   RATE_LIMIT_WINDOW_MS: number,
+ *   RATE_LIMIT_MAX_REQUESTS: number,
+ *   CHAT_REQUEST_TIMEOUT_MS: number,
+ *   READINESS_TIMEOUT_MS: number,
+ *   SHUTDOWN_TIMEOUT_MS: number,
+ *   OPENAI_API_KEY?: string,
+ *   OPENAI_MODEL: string,
+ *   OPENAI_EVAL_MODEL: string,
+ *   PINECONE_API_KEY?: string,
+ *   PINECONE_INDEX: string,
+ *   PINECONE_NAMESPACE: string,
+ * }>} AppConfig
+ */
 
 function parseInteger(source, name, fallback, { min = 1, max } = {}) {
   const rawValue = source[name] ?? String(fallback);
@@ -53,6 +73,7 @@ function parseOrigins(value) {
   return Object.freeze(origins);
 }
 
+/** @returns {AppConfig} */
 export function parseEnvironment(source = process.env) {
   const nodeEnvironment = source.NODE_ENV ?? "development";
   if (!ENVIRONMENTS.has(nodeEnvironment)) {
@@ -103,9 +124,13 @@ export function parseEnvironment(source = process.env) {
   });
 }
 
-export const env = parseEnvironment();
+/** @returns {AppConfig} */
+export function loadEnvironment() {
+  dotenv.config({ quiet: true });
+  return parseEnvironment(process.env);
+}
 
-export function requireEnvironmentVariables(variableNames, values = env) {
+export function requireEnvironmentVariables(variableNames, values) {
   const missingVariables = variableNames.filter(
     (variableName) => !values[variableName],
   );
@@ -117,7 +142,7 @@ export function requireEnvironmentVariables(variableNames, values = env) {
   }
 }
 
-export function validateProductionEnvironment(values = env) {
+export function validateProductionEnvironment(values) {
   requireEnvironmentVariables(["OPENAI_API_KEY", "PINECONE_API_KEY"], values);
 
   if (values.NODE_ENV !== "production") {

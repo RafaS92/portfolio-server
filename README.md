@@ -10,11 +10,26 @@ Start with [Current RAG flow](docs/rag-current-flow.md). It explains ingestion,
 embeddings, retrieval, augmentation, generation, the current module boundaries,
 and the known limitations we will improve incrementally.
 
+## Backend architecture
+
+The server is organized as a feature-first modular monolith. HTTP delivery,
+chat policy, portfolio retrieval, evaluation tooling, and platform concerns
+have explicit dependency boundaries and receive external clients through
+factories. See [Backend architecture](docs/ARCHITECTURE.md) for the module map,
+request data flow, dependency rules, and extension guidance.
+
+Run the architecture and behavior tests together with:
+
+```bash
+npm test
+npm run lint
+```
+
 ## Local setup
 
 Requirements:
 
-- Node.js 22.12 or newer
+- Node.js 22.13 or newer
 - An OpenAI API key
 - A Pinecone API key for RAG v2 synchronization and retrieval
 
@@ -68,10 +83,10 @@ Run every safe local readiness check with one command:
 npm run release:check
 ```
 
-This validates the production configuration template, JavaScript syntax, Git
-whitespace, portfolio content, all evaluation fixtures, and the complete test
-suite. It does not call OpenAI or Pinecone, synchronize data, merge branches,
-or deploy anything.
+This validates the production configuration template, JavaScript syntax and
+lint rules, Git whitespace, portfolio content, all evaluation fixtures, and
+the complete test suite. It does not call OpenAI or Pinecone, synchronize data,
+merge branches, or deploy anything.
 
 Live retrieval, answer, and multi-turn evaluations require an explicit flag
 because they use the configured Pinecone and OpenAI services and may incur API

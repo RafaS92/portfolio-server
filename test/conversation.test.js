@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import {
+  createAnswerGenerator,
   formatRetrievedContext,
-  generateGroundedAnswer,
-} from "../src/services/conversation.js";
+} from "../src/chat/answer-generator.js";
 
 test("retrieved chunks are clearly separated in model context", () => {
   const context = formatRetrievedContext([
@@ -28,8 +28,11 @@ test("grounded generation uses the Responses API without storing responses", asy
     },
   };
 
-  const answer = await generateGroundedAnswer(
-    {
+  const generateGroundedAnswer = createAnswerGenerator({
+    openAIClient: client,
+    model: "gpt-4o-mini",
+  });
+  const answer = await generateGroundedAnswer({
       message: "Who is Rafa?",
       locale: "en",
       history: [{ role: "user", content: "Hello" }],
@@ -39,9 +42,7 @@ test("grounded generation uses the Responses API without storing responses", asy
           chunk_text: "Rafa is a full-stack engineer.",
         },
       ],
-    },
-    client,
-  );
+    });
 
   assert.equal(answer, "Rafa is a full-stack engineer.");
   assert.equal(request.store, false);

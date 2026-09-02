@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { createReadinessCheck } from "../src/services/readiness.js";
+import { createReadinessCheck } from "../src/http/readiness.js";
 
 const environment = {
   OPENAI_API_KEY: "openai-key",
@@ -13,14 +13,14 @@ const silentLogger = { info() {}, error() {} };
 test("readiness confirms configuration and Pinecone connectivity", async () => {
   let calls = 0;
   const check = createReadinessCheck({
-    environment,
-    appLogger: silentLogger,
-    getClient: () => ({
+    config: environment,
+    logger: silentLogger,
+    pineconeClient: {
       async describeIndex(indexName) {
         calls += 1;
         assert.equal(indexName, "rafa-portfolio");
       },
-    }),
+    },
   });
 
   assert.deepEqual(await check(), {
@@ -37,10 +37,12 @@ test("readiness confirms configuration and Pinecone connectivity", async () => {
 test("readiness reports missing configuration without contacting Pinecone", async () => {
   let contacted = false;
   const check = createReadinessCheck({
-    environment: { ...environment, PINECONE_API_KEY: undefined },
-    appLogger: silentLogger,
-    getClient() {
-      contacted = true;
+    config: { ...environment, PINECONE_API_KEY: undefined },
+    logger: silentLogger,
+    pineconeClient: {
+      describeIndex() {
+        contacted = true;
+      },
     },
   });
 
@@ -55,19 +57,19 @@ test("readiness hides Pinecone errors and caches failures briefly", async () => 
   let calls = 0;
   const logged = [];
   const check = createReadinessCheck({
-    environment,
-    appLogger: {
+    config: environment,
+    logger: {
       info() {},
       error(event) {
         logged.push(event);
       },
     },
-    getClient: () => ({
+    pineconeClient: {
       async describeIndex() {
         calls += 1;
         throw new Error("provider detail must stay internal");
       },
-    }),
+    },
   });
 
   const first = await check();
@@ -85,11 +87,11 @@ test("readiness hides Pinecone errors and caches failures briefly", async () => 
 
 test("readiness times out a hanging Pinecone check", async () => {
   const check = createReadinessCheck({
-    environment: { ...environment, READINESS_TIMEOUT_MS: 5 },
-    appLogger: silentLogger,
-    getClient: () => ({
+    config: { ...environment, READINESS_TIMEOUT_MS: 5 },
+    logger: silentLogger,
+    pineconeClient: {
       describeIndex: () => new Promise(() => {}),
-    }),
+    },
   });
 
   assert.deepEqual(await check(), {

@@ -1,10 +1,10 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import {
-  evaluateGroundedAnswer,
+  createGroundednessEvaluator,
   scoreGroundednessGrade,
   validateGroundednessGrade,
-} from "../src/rag/groundednessEvaluator.js";
+} from "../src/evaluation/groundedness.js";
 
 function validGrade(overrides = {}) {
   return {
@@ -62,8 +62,11 @@ test("model evaluator sends exact evidence as untrusted data and requests strict
       },
     },
   };
-  const result = await evaluateGroundedAnswer(
-    {
+  const evaluateGroundedAnswer = createGroundednessEvaluator({
+    openAIClient: client,
+    model: "gpt-4o-mini",
+  });
+  const result = await evaluateGroundedAnswer({
       question: "What did Rafa build?",
       answer: "He built a load balancer.",
       locale: "en",
@@ -73,9 +76,7 @@ test("model evaluator sends exact evidence as untrusted data and requests strict
           chunk_text: "Rafa built a load balancer.",
         },
       ],
-    },
-    client,
-  );
+    });
 
   assert.deepEqual(result.grade, validGrade());
   assert.deepEqual(result.usage, { input_tokens: 100, output_tokens: 50 });
@@ -95,17 +96,18 @@ test("model evaluator rejects malformed model output", async () => {
       },
     },
   };
+  const evaluateGroundedAnswer = createGroundednessEvaluator({
+    openAIClient: client,
+    model: "gpt-4o-mini",
+  });
 
   await assert.rejects(
-    evaluateGroundedAnswer(
-      {
+    evaluateGroundedAnswer({
         question: "What did Rafa build?",
         answer: "A project.",
         locale: "en",
         hits: [],
-      },
-      client,
-    ),
+      }),
     /invalid groundedness grade/,
   );
 });

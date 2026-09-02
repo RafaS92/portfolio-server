@@ -1,9 +1,6 @@
 import { Router } from "express";
-import { checkReadiness as defaultReadinessCheck } from "../services/readiness.js";
 
-export function createHealthRouter({
-  checkReadiness = defaultReadinessCheck,
-} = {}) {
+export function createHealthRouter({ readinessCheck }) {
   const router = Router();
 
   router.get("/healthz", (_req, res) => {
@@ -13,7 +10,7 @@ export function createHealthRouter({
 
   router.get("/readyz", async (_req, res) => {
     res.setHeader("cache-control", "no-store");
-    const result = await checkReadiness();
+    const result = await readinessCheck();
     return res.status(result.ready ? 200 : 503).json({
       status: result.ready ? "ready" : "not_ready",
       services: result.services,
@@ -22,5 +19,3 @@ export function createHealthRouter({
 
   return router;
 }
-
-export const healthRouter = createHealthRouter();

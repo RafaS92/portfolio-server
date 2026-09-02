@@ -1,4 +1,4 @@
-import { createPortfolioChunks } from "../src/rag/chunkPortfolio.js";
+import { createPortfolioChunks } from "../src/portfolio/chunks.js";
 
 const chunks = createPortfolioChunks();
 

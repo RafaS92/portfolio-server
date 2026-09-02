@@ -1,27 +1,69 @@
-import { createApp } from "./src/app.js";
-import { env, requireEnvironmentVariables } from "./src/config/env.js";
-import { logger } from "./src/lib/logger.js";
-import { createGracefulShutdown } from "./src/serverLifecycle.js";
+import { createAnswerGenerator } from "./src/chat/answer-generator.js";
+import { createRetrievalPolicy } from "./src/chat/retrieval-policy.js";
+import { createChatService } from "./src/chat/service.js";
+import { createApp } from "./src/http/app.js";
+import { createReadinessCheck } from "./src/http/readiness.js";
+import {
+  createOpenAIClient,
+  createPineconeClient,
+} from "./src/platform/clients.js";
+import {
+  loadEnvironment,
+  requireEnvironmentVariables,
+} from "./src/platform/config.js";
+import { createLogger } from "./src/platform/logger.js";
+import { createGracefulShutdown } from "./src/platform/server-lifecycle.js";
+import { createPortfolioChunks } from "./src/portfolio/chunks.js";
+import { loadPortfolio } from "./src/portfolio/content.js";
+import { createPineconeSearch } from "./src/portfolio/pinecone-search.js";
 
+const config = loadEnvironment();
 requireEnvironmentVariables([
   "OPENAI_API_KEY",
   "PINECONE_API_KEY",
-]);
+], config);
 
-const app = createApp();
+const logger = createLogger({
+  secrets: [config.OPENAI_API_KEY, config.PINECONE_API_KEY],
+});
+const openAIClient = createOpenAIClient(config.OPENAI_API_KEY);
+const pineconeClient = createPineconeClient(config.PINECONE_API_KEY);
+const portfolio = loadPortfolio();
+const chunks = createPortfolioChunks(portfolio);
+const retrievalPolicy = createRetrievalPolicy({ portfolio, chunks });
+const searchPortfolio = createPineconeSearch({
+  pineconeClient,
+  indexName: config.PINECONE_INDEX,
+  namespace: config.PINECONE_NAMESPACE,
+});
+const generateAnswer = createAnswerGenerator({
+  openAIClient,
+  model: config.OPENAI_MODEL,
+});
+const chatService = createChatService({
+  retrievalPolicy,
+  searchPortfolio,
+  generateAnswer,
+});
+const readinessCheck = createReadinessCheck({
+  config,
+  pineconeClient,
+  logger,
+});
+const app = createApp({ config, logger, chatService, readinessCheck });
 
-const server = app.listen(env.PORT, env.HOST, () => {
+const server = app.listen(config.PORT, config.HOST, () => {
   logger.info("server_started", {
-    host: env.HOST,
-    port: env.PORT,
-    environment: env.NODE_ENV,
-    pineconeIndex: env.PINECONE_INDEX,
-    pineconeNamespace: env.PINECONE_NAMESPACE,
+    host: config.HOST,
+    port: config.PORT,
+    environment: config.NODE_ENV,
+    pineconeIndex: config.PINECONE_INDEX,
+    pineconeNamespace: config.PINECONE_NAMESPACE,
   });
 });
 
 const shutdown = createGracefulShutdown(server, {
-  timeoutMs: env.SHUTDOWN_TIMEOUT_MS,
+  timeoutMs: config.SHUTDOWN_TIMEOUT_MS,
   onComplete(error) {
     if (error) {
       logger.error("server_shutdown_failed", { error });

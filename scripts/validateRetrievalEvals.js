@@ -1,4 +1,4 @@
-import { loadRetrievalEvals } from "../src/rag/retrievalEvals.js";
+import { loadRetrievalEvals } from "../src/evaluation/retrieval.js";
 
 const evaluations = loadRetrievalEvals();
 const positiveCases = evaluations.cases.filter(

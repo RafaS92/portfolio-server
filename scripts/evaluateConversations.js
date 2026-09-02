@@ -2,7 +2,8 @@ import {
   evaluateConversation,
   loadConversationEvals,
   scoreConversationResults,
-} from "../src/rag/conversationEvals.js";
+} from "../src/evaluation/conversations.js";
+import { createChatRuntime } from "./runtime.js";
 
 const minimumTurnPassRate = Number.parseFloat(
   process.env.EVAL_MIN_CONVERSATION_TURN_PASS_RATE ?? "0.9",
@@ -20,6 +21,7 @@ if (
 }
 
 try {
+  const { chatService } = createChatRuntime();
   const evaluations = loadConversationEvals();
   const requestedIds = process.argv.slice(2);
   const conversations = requestedIds.length === 0
@@ -35,7 +37,9 @@ try {
   const results = [];
 
   for (const conversation of conversations) {
-    const result = await evaluateConversation(conversation);
+    const result = await evaluateConversation(conversation, {
+      answer: chatService,
+    });
     results.push(result);
     console.log(`${result.passed ? "PASS" : "FAIL"} ${result.id}`);
 

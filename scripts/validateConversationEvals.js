@@ -1,4 +1,4 @@
-import { loadConversationEvals } from "../src/rag/conversationEvals.js";
+import { loadConversationEvals } from "../src/evaluation/conversations.js";
 
 try {
   const evaluations = loadConversationEvals();

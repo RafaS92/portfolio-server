@@ -1,10 +1,10 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { loadPortfolio } from "../src/content/portfolio.js";
+import { loadPortfolio } from "../src/portfolio/content.js";
 import {
   createPortfolioChunks,
   estimateTokens,
-} from "../src/rag/chunkPortfolio.js";
+} from "../src/portfolio/chunks.js";
 
 test("portfolio content passes validation", () => {
   const portfolio = loadPortfolio();

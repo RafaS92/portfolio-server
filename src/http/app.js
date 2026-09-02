@@ -1,15 +1,12 @@
-import express from "express";
 import cors from "cors";
-import { env } from "./config/env.js";
-import { logger } from "./lib/logger.js";
+import express from "express";
+import { createChatRouter } from "./chat-route.js";
+import { createHealthRouter } from "./health-routes.js";
 import {
   createRateLimiter,
   createRequestLogger,
   requestId,
-} from "./middleware/requestProtection.js";
-import { createChatRouter } from "./routes/chat.js";
-import { createHealthRouter } from "./routes/health.js";
-import { checkReadiness } from "./services/readiness.js";
+} from "./request-middleware.js";
 
 class CorsOriginError extends Error {
   constructor() {
@@ -18,19 +15,14 @@ class CorsOriginError extends Error {
   }
 }
 
-export function createApp({
-  environment = env,
-  chatAnswer,
-  appLogger = logger,
-  readinessCheck = checkReadiness,
-} = {}) {
+export function createApp({ config, logger, chatService, readinessCheck }) {
   const app = express();
-  const allowedOrigins = new Set(environment.CORS_ALLOWED_ORIGINS);
+  const allowedOrigins = new Set(config.CORS_ALLOWED_ORIGINS);
 
   app.disable("x-powered-by");
-  if (environment.TRUST_PROXY) app.set("trust proxy", 1);
+  if (config.TRUST_PROXY) app.set("trust proxy", 1);
   app.use(requestId);
-  app.use(createRequestLogger(appLogger));
+  app.use(createRequestLogger(logger));
   app.use(
     cors({
       origin(origin, callback) {
@@ -39,22 +31,18 @@ export function createApp({
       },
     }),
   );
-  app.use(express.json({ limit: environment.JSON_BODY_LIMIT }));
-  app.use(createHealthRouter({ checkReadiness: readinessCheck }));
+  app.use(express.json({ limit: config.JSON_BODY_LIMIT }));
+  app.use(createHealthRouter({ readinessCheck }));
   app.use(
     "/api/chat",
     createRateLimiter({
-      windowMs: environment.RATE_LIMIT_WINDOW_MS,
-      maxRequests: environment.RATE_LIMIT_MAX_REQUESTS,
+      windowMs: config.RATE_LIMIT_WINDOW_MS,
+      maxRequests: config.RATE_LIMIT_MAX_REQUESTS,
     }),
   );
   app.use(
     "/api",
-    createChatRouter({
-      environment,
-      appLogger,
-      ...(chatAnswer ? { answer: chatAnswer } : {}),
-    }),
+    createChatRouter({ config, logger, chatService }),
   );
 
   app.use((req, res) =>
@@ -75,7 +63,7 @@ export function createApp({
           : "Internal server error.";
 
     if (status === 500) {
-      appLogger.error("unhandled_request_error", {
+      logger.error("unhandled_request_error", {
         requestId: req.requestId,
         error,
       });

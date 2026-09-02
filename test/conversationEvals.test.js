@@ -6,7 +6,7 @@ import {
   evaluateConversation,
   loadConversationEvals,
   scoreConversationResults,
-} from "../src/rag/conversationEvals.js";
+} from "../src/evaluation/conversations.js";
 
 test("conversation evaluations contain 10 scenarios and at least 20 turns", () => {
   const evaluations = loadConversationEvals();

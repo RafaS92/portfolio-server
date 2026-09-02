@@ -1,14 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { FALLBACK_ANSWERS } from "../chat/answer-generator.js";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DEFAULT_EVAL_PATH = path.resolve(__dirname, "../../evals/answers.json");
+const moduleDirectory = path.dirname(fileURLToPath(import.meta.url));
+const DEFAULT_EVAL_PATH = path.resolve(moduleDirectory, "../../evals/answers.json");
 const SUPPORTED_LOCALES = new Set(["en", "es"]);
-const FALLBACKS = {
-  en: "Sorry, I don't have that information in Rafa's portfolio. Please ask Rafa directly.",
-  es: "Lo siento, no tengo esa información en el portafolio de Rafa. Puedes preguntarle directamente a Rafa.",
-};
 const LANGUAGE_WORDS = {
   en: new Set(["and", "are", "for", "from", "has", "he", "his", "is", "the", "to", "with", "worked", "built"]),
   es: new Set(["con", "de", "desde", "el", "ella", "en", "es", "esta", "ha", "la", "las", "los", "para", "que", "su", "sus", "tiene", "trabajo", "un", "una", "y"]),
@@ -109,8 +106,8 @@ export function evaluateAnswerResult(evaluation, result) {
     expectedProjectOrder.length === 0 ||
     expectedProjectOrder.every((id, index) => actualProjectOrder[index] === id);
   const fallbackMatched = evaluation.expectsFallback
-    ? content === FALLBACKS[evaluation.locale]
-    : content !== FALLBACKS[evaluation.locale];
+    ? content === FALLBACK_ANSWERS[evaluation.locale]
+    : content !== FALLBACK_ANSWERS[evaluation.locale];
   const checks = {
     nonEmpty: content.length > 0,
     language: evaluation.expectsFallback

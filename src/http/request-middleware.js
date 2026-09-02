@@ -6,12 +6,15 @@ export function requestId(req, res, next) {
   next();
 }
 
-export function createRequestLogger(appLogger, now = performance.now.bind(performance)) {
+export function createRequestLogger(
+  logger,
+  now = performance.now.bind(performance),
+) {
   return function requestLogger(req, res, next) {
     const startedAt = now();
 
     res.on("finish", () => {
-      appLogger.info("http_request", {
+      logger.info("http_request", {
         requestId: req.requestId,
         method: req.method,
         path: req.path,

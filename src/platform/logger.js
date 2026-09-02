@@ -1,5 +1,3 @@
-import { env } from "../config/env.js";
-
 const SECRET_KEY_PATTERN = /api[-_]?key|authorization|cookie|password|secret|token/i;
 
 function sanitizeString(value, secrets) {
@@ -61,9 +59,3 @@ export function createLogger({
     },
   });
 }
-
-export const logger = createLogger({
-  secrets: [env.OPENAI_API_KEY, env.PINECONE_API_KEY].filter(
-    (value) => typeof value === "string" && value.length > 0,
-  ),
-});

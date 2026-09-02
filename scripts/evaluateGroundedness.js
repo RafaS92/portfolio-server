@@ -1,11 +1,16 @@
-import { loadAnswerEvals, evaluateAnswerResult, scoreAnswerResults } from "../src/rag/answerEvals.js";
+import { parseChatRequest } from "../src/chat/request.js";
+import { createChatService } from "../src/chat/service.js";
+import {
+  evaluateAnswerResult,
+  loadAnswerEvals,
+  scoreAnswerResults,
+} from "../src/evaluation/answers.js";
 import {
   DEFAULT_GROUNDEDNESS_THRESHOLDS,
-  evaluateGroundedAnswer,
+  createGroundednessEvaluator,
   scoreGroundednessGrade,
-} from "../src/rag/groundednessEvaluator.js";
-import { generateGroundedAnswer } from "../src/services/conversation.js";
-import { answerPortfolioQuestion, parseChatRequest } from "../src/services/ragChat.js";
+} from "../src/evaluation/groundedness.js";
+import { createChatRuntime } from "./runtime.js";
 
 function parseRate(name, fallback) {
   const value = Number.parseFloat(process.env[name] ?? String(fallback));
@@ -29,6 +34,11 @@ function average(results, field) {
 }
 
 try {
+  const runtime = createChatRuntime();
+  const evaluateGroundedAnswer = createGroundednessEvaluator({
+    openAIClient: runtime.openAIClient,
+    model: runtime.config.OPENAI_EVAL_MODEL,
+  });
   const minimumPassRate = parseRate("EVAL_MIN_JUDGE_PASS_RATE", 0.8);
   const thresholds = {
     groundedness: parseScore("EVAL_MIN_GROUNDEDNESS", DEFAULT_GROUNDEDNESS_THRESHOLDS.groundedness),
@@ -48,12 +58,15 @@ try {
       history: evaluation.history ?? [],
     });
     let generationInput;
-    const response = await answerPortfolioQuestion(request, {
-      async generate(input) {
+    const answerPortfolioQuestion = createChatService({
+      retrievalPolicy: runtime.retrievalPolicy,
+      searchPortfolio: runtime.searchPortfolio,
+      async generateAnswer(input, options) {
         generationInput = input;
-        return generateGroundedAnswer(input);
+        return runtime.generateAnswer(input, options);
       },
     });
+    const response = await answerPortfolioQuestion(request);
     const deterministic = evaluateAnswerResult(evaluation, response);
     const { grade, usage } = await evaluateGroundedAnswer({
       question: evaluation.question,

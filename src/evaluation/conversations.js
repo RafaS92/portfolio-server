@@ -1,15 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { evaluateAnswerResult } from "./answerEvals.js";
-import {
-  answerPortfolioQuestion,
-  parseChatRequest,
-} from "../services/ragChat.js";
+import { parseChatRequest } from "../chat/request.js";
+import { evaluateAnswerResult } from "./answers.js";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const moduleDirectory = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_EVAL_PATH = path.resolve(
-  __dirname,
+  moduleDirectory,
   "../../evals/conversations.json",
 );
 export const MAX_EVALUATION_HISTORY_MESSAGES = 10;
@@ -129,10 +126,7 @@ export function appendConversationHistory(history, message, answer) {
   ].slice(-MAX_EVALUATION_HISTORY_MESSAGES);
 }
 
-export async function evaluateConversation(
-  conversation,
-  { answer = answerPortfolioQuestion } = {},
-) {
+export async function evaluateConversation(conversation, { answer }) {
   let history = [];
   const turns = [];
 

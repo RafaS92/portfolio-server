@@ -4,8 +4,6 @@ import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 import dotenv from "dotenv";
 
-dotenv.config();
-
 const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
 const defaultFrontendDirectoryName = "personal-portafolio";
 
@@ -40,6 +38,11 @@ export function buildReleasePlan({
       label: "JavaScript syntax",
       command: process.execPath,
       args: ["scripts/validateSyntax.js"],
+    },
+    {
+      label: "JavaScript lint",
+      command: npmCommand,
+      args: ["run", "lint"],
     },
     {
       label: "Git whitespace",
@@ -173,6 +176,7 @@ const isMain =
 
 if (isMain) {
   try {
+    dotenv.config({ quiet: true });
     runReleaseChecks({ live: process.argv.includes("--live") });
   } catch (error) {
     console.error(`\n[release:check] ${error.message}`);

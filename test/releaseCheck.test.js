@@ -15,6 +15,7 @@ test("default release plan contains only local checks", () => {
   assert.deepEqual(labels, [
     "Production configuration",
     "JavaScript syntax",
+    "JavaScript lint",
     "Git whitespace",
     "Portfolio content",
     "Retrieval evaluation fixtures",

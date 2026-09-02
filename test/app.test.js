@@ -2,21 +2,43 @@ import assert from "node:assert/strict";
 import { once } from "node:events";
 import { after, before, test } from "node:test";
 
-process.env.OPENAI_API_KEY ??= "test-openai-key";
-
-const { createApp } = await import("../src/app.js");
-const { env } = await import("../src/config/env.js");
+const { createApp } = await import("../src/http/app.js");
+const { parseEnvironment } = await import("../src/platform/config.js");
 
 const silentLogger = {
   info() {},
   error() {},
 };
+const config = parseEnvironment({ NODE_ENV: "test" });
+const defaultChatService = async (request) => ({
+  content: "A test answer.",
+  locale: request.locale,
+  sources: [],
+});
+const defaultReadinessCheck = async () => ({
+  ready: true,
+  services: { configuration: "ready", pinecone: "ready" },
+});
+
+function createTestApp({
+  appConfig = config,
+  logger = silentLogger,
+  chatService = defaultChatService,
+  readinessCheck = defaultReadinessCheck,
+} = {}) {
+  return createApp({
+    config: appConfig,
+    logger,
+    chatService,
+    readinessCheck,
+  });
+}
 
 let server;
 let baseUrl;
 
 before(async () => {
-  const app = createApp({ appLogger: silentLogger });
+  const app = createTestApp();
 
   server = app.listen(0, "127.0.0.1");
   await once(server, "listening");
@@ -124,10 +146,9 @@ test("malformed JSON receives a safe client error", async () => {
 });
 
 test("chat requests are rate limited without affecting other endpoints", async () => {
-  const app = createApp({
-    environment: { ...env, RATE_LIMIT_MAX_REQUESTS: 1 },
-    appLogger: silentLogger,
-    chatAnswer: async (request) => ({
+  const app = createTestApp({
+    appConfig: { ...config, RATE_LIMIT_MAX_REQUESTS: 1 },
+    chatService: async (request) => ({
       content: "A test answer.",
       locale: request.locale,
       sources: [],
@@ -153,10 +174,9 @@ test("chat requests are rate limited without affecting other endpoints", async (
 });
 
 test("slow chat requests return a safe timeout response", async () => {
-  const app = createApp({
-    environment: { ...env, CHAT_REQUEST_TIMEOUT_MS: 10 },
-    appLogger: silentLogger,
-    chatAnswer: async (_request, { signal }) =>
+  const app = createTestApp({
+    appConfig: { ...config, CHAT_REQUEST_TIMEOUT_MS: 10 },
+    chatService: async (_request, { signal }) =>
       new Promise((_, reject) => {
         signal.addEventListener("abort", () => {
           const error = new Error("aborted");
@@ -184,15 +204,13 @@ test("slow chat requests return a safe timeout response", async () => {
 });
 
 test("readiness endpoint reports dependency state without internal errors", async () => {
-  const readyApp = createApp({
-    appLogger: silentLogger,
+  const readyApp = createTestApp({
     readinessCheck: async () => ({
       ready: true,
       services: { configuration: "ready", pinecone: "ready" },
     }),
   });
-  const unavailableApp = createApp({
-    appLogger: silentLogger,
+  const unavailableApp = createTestApp({
     readinessCheck: async () => ({
       ready: false,
       services: { configuration: "ready", pinecone: "unavailable" },
@@ -223,8 +241,8 @@ test("readiness endpoint reports dependency state without internal errors", asyn
 
 test("request logger records metadata without request content", async () => {
   const records = [];
-  const app = createApp({
-    appLogger: {
+  const app = createTestApp({
+    logger: {
       info(event, fields) {
         records.push({ event, ...fields });
       },

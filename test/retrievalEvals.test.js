@@ -3,7 +3,7 @@ import { test } from "node:test";
 import {
   loadRetrievalEvals,
   scoreRetrievalResults,
-} from "../src/rag/retrievalEvals.js";
+} from "../src/evaluation/retrieval.js";
 
 test("retrieval evaluations reference valid same-language chunks", () => {
   const evaluations = loadRetrievalEvals();

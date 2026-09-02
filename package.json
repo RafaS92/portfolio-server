@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
+    "lint": "eslint .",
     "test": "node --test",
     "test:watch": "node --test --watch",
     "content:validate": "node scripts/validateContent.js",
@@ -23,7 +24,7 @@
     "release:check": "node scripts/releaseCheck.js"
   },
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=22.13.0"
   },
   "dependencies": {
     "@pinecone-database/pinecone": "^8.2.0",
@@ -31,5 +32,8 @@
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "openai": "^5.16.0"
+  },
+  "devDependencies": {
+    "eslint": "^10.9.1"
   }
 }

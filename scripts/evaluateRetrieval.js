@@ -1,8 +1,8 @@
-import { searchPortfolio } from "../src/rag/pineconeStore.js";
 import {
   loadRetrievalEvals,
   scoreRetrievalResults,
-} from "../src/rag/retrievalEvals.js";
+} from "../src/evaluation/retrieval.js";
+import { createPineconeRuntime } from "./runtime.js";
 
 const TOP_K = 3;
 const minimumRecall = Number.parseFloat(process.env.EVAL_MIN_RECALL ?? "0.9");
@@ -13,6 +13,7 @@ if (!Number.isFinite(minimumRecall) || minimumRecall < 0 || minimumRecall > 1) {
 }
 
 try {
+  const { searchPortfolio } = createPineconeRuntime();
   const evaluations = loadRetrievalEvals();
   const results = [];
 

@@ -1,9 +1,35 @@
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import { test } from "node:test";
 import {
   parseEnvironment,
   validateProductionEnvironment,
-} from "../src/config/env.js";
+} from "../src/platform/config.js";
+
+test("importing configuration does not load dotenv as a side effect", (t) => {
+  const workspace = fs.mkdtempSync(path.join(os.tmpdir(), "config-import-"));
+  const environment = { ...process.env };
+  delete environment.PORT;
+  fs.writeFileSync(path.join(workspace, ".env"), "PORT=4567\n");
+  t.after(() => fs.rmSync(workspace, { recursive: true, force: true }));
+
+  const configUrl = new URL("../src/platform/config.js", import.meta.url);
+  const result = spawnSync(
+    process.execPath,
+    [
+      "--input-type=module",
+      "--eval",
+      `await import(${JSON.stringify(configUrl.href)}); process.stdout.write(process.env.PORT ?? "unset");`,
+    ],
+    { cwd: workspace, encoding: "utf8", env: environment },
+  );
+
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(result.stdout, "unset");
+});
 
 test("development configuration has safe local defaults", () => {
   const result = parseEnvironment({});

@@ -1,4 +1,15 @@
-import { loadPortfolio, supportedLocales } from "../content/portfolio.js";
+import { loadPortfolio, SUPPORTED_LOCALES } from "./content.js";
+
+/**
+ * @typedef {Object} PortfolioChunk
+ * @property {string} id
+ * @property {string} itemId
+ * @property {string} sectionId
+ * @property {string} contentType
+ * @property {"en" | "es"} locale
+ * @property {string} title
+ * @property {string} text
+ */
 
 function unique(values) {
   return [...new Set(values)];
@@ -27,10 +38,11 @@ export function estimateTokens(text) {
   return Math.ceil(text.length / 4);
 }
 
+/** @returns {PortfolioChunk[]} */
 export function createPortfolioChunks(portfolio = loadPortfolio()) {
   return portfolio.items.flatMap((item) =>
     item.sections.flatMap((section) =>
-      supportedLocales.map((locale) => {
+      SUPPORTED_LOCALES.map((locale) => {
         const text = `${buildContext(item, locale)} ${section.text[locale]}`;
 
         return {

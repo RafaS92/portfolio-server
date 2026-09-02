@@ -9,7 +9,7 @@ endpoint owns the complete retrieval and answer-generation flow.
 content/portfolio.json
         |
         v
-createPortfolioChunks()       40 bilingual semantic chunks
+createPortfolioChunks()       bilingual semantic chunks
         |
         v
 toPineconeRecord()            flat records + searchable metadata

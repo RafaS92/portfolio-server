@@ -1,4 +1,4 @@
-import { loadAnswerEvals } from "../src/rag/answerEvals.js";
+import { loadAnswerEvals } from "../src/evaluation/answers.js";
 
 try {
   const evaluations = loadAnswerEvals();

@@ -1,5 +1,10 @@
-import { loadAnswerEvals, evaluateAnswerResult, scoreAnswerResults } from "../src/rag/answerEvals.js";
-import { answerPortfolioQuestion, parseChatRequest } from "../src/services/ragChat.js";
+import { parseChatRequest } from "../src/chat/request.js";
+import {
+  evaluateAnswerResult,
+  loadAnswerEvals,
+  scoreAnswerResults,
+} from "../src/evaluation/answers.js";
+import { createChatRuntime } from "./runtime.js";
 
 const minimumPassRate = Number.parseFloat(process.env.EVAL_MIN_ANSWER_PASS_RATE ?? "0.9");
 
@@ -9,6 +14,7 @@ if (!Number.isFinite(minimumPassRate) || minimumPassRate < 0 || minimumPassRate 
 }
 
 try {
+  const { chatService } = createChatRuntime();
   const evaluations = loadAnswerEvals();
   const results = [];
 
@@ -18,7 +24,7 @@ try {
       locale: evaluation.locale,
       history: evaluation.history ?? [],
     });
-    const response = await answerPortfolioQuestion(request);
+    const response = await chatService(request);
     const result = evaluateAnswerResult(evaluation, response);
     results.push({ ...evaluation, ...result });
 

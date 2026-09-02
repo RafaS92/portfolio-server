@@ -11,7 +11,7 @@ if (!fs.existsSync(filePath)) {
 
 const source = dotenv.parse(fs.readFileSync(filePath));
 const { parseEnvironment, validateProductionEnvironment } = await import(
-  "../src/config/env.js"
+  "../src/platform/config.js"
 );
 
 try {

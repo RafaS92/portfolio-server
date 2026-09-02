@@ -1,19 +1,30 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import {
-  answerPortfolioQuestion,
-  buildRetrievalQuery,
   ChatValidationError,
-  getGuidedTopic,
-  isAboutRafaQuery,
-  isFutureGoalQuery,
-  isProjectDiscoveryQuery,
   parseChatRequest,
-  prioritizeProjectHitsByArchiveOrder,
-  prioritizeProjectSourceSlots,
-  selectFutureGoalHits,
-  selectGuidedTopicHits,
-} from "../src/services/ragChat.js";
+} from "../src/chat/request.js";
+import {
+  buildRetrievalQuery,
+  createRetrievalPolicy,
+} from "../src/chat/retrieval-policy.js";
+import { createChatService } from "../src/chat/service.js";
+import { createPortfolioChunks } from "../src/portfolio/chunks.js";
+import { loadPortfolio } from "../src/portfolio/content.js";
+
+const portfolio = loadPortfolio();
+const retrievalPolicy = createRetrievalPolicy({
+  portfolio,
+  chunks: createPortfolioChunks(portfolio),
+});
+
+function createTestChatService({ search, generate }) {
+  return createChatService({
+    retrievalPolicy,
+    searchPortfolio: search,
+    generateAnswer: generate,
+  });
+}
 
 test("follow-up retrieval includes the previous user question", () => {
   assert.equal(
@@ -65,36 +76,36 @@ test("chat requests validate locale and conversation history", () => {
 });
 
 test("broad project questions use featured discovery while named projects do not", () => {
-  assert.equal(isProjectDiscoveryQuery("What projects has Rafa built?"), true);
-  assert.equal(isProjectDiscoveryQuery("¿Qué proyectos recomienda Rafa?"), true);
-  assert.equal(isProjectDiscoveryQuery("Tell me about Shoptastic."), false);
+  assert.equal(retrievalPolicy.isProjectDiscoveryQuery("What projects has Rafa built?"), true);
+  assert.equal(retrievalPolicy.isProjectDiscoveryQuery("¿Qué proyectos recomienda Rafa?"), true);
+  assert.equal(retrievalPolicy.isProjectDiscoveryQuery("Tell me about Shoptastic."), false);
   assert.equal(
-    isProjectDiscoveryQuery("How did Rafa build the Load Balancer project?"),
+    retrievalPolicy.isProjectDiscoveryQuery("How did Rafa build the Load Balancer project?"),
     false,
   );
 });
 
 test("recognizes the guided About Rafa questions in both languages", () => {
-  assert.equal(isAboutRafaQuery("Who is Rafa?"), true);
-  assert.equal(isAboutRafaQuery("¿Quién es Rafa?"), true);
-  assert.equal(isAboutRafaQuery("Who is Rafael Nadal?"), false);
+  assert.equal(retrievalPolicy.isAboutRafaQuery("Who is Rafa?"), true);
+  assert.equal(retrievalPolicy.isAboutRafaQuery("¿Quién es Rafa?"), true);
+  assert.equal(retrievalPolicy.isAboutRafaQuery("Who is Rafael Nadal?"), false);
 });
 
 test("recognizes future career-goal questions in English and Spanish", () => {
   assert.equal(
-    isFutureGoalQuery("What future project is Rafa working toward?"),
+    retrievalPolicy.isFutureGoalQuery("What future project is Rafa working toward?"),
     true,
   );
-  assert.equal(isFutureGoalQuery("What are Rafa's long-term goals?"), true);
+  assert.equal(retrievalPolicy.isFutureGoalQuery("What are Rafa's long-term goals?"), true);
   assert.equal(
-    isFutureGoalQuery("¿Cuáles son las metas profesionales de Rafa?"),
+    retrievalPolicy.isFutureGoalQuery("¿Cuáles son las metas profesionales de Rafa?"),
     true,
   );
   assert.equal(
-    isFutureGoalQuery("¿En qué quiere convertirse Rafa en el futuro?"),
+    retrievalPolicy.isFutureGoalQuery("¿En qué quiere convertirse Rafa en el futuro?"),
     true,
   );
-  assert.equal(isFutureGoalQuery("Tell me about the Load Balancer."), false);
+  assert.equal(retrievalPolicy.isFutureGoalQuery("Tell me about the Load Balancer."), false);
 });
 
 test("future-goal selection returns only the dedicated profile section", () => {
@@ -113,23 +124,23 @@ test("future-goal selection returns only the dedicated profile section", () => {
     },
   ];
 
-  assert.deepEqual(selectFutureGoalHits(hits), [hits[1]]);
+  assert.deepEqual(retrievalPolicy.selectFutureGoalHits(hits), [hits[1]]);
 });
 
 test("recognizes guided skill, experience, and service topics", () => {
   assert.equal(
-    getGuidedTopic("What are Rafa’s strongest technical skills?"),
+    retrievalPolicy.getGuidedTopic("What are Rafa’s strongest technical skills?"),
     "skill",
   );
   assert.equal(
-    getGuidedTopic("Tell me about Rafa’s professional experience."),
+    retrievalPolicy.getGuidedTopic("Tell me about Rafa’s professional experience."),
     "experience",
   );
   assert.equal(
-    getGuidedTopic("¿Qué servicios profesionales ofrece Rafa?"),
+    retrievalPolicy.getGuidedTopic("¿Qué servicios profesionales ofrece Rafa?"),
     "service",
   );
-  assert.equal(getGuidedTopic("Does Rafa know React?"), null);
+  assert.equal(retrievalPolicy.getGuidedTopic("Does Rafa know React?"), null);
 });
 
 test("guided topics select only their requested content in portfolio order", () => {
@@ -145,7 +156,7 @@ test("guided topics select only their requested content in portfolio order", () 
   ];
 
   assert.deepEqual(
-    selectGuidedTopicHits(hits, "skill").map((result) => result.section_id),
+    retrievalPolicy.selectGuidedTopicHits(hits, "skill").map((result) => result.section_id),
     ["frontend", "backend"],
   );
 });
@@ -159,19 +170,17 @@ test("guided Explore Rafa requests retrieve and generate from the requested topi
 
   for (const [message, expectedType] of prompts) {
     let generationInput;
-
-    await answerPortfolioQuestion(
-      { message, locale: "en", history: [] },
-      {
-        async search() {
-          assert.fail("guided topics should not call semantic search");
-        },
-        async generate(input) {
-          generationInput = input;
-          return "Grounded answer.";
-        },
+    const answerPortfolioQuestion = createTestChatService({
+      async search() {
+        assert.fail("guided topics should not call semantic search");
       },
-    );
+      async generate(input) {
+        generationInput = input;
+        return "Grounded answer.";
+      },
+    });
+
+    await answerPortfolioQuestion({ message, locale: "en", history: [] });
 
     assert.ok(generationInput.hits.length > 0);
     assert.ok(
@@ -184,23 +193,21 @@ test("guided Explore Rafa requests retrieve and generate from the requested topi
 
 test("future project questions use the local career-goal section instead of project discovery", async () => {
   let generationInput;
+  const answerPortfolioQuestion = createTestChatService({
+    async search() {
+      assert.fail("future-goal questions should not call semantic search");
+    },
+    async generate(input) {
+      generationInput = input;
+      return "Rafa is working toward Staff Engineer and Architect roles.";
+    },
+  });
 
-  const result = await answerPortfolioQuestion(
-    {
-      message: "What future project is Rafa working toward?",
-      locale: "en",
-      history: [],
-    },
-    {
-      async search() {
-        assert.fail("future-goal questions should not call semantic search");
-      },
-      async generate(input) {
-        generationInput = input;
-        return "Rafa is working toward Staff Engineer and Architect roles.";
-      },
-    },
-  );
+  const result = await answerPortfolioQuestion({
+    message: "What future project is Rafa working toward?",
+    locale: "en",
+    history: [],
+  });
 
   assert.equal(generationInput.projectDiscovery, false);
   assert.deepEqual(
@@ -230,7 +237,7 @@ test("project recommendations follow archiveOrder instead of similarity", () => 
   ];
 
   assert.deepEqual(
-    prioritizeProjectHitsByArchiveOrder(hits).map((hit) => hit.item_id),
+    retrievalPolicy.prioritizeProjectHitsByArchiveOrder(hits).map((hit) => hit.item_id),
     ["loadbalancer", "scraper", "website-creation-workflow", "rafaglot"],
   );
 });
@@ -256,7 +263,7 @@ test("project source slots use archiveOrder while preserving non-project sources
   ];
 
   assert.deepEqual(
-    prioritizeProjectSourceSlots(visibleHits, candidates).map(
+    retrievalPolicy.prioritizeProjectSourceSlots(visibleHits, candidates).map(
       (hit) => hit.item_id,
     ),
     ["profile", "loadbalancer"],
@@ -282,20 +289,22 @@ test("About Rafa keeps profile context but previews the highest-priority project
   ];
   let searchOptions;
   let generationHits;
-
-  const result = await answerPortfolioQuestion(
-    { message: "Who is Rafa?", locale: "en", history: [] },
-    {
-      async search(_message, options) {
-        searchOptions = options;
-        return retrievedHits;
-      },
-      async generate(input) {
-        generationHits = input.hits;
-        return "Rafa is a full-stack engineer.";
-      },
+  const answerPortfolioQuestion = createTestChatService({
+    async search(_message, options) {
+      searchOptions = options;
+      return retrievedHits;
     },
-  );
+    async generate(input) {
+      generationHits = input.hits;
+      return "Rafa is a full-stack engineer.";
+    },
+  });
+
+  const result = await answerPortfolioQuestion({
+    message: "Who is Rafa?",
+    locale: "en",
+    history: [],
+  });
 
   assert.deepEqual(searchOptions, { locale: "en", topK: 100 });
   assert.deepEqual(
@@ -327,20 +336,22 @@ test("project discovery retrieves wider candidates and gives generation the four
   }));
   let searchOptions;
   let generationInput;
-
-  const result = await answerPortfolioQuestion(
-    { message: "What projects has Rafa built?", locale: "en", history: [] },
-    {
-      async search(_message, options) {
-        searchOptions = options;
-        return retrievedHits;
-      },
-      async generate(input) {
-        generationInput = input;
-        return "Rafa's featured work includes four projects.";
-      },
+  const answerPortfolioQuestion = createTestChatService({
+    async search(_message, options) {
+      searchOptions = options;
+      return retrievedHits;
     },
-  );
+    async generate(input) {
+      generationInput = input;
+      return "Rafa's featured work includes four projects.";
+    },
+  });
+
+  const result = await answerPortfolioQuestion({
+    message: "What projects has Rafa built?",
+    locale: "en",
+    history: [],
+  });
 
   assert.deepEqual(searchOptions, { locale: "en", topK: 100 });
   assert.equal(generationInput.projectDiscovery, true);
@@ -374,8 +385,7 @@ test("RAG chat retrieves three localized chunks and returns public sources", asy
     locale: "es",
     history: [],
   };
-
-  const result = await answerPortfolioQuestion(request, {
+  const answerPortfolioQuestion = createTestChatService({
     async search(message, options) {
       searchCall = { message, options };
       return hits;
@@ -385,6 +395,8 @@ test("RAG chat retrieves three localized chunks and returns public sources", asy
       return "Sí, Rafa tiene experiencia con React.";
     },
   });
+
+  const result = await answerPortfolioQuestion(request);
 
   assert.deepEqual(searchCall, {
     message: request.message,

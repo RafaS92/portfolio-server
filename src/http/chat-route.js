@@ -1,30 +1,23 @@
 import { Router } from "express";
-import { env } from "../config/env.js";
-import { OperationTimeoutError, withTimeout } from "../lib/async.js";
-import { logger } from "../lib/logger.js";
+import { ChatValidationError, parseChatRequest } from "../chat/request.js";
 import {
-  answerPortfolioQuestion,
-  ChatValidationError,
-  parseChatRequest,
-} from "../services/ragChat.js";
+  OperationTimeoutError,
+  withTimeout,
+} from "../platform/timeout.js";
 
 function safeError(res, status, message, requestId) {
   return res.status(status).json({ error: message, requestId });
 }
 
-export function createChatRouter({
-  environment = env,
-  answer = answerPortfolioQuestion,
-  appLogger = logger,
-} = {}) {
+export function createChatRouter({ config, logger, chatService }) {
   const router = Router();
 
   router.post("/chat", async (req, res) => {
     try {
       const request = parseChatRequest(req.body);
       const result = await withTimeout(
-        (signal) => answer(request, { signal }),
-        environment.CHAT_REQUEST_TIMEOUT_MS,
+        (signal) => chatService(request, { signal }),
+        config.CHAT_REQUEST_TIMEOUT_MS,
         "Chat request",
       );
 
@@ -34,7 +27,7 @@ export function createChatRouter({
         return safeError(res, 400, error.message, req.requestId);
       }
       if (error instanceof OperationTimeoutError) {
-        appLogger.error("chat_timeout", { requestId: req.requestId, error });
+        logger.error("chat_timeout", { requestId: req.requestId, error });
         return safeError(
           res,
           504,
@@ -43,7 +36,7 @@ export function createChatRouter({
         );
       }
 
-      appLogger.error("chat_failed", { requestId: req.requestId, error });
+      logger.error("chat_failed", { requestId: req.requestId, error });
       return safeError(
         res,
         500,
@@ -55,5 +48,3 @@ export function createChatRouter({
 
   return router;
 }
-
-export const chatRouter = createChatRouter();

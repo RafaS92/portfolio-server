@@ -1,29 +1,27 @@
-import { env, requireEnvironmentVariables } from "../config/env.js";
-import { withTimeout } from "../lib/async.js";
-import { getPineconeClient } from "../lib/clients.js";
-import { logger } from "../lib/logger.js";
+import { requireEnvironmentVariables } from "../platform/config.js";
+import { withTimeout } from "../platform/timeout.js";
 
 export function createReadinessCheck({
-  environment = env,
-  getClient = getPineconeClient,
-  appLogger = logger,
-  now = Date.now,
+  config,
+  pineconeClient,
+  logger,
+  clock = Date.now,
   successCacheMs = 30_000,
   failureCacheMs = 5_000,
-} = {}) {
+}) {
   let cached;
   let inFlight;
 
   async function performCheck() {
-    const checkedAt = now();
+    const checkedAt = clock();
 
     try {
       requireEnvironmentVariables(
         ["OPENAI_API_KEY", "PINECONE_API_KEY"],
-        environment,
+        config,
       );
     } catch (error) {
-      appLogger.error("readiness_configuration_failed", { error });
+      logger.error("readiness_configuration_failed", { error });
       const result = {
         ready: false,
         services: { configuration: "unavailable", pinecone: "not_checked" },
@@ -34,8 +32,8 @@ export function createReadinessCheck({
 
     try {
       await withTimeout(
-        () => getClient().describeIndex(environment.PINECONE_INDEX),
-        environment.READINESS_TIMEOUT_MS,
+        () => pineconeClient.describeIndex(config.PINECONE_INDEX),
+        config.READINESS_TIMEOUT_MS,
         "Pinecone readiness check",
       );
       const result = {
@@ -45,7 +43,7 @@ export function createReadinessCheck({
       cached = { result, expiresAt: checkedAt + successCacheMs };
       return result;
     } catch (error) {
-      appLogger.error("readiness_pinecone_failed", { error });
+      logger.error("readiness_pinecone_failed", { error });
       const result = {
         ready: false,
         services: { configuration: "ready", pinecone: "unavailable" },
@@ -56,7 +54,7 @@ export function createReadinessCheck({
   }
 
   return async function checkReadiness() {
-    if (cached && now() < cached.expiresAt) return cached.result;
+    if (cached && clock() < cached.expiresAt) return cached.result;
     if (inFlight) return inFlight;
 
     inFlight = performCheck();
@@ -67,5 +65,3 @@ export function createReadinessCheck({
     }
   };
 }
-
-export const checkReadiness = createReadinessCheck();

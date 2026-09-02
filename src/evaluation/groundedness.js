@@ -1,6 +1,4 @@
-import { env } from "../config/env.js";
-import { getOpenAIClient } from "../lib/clients.js";
-import { formatRetrievedContext } from "../services/conversation.js";
+import { formatRetrievedContext } from "../chat/answer-generator.js";
 
 export const DEFAULT_GROUNDEDNESS_THRESHOLDS = Object.freeze({
   groundedness: 3,
@@ -112,51 +110,55 @@ export function scoreGroundednessGrade(
   };
 }
 
-export async function evaluateGroundedAnswer(
-  { question, answer, locale, hits },
-  client = getOpenAIClient(),
-) {
-  if (typeof question !== "string" || !question.trim()) {
-    throw new Error("Groundedness evaluation requires a question.");
-  }
-  if (typeof answer !== "string" || !answer.trim()) {
-    throw new Error("Groundedness evaluation requires an answer.");
-  }
-  if (!new Set(["en", "es"]).has(locale)) {
-    throw new Error('Groundedness evaluation locale must be "en" or "es".');
-  }
-  if (!Array.isArray(hits)) {
-    throw new Error("Groundedness evaluation requires retrieved hits.");
-  }
+export function createGroundednessEvaluator({ openAIClient, model }) {
+  return async function evaluateGroundedAnswer({
+    question,
+    answer,
+    locale,
+    hits,
+  }) {
+    if (typeof question !== "string" || !question.trim()) {
+      throw new Error("Groundedness evaluation requires a question.");
+    }
+    if (typeof answer !== "string" || !answer.trim()) {
+      throw new Error("Groundedness evaluation requires an answer.");
+    }
+    if (!new Set(["en", "es"]).has(locale)) {
+      throw new Error('Groundedness evaluation locale must be "en" or "es".');
+    }
+    if (!Array.isArray(hits)) {
+      throw new Error("Groundedness evaluation requires retrieved hits.");
+    }
 
-  const response = await client.responses.create({
-    model: env.OPENAI_EVAL_MODEL,
-    instructions: GRADER_INSTRUCTIONS,
-    input: JSON.stringify({
-      requestedLanguage: locale === "es" ? "Spanish" : "English",
-      question: question.trim(),
-      portfolioEvidence: formatRetrievedContext(hits),
-      chatbotAnswer: answer.trim(),
-    }),
-    text: { format: GROUNDEDNESS_RESPONSE_FORMAT },
-    max_output_tokens: 500,
-    temperature: 0,
-    store: false,
-  });
+    const response = await openAIClient.responses.create({
+      model,
+      instructions: GRADER_INSTRUCTIONS,
+      input: JSON.stringify({
+        requestedLanguage: locale === "es" ? "Spanish" : "English",
+        question: question.trim(),
+        portfolioEvidence: formatRetrievedContext(hits),
+        chatbotAnswer: answer.trim(),
+      }),
+      text: { format: GROUNDEDNESS_RESPONSE_FORMAT },
+      max_output_tokens: 500,
+      temperature: 0,
+      store: false,
+    });
 
-  if (!response.output_text?.trim()) {
-    throw new Error("OpenAI returned an empty groundedness grade.");
-  }
+    if (!response.output_text?.trim()) {
+      throw new Error("OpenAI returned an empty groundedness grade.");
+    }
 
-  let grade;
-  try {
-    grade = JSON.parse(response.output_text);
-  } catch {
-    throw new Error("OpenAI returned an invalid groundedness grade.");
-  }
+    let grade;
+    try {
+      grade = JSON.parse(response.output_text);
+    } catch {
+      throw new Error("OpenAI returned an invalid groundedness grade.");
+    }
 
-  return {
-    grade: validateGroundednessGrade(grade),
-    usage: response.usage ?? null,
+    return {
+      grade: validateGroundednessGrade(grade),
+      usage: response.usage ?? null,
+    };
   };
 }

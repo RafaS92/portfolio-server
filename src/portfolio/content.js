@@ -8,7 +8,7 @@ const CONTENT_TYPES = new Set([
   "service",
   "skill",
 ]);
-const LOCALES = ["en", "es"];
+export const SUPPORTED_LOCALES = Object.freeze(["en", "es"]);
 const ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const portfolioUrl = new URL("../../content/portfolio.json", import.meta.url);
 
@@ -19,7 +19,7 @@ function assert(condition, message) {
 function validateLocalizedText(value, fieldName) {
   assert(value && typeof value === "object", `${fieldName} must be an object`);
 
-  for (const locale of LOCALES) {
+  for (const locale of SUPPORTED_LOCALES) {
     assert(
       typeof value[locale] === "string" && value[locale].trim().length > 0,
       `${fieldName}.${locale} must be a non-empty string`,
@@ -115,5 +115,3 @@ export function loadPortfolio() {
   const portfolio = JSON.parse(readFileSync(portfolioUrl, "utf8"));
   return validatePortfolio(portfolio);
 }
-
-export const supportedLocales = Object.freeze([...LOCALES]);
