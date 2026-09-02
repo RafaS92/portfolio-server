@@ -32,6 +32,13 @@ npm start
 
 The server runs on `http://localhost:3001` unless `PORT` is configured.
 
+`POST /api/chat` is protected by the configured per-IP rate limit and request
+timeout. JSON bodies exceeding `JSON_BODY_LIMIT` are rejected before reaching
+the chat service. Error responses are safe for visitors and include an
+`x-request-id` header plus a matching `requestId` field when troubleshooting is
+useful. The server also handles SIGTERM and SIGINT gracefully so active
+requests can finish during a hosting restart.
+
 Run the automated tests with:
 
 ```bash

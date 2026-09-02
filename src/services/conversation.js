@@ -37,22 +37,26 @@ export function formatRetrievedContext(hits) {
 export async function generateGroundedAnswer(
   { message, locale, hits, history = [], projectDiscovery = false },
   client = getOpenAIClient(),
+  { signal } = {},
 ) {
   const context = formatRetrievedContext(hits);
-  const response = await client.responses.create({
-    model: env.OPENAI_MODEL,
-    instructions: buildInstructions(locale, { projectDiscovery }),
-    input: [
-      ...history,
-      {
-        role: "user",
-        content: `PORTFOLIO CONTEXT\n${context}\n\nVISITOR QUESTION\n${message}`,
-      },
-    ],
-    max_output_tokens: 250,
-    temperature: 0.2,
-    store: false,
-  });
+  const response = await client.responses.create(
+    {
+      model: env.OPENAI_MODEL,
+      instructions: buildInstructions(locale, { projectDiscovery }),
+      input: [
+        ...history,
+        {
+          role: "user",
+          content: `PORTFOLIO CONTEXT\n${context}\n\nVISITOR QUESTION\n${message}`,
+        },
+      ],
+      max_output_tokens: 250,
+      temperature: 0.2,
+      store: false,
+    },
+    signal ? { signal } : undefined,
+  );
 
   if (!response.output_text?.trim()) {
     throw new Error("OpenAI returned an empty response.");

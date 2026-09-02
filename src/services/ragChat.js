@@ -243,6 +243,7 @@ export async function answerPortfolioQuestion(
   {
     search = searchPortfolio,
     generate = generateGroundedAnswer,
+    signal,
   } = {},
 ) {
   const futureGoal = isFutureGoalQuery(request.message);
@@ -269,7 +270,11 @@ export async function answerPortfolioQuestion(
   const sourceHits = aboutRafa
     ? prioritizeProjectSourceSlots(hits, retrievedHits)
     : hits;
-  const content = await generate({ ...request, hits, projectDiscovery });
+  const content = await generate(
+    { ...request, hits, projectDiscovery },
+    undefined,
+    { signal },
+  );
 
   return {
     content,
