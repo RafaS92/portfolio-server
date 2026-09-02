@@ -1,6 +1,24 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { createLogger, sanitizeLogValue } from "../src/platform/logger.js";
+import {
+  createLogger,
+  formatStartupBanner,
+  sanitizeLogValue,
+} from "../src/platform/logger.js";
+
+test("startup banner displays a friendly local address in green", () => {
+  const banner = formatStartupBanner({
+    host: "0.0.0.0",
+    port: 3001,
+    environment: "development",
+  });
+
+  assert.match(banner, /^\u001B\[32m/);
+  assert.match(banner, /🟢 RafaBot API is running/);
+  assert.match(banner, /http:\/\/localhost:3001/);
+  assert.match(banner, /Mode:  development/);
+  assert.match(banner, /\u001B\[0m$/);
+});
 
 test("structured logger emits JSON records with stable fields", () => {
   const output = [];

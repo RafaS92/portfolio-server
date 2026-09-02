@@ -11,7 +11,10 @@ import {
   loadEnvironment,
   requireEnvironmentVariables,
 } from "./src/platform/config.js";
-import { createLogger } from "./src/platform/logger.js";
+import {
+  createLogger,
+  formatStartupBanner,
+} from "./src/platform/logger.js";
 import { createGracefulShutdown } from "./src/platform/server-lifecycle.js";
 import { createPortfolioChunks } from "./src/portfolio/chunks.js";
 import { loadPortfolio } from "./src/portfolio/content.js";
@@ -60,6 +63,13 @@ const server = app.listen(config.PORT, config.HOST, () => {
     pineconeIndex: config.PINECONE_INDEX,
     pineconeNamespace: config.PINECONE_NAMESPACE,
   });
+  if (process.stdout.isTTY) {
+    console.log(formatStartupBanner({
+      host: config.HOST,
+      port: config.PORT,
+      environment: config.NODE_ENV,
+    }));
+  }
 });
 
 const shutdown = createGracefulShutdown(server, {

@@ -1,4 +1,24 @@
 const SECRET_KEY_PATTERN = /api[-_]?key|authorization|cookie|password|secret|token/i;
+const ANSI_GREEN = "\u001B[32m";
+const ANSI_RESET = "\u001B[0m";
+
+export function formatStartupBanner({
+  host,
+  port,
+  environment,
+  color = true,
+}) {
+  const browserHost = host === "0.0.0.0" || host === "::" ? "localhost" : host;
+  const message = [
+    "",
+    "  🟢 RafaBot API is running",
+    `  ➜  Local: http://${browserHost}:${port}`,
+    `  ➜  Mode:  ${environment}`,
+    "",
+  ].join("\n");
+
+  return color ? `${ANSI_GREEN}${message}${ANSI_RESET}` : message;
+}
 
 function sanitizeString(value, secrets) {
   return secrets.reduce(
