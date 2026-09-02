@@ -21,6 +21,9 @@ Requirements:
 
 Copy `.env.example` to `.env` and replace the placeholder values. The server
 loads `.env` automatically and reports all missing required variables together.
+`CORS_ALLOWED_ORIGINS` is a comma-separated allowlist for frontend URLs. The
+default Pinecone namespace follows `NODE_ENV`, so development uses
+`development-v1` and production uses `production-v1` unless explicitly set.
 
 ```bash
 npm install
@@ -33,6 +36,14 @@ Run the automated tests with:
 
 ```bash
 npm test
+```
+
+Before a future deployment, copy `.env.production.example` to an ignored
+`.env.production`, replace its placeholders, and validate it without starting
+or deploying the application:
+
+```bash
+npm run config:production:validate
 ```
 
 Run the deterministic answer checks after meaningful RAG changes:
