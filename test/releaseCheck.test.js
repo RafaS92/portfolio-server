@@ -1,6 +1,12 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import { test } from "node:test";
-import { buildReleasePlan } from "../scripts/releaseCheck.js";
+import {
+  buildReleasePlan,
+  resolveFrontendDirectory,
+} from "../scripts/releaseCheck.js";
 
 test("default release plan contains only local checks", () => {
   const plan = buildReleasePlan();
@@ -41,4 +47,42 @@ test("frontend build is included only when its directory is configured", () => {
   assert.equal(frontendCheck.label, "Frontend production build");
   assert.deepEqual(frontendCheck.args, ["run", "build"]);
   assert.equal(frontendCheck.cwd.endsWith("portfolio-client"), true);
+});
+
+test("configured frontend directory overrides sibling discovery", () => {
+  const root = path.join(os.tmpdir(), "portfolio-server");
+
+  assert.equal(
+    resolveFrontendDirectory({
+      configuredDirectory: "../custom-frontend",
+      root,
+    }),
+    path.resolve(root, "../custom-frontend"),
+  );
+});
+
+test("frontend directory is discovered beside the backend repository", (t) => {
+  const workspace = fs.mkdtempSync(path.join(os.tmpdir(), "release-check-"));
+  t.after(() => fs.rmSync(workspace, { recursive: true, force: true }));
+
+  const root = path.join(workspace, "portfolio-server");
+  const frontendDirectory = path.join(workspace, "personal-portafolio");
+  fs.mkdirSync(root);
+  fs.mkdirSync(frontendDirectory);
+  fs.writeFileSync(path.join(frontendDirectory, "package.json"), "{}");
+
+  assert.equal(resolveFrontendDirectory({ root }), frontendDirectory);
+});
+
+test("frontend discovery stays optional when the sibling is absent", (t) => {
+  const workspace = fs.mkdtempSync(path.join(os.tmpdir(), "release-check-"));
+  t.after(() => fs.rmSync(workspace, { recursive: true, force: true }));
+
+  assert.equal(
+    resolveFrontendDirectory({
+      root: path.join(workspace, "portfolio-server"),
+      configuredDirectory: "",
+    }),
+    undefined,
+  );
 });

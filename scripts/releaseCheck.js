@@ -7,6 +7,23 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
+const defaultFrontendDirectoryName = "personal-portafolio";
+
+export function resolveFrontendDirectory({
+  configuredDirectory = process.env.RELEASE_FRONTEND_DIR,
+  root = process.cwd(),
+} = {}) {
+  if (configuredDirectory) return path.resolve(root, configuredDirectory);
+
+  const siblingDirectory = path.resolve(
+    root,
+    "..",
+    defaultFrontendDirectoryName,
+  );
+  const siblingPackage = path.join(siblingDirectory, "package.json");
+
+  return fs.existsSync(siblingPackage) ? siblingDirectory : undefined;
+}
 
 export function buildReleasePlan({
   live = false,
@@ -107,26 +124,31 @@ function runCheck(check, root) {
 
 export function runReleaseChecks({
   live = false,
-  frontendDirectory = process.env.RELEASE_FRONTEND_DIR,
+  frontendDirectory,
   productionEnvironmentFile =
     process.env.RELEASE_ENV_FILE ?? ".env.production.example",
   root = process.cwd(),
 } = {}) {
-  if (frontendDirectory) {
+  const resolvedFrontendDirectory = resolveFrontendDirectory({
+    configuredDirectory: frontendDirectory,
+    root,
+  });
+
+  if (resolvedFrontendDirectory) {
     const frontendPackage = path.join(
-      path.resolve(frontendDirectory),
+      resolvedFrontendDirectory,
       "package.json",
     );
     if (!fs.existsSync(frontendPackage)) {
       throw new Error(
-        `RELEASE_FRONTEND_DIR does not contain package.json: ${frontendDirectory}`,
+        `RELEASE_FRONTEND_DIR does not contain package.json: ${resolvedFrontendDirectory}`,
       );
     }
   }
 
   const plan = buildReleasePlan({
     live,
-    frontendDirectory,
+    frontendDirectory: resolvedFrontendDirectory,
     productionEnvironmentFile,
   });
 
@@ -137,9 +159,9 @@ export function runReleaseChecks({
       "\n[release:check] Live RAG evaluations skipped. Use --live only when external API usage is authorized.",
     );
   }
-  if (!frontendDirectory) {
+  if (!resolvedFrontendDirectory) {
     console.log(
-      "[release:check] Frontend build skipped because RELEASE_FRONTEND_DIR is not configured.",
+      `[release:check] Frontend build skipped. Set RELEASE_FRONTEND_DIR or place ${defaultFrontendDirectoryName} beside this repository.`,
     );
   }
   console.log("\n[release:check] All configured checks passed.");

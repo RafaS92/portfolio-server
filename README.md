@@ -82,9 +82,10 @@ usage:
 npm run release:check -- --live
 ```
 
-The frontend is currently a separate repository. Set `RELEASE_FRONTEND_DIR` to
-its absolute local path when you want the same command to include `npm run
-build` there. Use `RELEASE_ENV_FILE=.env.production` to validate a completed,
+The frontend is currently a separate repository. The release check
+automatically includes its production build when a sibling directory named
+`personal-portafolio` is present. Set `RELEASE_FRONTEND_DIR` to override that
+location. Use `RELEASE_ENV_FILE=.env.production` to validate a completed,
 ignored production environment file instead of the safe example template.
 
 Run the deterministic answer checks after meaningful RAG changes:
