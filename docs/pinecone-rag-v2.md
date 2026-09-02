@@ -1,8 +1,7 @@
 # Pinecone RAG v2
 
-This stage adds a Pinecone retrieval path and measures it before removing the
-working Supabase implementation. The new `/api/chat` endpoint now uses Pinecone,
-while the two old Supabase endpoints remain available during frontend migration.
+This stage uses Pinecone for portfolio ingestion and retrieval. The `/api/chat`
+endpoint owns the complete retrieval and answer-generation flow.
 
 ## What happens to the portfolio data
 
@@ -41,9 +40,9 @@ PINECONE_INDEX=rafa-portfolio
 PINECONE_NAMESPACE=development-v1
 ```
 
-`PINECONE_API_KEY` is optional while the server still uses Supabase. It is
-required only for the Pinecone commands. The index and namespace have safe
-defaults, but explicit values make each environment easier to understand.
+`PINECONE_API_KEY` is required for chat and the Pinecone commands. The index and
+namespace have safe defaults, but explicit values make each environment easier
+to understand.
 
 The synchronization command creates an on-demand index if it does not exist.
 It uses Pinecone's `llama-text-embed-v2` model in AWS `us-east-1`, enables
@@ -87,17 +86,3 @@ deletion protection, and makes `locale` filterable.
 The two out-of-scope questions are reported separately. Their top scores will
 help us choose a confidence threshold later; they are not included in recall
 because there is intentionally no correct portfolio chunk for them.
-
-## Why Supabase remains for now
-
-The new chat endpoint uses Pinecone, but the original endpoints still use their
-Supabase retrieval path. That gives us a controlled migration:
-
-1. synchronize Pinecone;
-2. measure retrieval and improve weak chunks or questions;
-3. connect the frontend to the new Pinecone-backed endpoint;
-4. compare complete answers;
-5. remove the legacy embedding and Supabase vector code after cutover.
-
-This avoids changing the visitor experience before we have evidence that the
-new retrieval works better.

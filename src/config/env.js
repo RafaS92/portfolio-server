@@ -96,8 +96,6 @@ export function parseEnvironment(source = process.env) {
     OPENAI_MODEL: source.OPENAI_MODEL ?? "gpt-4o-mini",
     OPENAI_EVAL_MODEL:
       source.OPENAI_EVAL_MODEL ?? source.OPENAI_MODEL ?? "gpt-4o-mini",
-    SUPABASE_URL: source.SUPABASE_URL,
-    SUPABASE_API_KEY: source.SUPABASE_API_KEY,
     PINECONE_API_KEY: source.PINECONE_API_KEY,
     PINECONE_INDEX: source.PINECONE_INDEX ?? "rafa-portfolio",
     PINECONE_NAMESPACE:

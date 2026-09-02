@@ -17,7 +17,6 @@ Requirements:
 - Node.js 22.12 or newer
 - An OpenAI API key
 - A Pinecone API key for RAG v2 synchronization and retrieval
-- A Supabase project only while the temporary legacy chat endpoints are retained
 
 Copy `.env.example` to `.env` and replace the placeholder values. The server
 loads `.env` automatically and reports all missing required variables together.
@@ -163,14 +162,10 @@ commands, and the reason for evaluating before switching the chatbot.
 ## Current API
 
 - `POST /api/chat` retrieves Pinecone context and generates a grounded answer.
-- `POST /api/createEmbedding` creates an embedding for a visitor question.
-- `POST /api/findNearestMatch` retrieves portfolio context and generates the
-  RafaBot answer.
 - `GET /healthz` reports whether the HTTP process is running.
 - `GET /readyz` reports whether configuration and Pinecone are ready for chat
   traffic.
 
-The portfolio frontend now uses only `POST /api/chat`. The last two POST
-endpoints remain temporarily as a rollback path until the deployed frontend is
-verified. See [RAG v2 chat API](docs/rag-v2-chat-api.md) for the request,
-response, conversation history, and interactive source metadata contract.
+The portfolio frontend uses `POST /api/chat`. See
+[RAG v2 chat API](docs/rag-v2-chat-api.md) for the request, response,
+conversation history, and interactive source metadata contract.

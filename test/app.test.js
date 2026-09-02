@@ -3,8 +3,6 @@ import { once } from "node:events";
 import { after, before, test } from "node:test";
 
 process.env.OPENAI_API_KEY ??= "test-openai-key";
-process.env.SUPABASE_URL ??= "https://example.supabase.co";
-process.env.SUPABASE_API_KEY ??= "test-supabase-key";
 
 const { createApp } = await import("../src/app.js");
 const { env } = await import("../src/config/env.js");
@@ -60,30 +58,6 @@ test("GET /healthz reports that the process is healthy", async () => {
   assert.deepEqual(body, { status: "ok" });
   assert.ok(response.headers.get("x-request-id"));
   assert.equal(response.headers.get("x-powered-by"), null);
-});
-
-test("POST /api/createEmbedding rejects a missing message", async () => {
-  const response = await fetch(`${baseUrl}/api/createEmbedding`, {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({}),
-  });
-  const body = await response.json();
-
-  assert.equal(response.status, 400);
-  assert.deepEqual(body, { error: "Missing or invalid 'message'." });
-});
-
-test("POST /api/createEmbedding rejects a non-string message", async () => {
-  const response = await fetch(`${baseUrl}/api/createEmbedding`, {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({ message: 42 }),
-  });
-  const body = await response.json();
-
-  assert.equal(response.status, 400);
-  assert.deepEqual(body, { error: "Missing or invalid 'message'." });
 });
 
 test("POST /api/chat rejects a missing message before calling external services", async () => {

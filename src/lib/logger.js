@@ -63,9 +63,7 @@ export function createLogger({
 }
 
 export const logger = createLogger({
-  secrets: [
-    env.OPENAI_API_KEY,
-    env.PINECONE_API_KEY,
-    env.SUPABASE_API_KEY,
-  ].filter((value) => typeof value === "string" && value.length > 0),
+  secrets: [env.OPENAI_API_KEY, env.PINECONE_API_KEY].filter(
+    (value) => typeof value === "string" && value.length > 0,
+  ),
 });

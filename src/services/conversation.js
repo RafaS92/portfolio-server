@@ -1,5 +1,4 @@
 import { getOpenAIClient } from "../lib/clients.js";
-import { logger } from "../lib/logger.js";
 import { env } from "../config/env.js";
 
 const FALLBACKS = {
@@ -64,29 +63,4 @@ export async function generateGroundedAnswer(
   }
 
   return response.output_text.trim();
-}
-
-export async function generateConversation(match, message) {
-  try {
-    const response = await getOpenAIClient().chat.completions.create({
-      model: env.OPENAI_MODEL,
-      messages: [
-        {
-          role: "system",
-          content:
-            "You are RafaBot. Answer briefly using only the supplied portfolio context.",
-        },
-        {
-          role: "user",
-          content: `Context: ${match}\n\nQuestion: ${message}`,
-        },
-      ],
-      temperature: 0.2,
-    });
-
-    return response.choices[0].message.content;
-  } catch (error) {
-    logger.error("legacy_generation_failed", { error });
-    return "Sorry, something went wrong while generating the conversation.";
-  }
 }

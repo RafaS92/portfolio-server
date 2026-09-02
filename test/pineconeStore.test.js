@@ -2,8 +2,6 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 
 process.env.OPENAI_API_KEY ??= "test-openai-key";
-process.env.SUPABASE_URL ??= "https://example.supabase.co";
-process.env.SUPABASE_API_KEY ??= "test-supabase-key";
 
 const {
   RERANK_CANDIDATE_TOP_K,
