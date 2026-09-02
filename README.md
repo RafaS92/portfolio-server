@@ -61,6 +61,32 @@ or deploying the application:
 npm run config:production:validate
 ```
 
+## Release readiness
+
+Run every safe local readiness check with one command:
+
+```bash
+npm run release:check
+```
+
+This validates the production configuration template, JavaScript syntax, Git
+whitespace, portfolio content, all evaluation fixtures, and the complete test
+suite. It does not call OpenAI or Pinecone, synchronize data, merge branches,
+or deploy anything.
+
+Live retrieval, answer, and multi-turn evaluations require an explicit flag
+because they use the configured Pinecone and OpenAI services and may incur API
+usage:
+
+```bash
+npm run release:check -- --live
+```
+
+The frontend is currently a separate repository. Set `RELEASE_FRONTEND_DIR` to
+its absolute local path when you want the same command to include `npm run
+build` there. Use `RELEASE_ENV_FILE=.env.production` to validate a completed,
+ignored production environment file instead of the safe example template.
+
 Run the deterministic answer checks after meaningful RAG changes:
 
 ```bash

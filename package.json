@@ -18,7 +18,9 @@
     "evals:answers:judge": "node scripts/evaluateGroundedness.js",
     "evals:conversation:validate": "node scripts/validateConversationEvals.js",
     "evals:conversation": "node scripts/evaluateConversations.js",
-    "config:production:validate": "node scripts/validateProductionEnv.js"
+    "config:production:validate": "node scripts/validateProductionEnv.js",
+    "syntax:validate": "node scripts/validateSyntax.js",
+    "release:check": "node scripts/releaseCheck.js"
   },
   "engines": {
     "node": ">=22.12.0"
