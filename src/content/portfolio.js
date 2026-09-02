@@ -40,7 +40,6 @@ export function validatePortfolio(portfolio) {
   assert(Array.isArray(portfolio.items), "items must be an array");
 
   const itemIds = new Set();
-  const featuredRanks = new Set();
   const archiveOrders = new Set();
 
   for (const item of portfolio.items) {
@@ -64,19 +63,6 @@ export function validatePortfolio(portfolio) {
         item.archiveOrder === undefined,
         `${item.id}.archiveOrder is only valid on a project`,
       );
-    }
-    if (item.featuredRank !== undefined) {
-      assert(
-        item.type === "project" &&
-          Number.isInteger(item.featuredRank) &&
-          item.featuredRank > 0,
-        `${item.id}.featuredRank must be a positive integer on a project`,
-      );
-      assert(
-        !featuredRanks.has(item.featuredRank),
-        `duplicate featuredRank ${item.featuredRank}`,
-      );
-      featuredRanks.add(item.featuredRank);
     }
     validateLocalizedText(item.title, `${item.id}.title`);
     validateStringArray(item.tags, `${item.id}.tags`);
