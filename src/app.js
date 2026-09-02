@@ -1,9 +1,15 @@
 import express from "express";
 import cors from "cors";
 import { env } from "./config/env.js";
-import { createRateLimiter, requestId } from "./middleware/requestProtection.js";
+import { logger } from "./lib/logger.js";
+import {
+  createRateLimiter,
+  createRequestLogger,
+  requestId,
+} from "./middleware/requestProtection.js";
 import { createChatRouter } from "./routes/chat.js";
-import { healthRouter } from "./routes/health.js";
+import { createHealthRouter } from "./routes/health.js";
+import { checkReadiness } from "./services/readiness.js";
 
 class CorsOriginError extends Error {
   constructor() {
@@ -12,13 +18,19 @@ class CorsOriginError extends Error {
   }
 }
 
-export function createApp({ environment = env, chatAnswer } = {}) {
+export function createApp({
+  environment = env,
+  chatAnswer,
+  appLogger = logger,
+  readinessCheck = checkReadiness,
+} = {}) {
   const app = express();
   const allowedOrigins = new Set(environment.CORS_ALLOWED_ORIGINS);
 
   app.disable("x-powered-by");
   if (environment.TRUST_PROXY) app.set("trust proxy", 1);
   app.use(requestId);
+  app.use(createRequestLogger(appLogger));
   app.use(
     cors({
       origin(origin, callback) {
@@ -28,7 +40,7 @@ export function createApp({ environment = env, chatAnswer } = {}) {
     }),
   );
   app.use(express.json({ limit: environment.JSON_BODY_LIMIT }));
-  app.use(healthRouter);
+  app.use(createHealthRouter({ checkReadiness: readinessCheck }));
   app.use(
     "/api/chat",
     createRateLimiter({
@@ -40,6 +52,7 @@ export function createApp({ environment = env, chatAnswer } = {}) {
     "/api",
     createChatRouter({
       environment,
+      appLogger,
       ...(chatAnswer ? { answer: chatAnswer } : {}),
     }),
   );
@@ -62,9 +75,9 @@ export function createApp({ environment = env, chatAnswer } = {}) {
           : "Internal server error.";
 
     if (status === 500) {
-      console.error("Unhandled request error.", {
+      appLogger.error("unhandled_request_error", {
         requestId: req.requestId,
-        errorName: error?.name ?? "Error",
+        error,
       });
     }
     return res.status(status).json({

@@ -6,6 +6,23 @@ export function requestId(req, res, next) {
   next();
 }
 
+export function createRequestLogger(appLogger, now = performance.now.bind(performance)) {
+  return function requestLogger(req, res, next) {
+    const startedAt = now();
+
+    res.on("finish", () => {
+      appLogger.info("http_request", {
+        requestId: req.requestId,
+        method: req.method,
+        path: req.path,
+        statusCode: res.statusCode,
+        durationMs: Math.max(0, Math.round(now() - startedAt)),
+      });
+    });
+    next();
+  };
+}
+
 export function createRateLimiter({ windowMs, maxRequests, now = Date.now }) {
   const clients = new Map();
 

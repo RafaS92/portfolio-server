@@ -39,6 +39,14 @@ the chat service. Error responses are safe for visitors and include an
 useful. The server also handles SIGTERM and SIGINT gracefully so active
 requests can finish during a hosting restart.
 
+`GET /healthz` is a lightweight liveness check. `GET /readyz` additionally
+verifies required configuration and Pinecone index connectivity, returning 503
+when RafaBot cannot serve grounded answers. Successful checks are cached for 30
+seconds and failed checks for 5 seconds to avoid unnecessary Pinecone traffic.
+Application logs are newline-delimited JSON with request IDs, status codes, and
+durations. Chat bodies are not logged, and configured API keys plus sensitive
+fields are redacted.
+
 Run the automated tests with:
 
 ```bash
@@ -132,6 +140,8 @@ commands, and the reason for evaluating before switching the chatbot.
 - `POST /api/findNearestMatch` retrieves portfolio context and generates the
   RafaBot answer.
 - `GET /healthz` reports whether the HTTP process is running.
+- `GET /readyz` reports whether configuration and Pinecone are ready for chat
+  traffic.
 
 The portfolio frontend now uses only `POST /api/chat`. The last two POST
 endpoints remain temporarily as a rollback path until the deployed frontend is

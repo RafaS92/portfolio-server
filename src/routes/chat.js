@@ -2,6 +2,7 @@ import { Router } from "express";
 import { env } from "../config/env.js";
 import { OperationTimeoutError, withTimeout } from "../lib/async.js";
 import { getOpenAIClient, getSupabaseClient } from "../lib/clients.js";
+import { logger } from "../lib/logger.js";
 import { generateConversation } from "../services/conversation.js";
 import {
   answerPortfolioQuestion,
@@ -13,16 +14,10 @@ function safeError(res, status, message, requestId) {
   return res.status(status).json({ error: message, requestId });
 }
 
-function logFailure(event, requestId, error) {
-  console.error(event, {
-    requestId,
-    errorName: error?.name ?? "Error",
-  });
-}
-
 export function createChatRouter({
   environment = env,
   answer = answerPortfolioQuestion,
+  appLogger = logger,
 } = {}) {
   const router = Router();
 
@@ -41,7 +36,7 @@ export function createChatRouter({
         return safeError(res, 400, error.message, req.requestId);
       }
       if (error instanceof OperationTimeoutError) {
-        logFailure("Chat request timed out.", req.requestId, error);
+        appLogger.error("chat_timeout", { requestId: req.requestId, error });
         return safeError(
           res,
           504,
@@ -50,7 +45,7 @@ export function createChatRouter({
         );
       }
 
-      logFailure("Chat request failed.", req.requestId, error);
+      appLogger.error("chat_failed", { requestId: req.requestId, error });
       return safeError(
         res,
         500,
@@ -74,7 +69,10 @@ export function createChatRouter({
 
       return res.json({ embedding: embeddingResponse.data[0].embedding });
     } catch (error) {
-      logFailure("Legacy embedding request failed.", req.requestId, error);
+      appLogger.error("legacy_embedding_failed", {
+        requestId: req.requestId,
+        error,
+      });
       return safeError(
         res,
         500,
@@ -99,7 +97,10 @@ export function createChatRouter({
 
       return res.json({ content: result });
     } catch (error) {
-      logFailure("Legacy nearest-match request failed.", req.requestId, error);
+      appLogger.error("legacy_match_failed", {
+        requestId: req.requestId,
+        error,
+      });
       return safeError(
         res,
         500,

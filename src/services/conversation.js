@@ -1,4 +1,5 @@
 import { getOpenAIClient } from "../lib/clients.js";
+import { logger } from "../lib/logger.js";
 import { env } from "../config/env.js";
 
 const FALLBACKS = {
@@ -85,7 +86,7 @@ export async function generateConversation(match, message) {
 
     return response.choices[0].message.content;
   } catch (error) {
-    console.error("Error in generateConversation:", error);
+    logger.error("legacy_generation_failed", { error });
     return "Sorry, something went wrong while generating the conversation.";
   }
 }
