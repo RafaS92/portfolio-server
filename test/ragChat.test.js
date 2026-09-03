@@ -35,7 +35,7 @@ test("follow-up retrieval includes the previous user question", () => {
         { role: "assistant", content: "Rafa built it from scratch." },
       ],
     }),
-    "Tell me about the Load Balancer project.\nFollow-up: What technologies did he use for it?",
+    "Tell me about the Load Balancer project.\nFollow-up about Rafa: What technologies did he use for it?",
   );
 });
 
@@ -43,12 +43,28 @@ test("standalone questions do not inherit unrelated conversation topics", () => 
   assert.equal(
     buildRetrievalQuery({
       message: "¿Qué proyecto permite enviar mensajes en tiempo real?",
+      locale: "es",
       history: [
         { role: "user", content: "Tell me about the Shoptastic project." },
         { role: "assistant", content: "Shoptastic is an e-commerce site." },
       ],
     }),
-    "¿Qué proyecto permite enviar mensajes en tiempo real?",
+    "Sobre Rafa y su portafolio: ¿Qué proyecto permite enviar mensajes en tiempo real?",
+  );
+});
+
+test("pronouns without history default to Rafa", () => {
+  assert.equal(
+    buildRetrievalQuery({ message: "Tell me his job", history: [] }),
+    "About Rafa and his portfolio: Tell me his job",
+  );
+  assert.equal(
+    buildRetrievalQuery({
+      message: "Cuéntame sobre su trabajo",
+      locale: "es",
+      history: [],
+    }),
+    "Sobre Rafa y su portafolio: Cuéntame sobre su trabajo",
   );
 });
 
@@ -87,7 +103,9 @@ test("broad project questions use featured discovery while named projects do not
 
 test("recognizes the guided About Rafa questions in both languages", () => {
   assert.equal(retrievalPolicy.isAboutRafaQuery("Who is Rafa?"), true);
+  assert.equal(retrievalPolicy.isAboutRafaQuery("Tell me about Rafa"), true);
   assert.equal(retrievalPolicy.isAboutRafaQuery("¿Quién es Rafa?"), true);
+  assert.equal(retrievalPolicy.isAboutRafaQuery("Cuéntame sobre Rafa"), true);
   assert.equal(retrievalPolicy.isAboutRafaQuery("Who is Rafael Nadal?"), false);
 });
 

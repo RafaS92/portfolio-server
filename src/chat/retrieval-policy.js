@@ -2,7 +2,15 @@ const PROJECT_DISCOVERY_TOP_K = 100;
 const PROJECT_RECOMMENDATION_LIMIT = 4;
 const PROJECT_DISCOVERY_PATTERN =
   /\b(projects?|portfolio work|work samples?|showcase|built|build|created|recommend(?:ed|ation|ations)?|suggest(?:ed|ion|ions)?|proyectos?|trabajos?|muestras?|construy[oó]|cre[oó]|recomienda|recomendar|sugiere|sugerencias)\b/iu;
-const ABOUT_RAFA_QUERIES = new Set(["who is rafa", "quien es rafa"]);
+const ABOUT_RAFA_QUERIES = new Set([
+  "who is rafa",
+  "tell me about rafa",
+  "describe rafa",
+  "quien es rafa",
+  "cuentame sobre rafa",
+  "hablame de rafa",
+  "describe a rafa",
+]);
 const FUTURE_GOAL_PATTERNS = [
   /\b(?:future|long term|career|professional) (?:goal|goals|plan|plans|direction|aspiration|aspirations|project|projects)\b/u,
   /\b(?:working|work) toward\b/u,
@@ -22,6 +30,7 @@ const GUIDED_TOPIC_QUERIES = new Map([
 ]);
 const FOLLOW_UP_REFERENCE_PATTERN =
   /\b(it|its|that|this|those|these|he|his|she|her|they|them|their|also|more)\b|\b(eso|esa|ese|esto|este|esta|estos|estas|él|ella|ellos|ellas|su|sus|también|más)\b/iu;
+const EXPLICIT_RAFA_PATTERN = /\bRafa(?:el)?\b/iu;
 
 function normalizeReference(value) {
   return value
@@ -46,16 +55,24 @@ function toLocalHit(chunk) {
   };
 }
 
-export function buildRetrievalQuery({ message, history = [] }) {
-  if (!FOLLOW_UP_REFERENCE_PATTERN.test(message)) return message;
-
+export function buildRetrievalQuery({ message, locale = "en", history = [] }) {
   const previousUserMessage = [...history]
     .reverse()
     .find((entry) => entry.role === "user")?.content;
 
-  return previousUserMessage
-    ? `${previousUserMessage}\nFollow-up: ${message}`
-    : message;
+  if (FOLLOW_UP_REFERENCE_PATTERN.test(message) && previousUserMessage) {
+    const followUpLabel = locale === "es"
+      ? "Seguimiento sobre Rafa"
+      : "Follow-up about Rafa";
+    return `${previousUserMessage}\n${followUpLabel}: ${message}`;
+  }
+
+  if (EXPLICIT_RAFA_PATTERN.test(message)) return message;
+
+  const subjectLabel = locale === "es"
+    ? "Sobre Rafa y su portafolio"
+    : "About Rafa and his portfolio";
+  return `${subjectLabel}: ${message}`;
 }
 
 export function createRetrievalPolicy({ portfolio, chunks }) {

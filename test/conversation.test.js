@@ -2,7 +2,9 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import {
   createAnswerGenerator,
+  enforceFollowUpScope,
   formatRetrievedContext,
+  OUT_OF_SCOPE_ANSWERS,
 } from "../src/chat/answer-generator.js";
 
 test("retrieved chunks are clearly separated in model context", () => {
@@ -48,6 +50,55 @@ test("grounded generation uses the Responses API without storing responses", asy
   assert.equal(request.store, false);
   assert.equal(request.temperature, 0.2);
   assert.match(request.instructions, /Use only facts supported/);
+  assert.match(request.instructions, /clearly unrelated to Rafa or his portfolio/);
+  assert.match(request.instructions, new RegExp(OUT_OF_SCOPE_ANSWERS.en.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  assert.match(request.instructions, /interpret omitted human subjects and pronouns/);
+  assert.match(request.instructions, /Every question you ask must explicitly contain the name "Rafa"/);
   assert.match(request.input.at(-1).content, /PORTFOLIO CONTEXT/);
   assert.match(request.input.at(-1).content, /Who is Rafa\?/);
+});
+
+test("out-of-scope redirects are localized and remain unchanged", () => {
+  assert.equal(
+    enforceFollowUpScope(OUT_OF_SCOPE_ANSWERS.en, "en"),
+    "Sorry, I can't answer that, but I can tell you about Rafa. Tell me what you'd like to know.",
+  );
+  assert.equal(
+    enforceFollowUpScope(OUT_OF_SCOPE_ANSWERS.es, "es"),
+    "Lo siento, no puedo responder eso, pero puedo contarte sobre Rafa. Dime qué te gustaría saber.",
+  );
+});
+
+test("visitor-directed follow-up questions are removed from grounded answers", () => {
+  assert.equal(
+    enforceFollowUpScope(
+      "Rafa's favorite foods include tacos, pho, wings, and pozole. What is your favorite food?",
+      "en",
+    ),
+    "Rafa's favorite foods include tacos, pho, wings, and pozole.",
+  );
+  assert.equal(
+    enforceFollowUpScope(
+      "A Rafa le gustan los tacos y el pozole. ¿Cuál es tu comida favorita?",
+      "es",
+    ),
+    "A Rafa le gustan los tacos y el pozole.",
+  );
+});
+
+test("follow-up questions explicitly about Rafa are preserved", () => {
+  assert.equal(
+    enforceFollowUpScope(
+      "Rafa enjoys cooking Mexican food. Would you like to know what Rafa likes to cook?",
+      "en",
+    ),
+    "Rafa enjoys cooking Mexican food. Would you like to know what Rafa likes to cook?",
+  );
+});
+
+test("an answer containing only a visitor-directed question becomes the fallback", () => {
+  assert.equal(
+    enforceFollowUpScope("What is your favorite food?", "en"),
+    "Sorry, I don't have that information in Rafa's portfolio. Please ask Rafa directly.",
+  );
 });
