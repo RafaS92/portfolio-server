@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import OpenAI from "openai";
 import { createClient } from "@supabase/supabase-js";
+import { buildRetrievalQuery } from "./chat-utils.js";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -57,6 +58,8 @@ const chatMessages = [
       - If the user says "My name is X", remember it for the rest of the conversation.
       - When asked "What is my name?", respond with the stored name.
       - Never invent info outside Context.
+      - Treat short conversational phrases and statements as requests even when they do not contain a question mark. For example, after discussing Rafa, "his last job" means "Tell me about Rafa's most recent job."
+      - Resolve pronouns such as "he" and "his" from the conversation. When the conversation is about Rafa, assume those pronouns refer to Rafa unless the visitor clearly names someone else.
       - Keep every follow-up focused on Rafa. Never ask the visitor about their own preferences, experiences, background, or personal life.
       - Good follow-ups include "Would you like to know more about Rafa's favorite foods?" and "Would you like to hear about another project Rafa worked on?"
       - Do not ask questions such as "What about you?", "What is your favorite food?", or their equivalents in another language.
@@ -106,7 +109,7 @@ app.post("/api/createEmbedding", async (req, res) => {
 
     const embeddingResponse = await openai.embeddings.create({
       model: "text-embedding-ada-002",
-      input: message,
+      input: buildRetrievalQuery(message),
     });
 
     res.json({ embedding: embeddingResponse.data[0].embedding });
@@ -120,13 +123,17 @@ app.post("/api/findNearestMatch", async (req, res) => {
   try {
     const { embedding, message } = req.body;
 
-    const { data } = await supabase.rpc("match_documents", {
+    const { data, error } = await supabase.rpc("match_documents", {
       query_embedding: embedding,
       match_threshold: 0.5,
       match_count: 1,
     });
 
-    const match = data[0].content;
+    if (error) {
+      throw error;
+    }
+
+    const match = data?.[0]?.content ?? "";
 
     const result = await generateConversation(match, message);
 
