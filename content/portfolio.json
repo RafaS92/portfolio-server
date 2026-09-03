@@ -1,0 +1,1144 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "profile-overview",
+      "type": "profile",
+      "title": {
+        "en": "About Rafa",
+        "es": "Sobre Rafa"
+      },
+      "tags": ["biography", "personal"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "career-change",
+          "topic": "career journey",
+          "text": {
+            "en": "Rafa started coding in 2019 after deciding to change careers. His journey began with a simple Hello World and grew into a passion for building impactful software. Although he studied business management, he taught himself to code so he could create meaningful solutions.",
+            "es": "Rafa comenzó a programar en 2019 después de decidir cambiar de carrera. Su camino comenzó con un sencillo Hello World y se convirtió en una pasión por crear software de impacto. Aunque estudió administración de empresas, aprendió programación por su cuenta para poder crear soluciones significativas."
+          }
+        },
+        {
+          "id": "engineering-interests",
+          "topic": "engineering interests",
+          "text": {
+            "en": "Rafa is a full-stack engineer who enjoys building projects from scratch, solving complex problems, exploring new technologies, and designing user experiences from initial concept through launch. He is especially interested in responsive applications and visually engaging interfaces.",
+            "es": "Rafa es un ingeniero full stack que disfruta crear proyectos desde cero, resolver problemas complejos, explorar nuevas tecnologías y diseñar experiencias de usuario desde el concepto inicial hasta el lanzamiento. Le interesan especialmente las aplicaciones responsivas y las interfaces visualmente atractivas."
+          },
+          "technologies": ["TypeScript", "Angular", "React", "Node.js", "OpenAI API"]
+        },
+        {
+          "id": "future-career-goal",
+          "topic": "future career goals and professional direction",
+          "text": {
+            "en": "Rafa's long-term goal is to grow into a Staff Software Engineer and eventually a Software Architect, combining strong software engineering fundamentals with advanced artificial intelligence expertise. He is expanding his experience in AI-powered applications, agent-based systems, RAG architectures, workflow automation, and the integration of AI capabilities into real-world products. His objective is not simply to build AI features, but to design scalable systems that use AI to solve meaningful business problems, improve processes, and deliver measurable value to companies and users. As he progresses toward Staff and Architect-level roles, he is strengthening his knowledge of system design, cloud architecture, distributed systems, software architecture, technical leadership, and AI system design. Ultimately, he aims to lead technically complex projects from architecture through implementation while helping teams build reliable, scalable, and impactful software.",
+            "es": "El objetivo profesional a largo plazo de Rafa es crecer hasta convertirse en Staff Software Engineer y, posteriormente, en Software Architect, combinando fundamentos sólidos de ingeniería de software con conocimientos avanzados de inteligencia artificial. Está ampliando su experiencia en aplicaciones impulsadas por IA, sistemas basados en agentes, arquitecturas RAG, automatización de flujos de trabajo y la integración de capacidades de IA en productos reales. Su objetivo no es simplemente crear funciones de IA, sino diseñar sistemas escalables que utilicen IA para resolver problemas empresariales relevantes, mejorar procesos y generar valor medible para las empresas y sus usuarios. A medida que avanza hacia puestos de nivel Staff y Architect, está fortaleciendo sus conocimientos de diseño de sistemas, arquitectura en la nube, sistemas distribuidos, arquitectura de software, liderazgo técnico y diseño de sistemas de IA. En última instancia, aspira a liderar proyectos técnicamente complejos desde la arquitectura hasta la implementación, ayudando a los equipos a crear software confiable, escalable y de alto impacto."
+          },
+          "technologies": ["AI Engineering", "AI Agents", "RAG", "Workflow Automation", "System Design", "Cloud Architecture", "Distributed Systems", "Software Architecture", "AI System Design"],
+          "tags": ["career goals", "Staff Software Engineer", "Software Architect", "technical leadership", "business value"]
+        },
+        {
+          "id": "professional-summary",
+          "topic": "professional background and software engineering profile",
+          "text": {
+            "en": "Rafa is a Full Stack Software Engineer with 5 years of professional experience building scalable web applications, data-driven platforms, APIs, internal tools, and customer-facing products. His experience spans frontend development with React, Angular, TypeScript, and JavaScript; backend development with Node.js, C#, .NET, Python, and FastAPI; and databases including SQL Server, MongoDB, MySQL, and Neo4j. He has worked on production systems, geospatial applications, database optimization, application modernization, and technical debt reduction. More recently, he has expanded his work into AI engineering, including RAG systems, AI agents, workflow automation, OpenAI APIs, and AI-assisted software development.",
+            "es": "Rafa es Full Stack Software Engineer con 5 años de experiencia profesional desarrollando aplicaciones web escalables, plataformas basadas en datos, APIs, herramientas internas y productos orientados a clientes. Su experiencia incluye desarrollo frontend con React, Angular, TypeScript y JavaScript; desarrollo backend con Node.js, C#, .NET, Python y FastAPI; y bases de datos como SQL Server, MongoDB, MySQL y Neo4j. Ha trabajado con sistemas en producción, aplicaciones geoespaciales, optimización de bases de datos, modernización de aplicaciones y reducción de deuda técnica. Más recientemente, ha ampliado su experiencia hacia AI Engineering, incluyendo sistemas RAG, agentes de IA, automatización de flujos de trabajo, OpenAI APIs y desarrollo de software asistido por IA."
+          },
+          "technologies": ["React", "Angular", "TypeScript", "JavaScript", "Node.js", "C#", ".NET", "Python", "FastAPI", "SQL Server", "MongoDB", "Neo4j", "RAG", "AI Agents"],
+          "tags": ["Full Stack Software Engineer", "software engineering", "AI engineering", "web applications", "remote engineer"]
+        },
+        {
+          "id": "current-focus",
+          "topic": "current professional development and technical focus",
+          "text": {
+            "en": "Rafa is currently focused on strengthening both advanced software engineering and AI engineering capabilities. He is building AI-powered applications using Python, FastAPI, OpenAI APIs, vector databases, RAG workflows, AI agents, and multi-step automation workflows. In parallel, he is developing deeper expertise in system design, software architecture, cloud architecture, distributed systems, and technical leadership as he works toward Staff Software Engineer and Software Architect responsibilities.",
+            "es": "Actualmente, Rafa está enfocado en fortalecer tanto sus capacidades avanzadas de ingeniería de software como de AI Engineering. Está desarrollando aplicaciones impulsadas por IA utilizando Python, FastAPI, OpenAI APIs, bases de datos vectoriales, flujos RAG, agentes de IA y automatizaciones de múltiples pasos. Paralelamente, está profundizando sus conocimientos en diseño de sistemas, arquitectura de software, arquitectura cloud, sistemas distribuidos y liderazgo técnico mientras avanza hacia responsabilidades de Staff Software Engineer y Software Architect."
+          },
+          "technologies": ["Python", "FastAPI", "OpenAI APIs", "Vector Databases", "RAG", "AI Agents", "Workflow Automation", "System Design", "Software Architecture"],
+          "tags": ["current focus", "professional development", "AI engineering", "system design", "architecture"]
+        },
+        {
+          "id": "availability",
+          "topic": "employment availability and preferred work arrangements",
+          "text": {
+            "en": "Rafa is open to new software engineering opportunities and is primarily targeting remote positions in the United States. His strongest targets are full-time and contract opportunities where he can contribute as a Full Stack Software Engineer, Senior Software Engineer, Senior Full Stack Engineer, or in roles combining software development with AI engineering. Remote work is strongly preferred, and Rafa has several years of experience collaborating successfully in fully remote engineering teams.",
+            "es": "Rafa está abierto a nuevas oportunidades de ingeniería de software y busca principalmente posiciones remotas en Estados Unidos. Sus principales objetivos son oportunidades full-time o contract donde pueda contribuir como Full Stack Software Engineer, Senior Software Engineer, Senior Full Stack Engineer o en posiciones que combinen desarrollo de software con AI Engineering. El trabajo remoto es su modalidad preferida y Rafa cuenta con varios años de experiencia colaborando exitosamente dentro de equipos de ingeniería completamente remotos."
+          },
+          "technologies": [],
+          "tags": ["open to work", "remote", "full-time", "contract", "United States"]
+        },
+        {
+          "id": "work-authorization",
+          "topic": "United States work authorization and sponsorship",
+          "text": {
+            "en": "Rafa is a U.S. citizen and is authorized to work in the United States without employer sponsorship. He does not require current or future visa sponsorship for U.S.-based employment.",
+            "es": "Rafa es ciudadano estadounidense y está autorizado para trabajar en Estados Unidos sin patrocinio por parte del empleador. No requiere patrocinio de visa actualmente ni en el futuro para trabajar en Estados Unidos."
+          },
+          "technologies": [],
+          "tags": ["US citizen", "work authorization", "no sponsorship required", "United States"]
+        },
+        {
+          "id": "preferred-roles",
+          "topic": "target software engineering roles",
+          "text": {
+            "en": "Rafa is primarily interested in Senior Software Engineer, Senior Full Stack Engineer, Full Stack Software Engineer, and frontend-heavy full-stack positions. He is particularly interested in roles involving React, TypeScript, JavaScript, Node.js, C#/.NET, APIs, cloud technologies, data-driven applications, and AI-assisted or AI-powered products. Longer term, he is progressing toward Staff Software Engineer and Software Architect roles with greater responsibility for architecture, technical direction, and complex system design.",
+            "es": "Rafa está principalmente interesado en posiciones de Senior Software Engineer, Senior Full Stack Engineer, Full Stack Software Engineer y roles full-stack con fuerte enfoque frontend. Tiene especial interés en posiciones relacionadas con React, TypeScript, JavaScript, Node.js, C#/.NET, APIs, tecnologías cloud, aplicaciones basadas en datos y productos impulsados o asistidos por IA. A largo plazo, está avanzando hacia posiciones de Staff Software Engineer y Software Architect con mayor responsabilidad sobre arquitectura, dirección técnica y diseño de sistemas complejos."
+          },
+          "technologies": ["React", "TypeScript", "JavaScript", "Node.js", "C#", ".NET", "Cloud", "AI Engineering"],
+          "tags": ["preferred roles", "Senior Software Engineer", "Senior Full Stack Engineer", "Staff Software Engineer", "Software Architect"]
+        },
+        {
+          "id": "technical-strengths",
+          "topic": "strongest technical areas",
+          "text": {
+            "en": "Rafa's strongest technical areas are modern frontend and full-stack application development, backend and data integration, and increasingly AI-powered software development. He has extensive hands-on experience with React, Angular, TypeScript, JavaScript, Node.js, C#/.NET, REST APIs, SQL Server, MongoDB, and Neo4j. He has also worked on performance optimization, database troubleshooting, application modernization, production support, geospatial visualization, testing, and CI/CD. His growing AI engineering stack includes Python, FastAPI, OpenAI APIs, RAG, agent orchestration, prompt engineering, and workflow automation.",
+            "es": "Las áreas técnicas más fuertes de Rafa son el desarrollo moderno frontend y full-stack, la integración backend y de datos, y cada vez más el desarrollo de software impulsado por IA. Cuenta con amplia experiencia práctica en React, Angular, TypeScript, JavaScript, Node.js, C#/.NET, REST APIs, SQL Server, MongoDB y Neo4j. También ha trabajado en optimización de rendimiento, resolución de problemas de bases de datos, modernización de aplicaciones, soporte de producción, visualización geoespacial, testing y CI/CD. Su creciente stack de AI Engineering incluye Python, FastAPI, OpenAI APIs, RAG, orquestación de agentes, prompt engineering y automatización de workflows."
+          },
+          "technologies": ["React", "Angular", "TypeScript", "JavaScript", "Node.js", "C#", ".NET", "REST APIs", "SQL Server", "MongoDB", "Neo4j", "Python", "FastAPI", "RAG"],
+          "tags": ["technical strengths", "frontend", "full stack", "backend", "AI engineering"]
+        },
+        {
+          "id": "leadership-experience",
+          "topic": "technical leadership mentoring and project ownership",
+          "text": {
+            "en": "Rafa's leadership experience is primarily technical and hands-on rather than formal people management. He has taken ownership of important applications and technical initiatives, collaborated across engineering, product, design, marketing, and project management teams, and helped guide technical implementation decisions. At Energy Ogre, he led the rebuild of core applications focused on performance, scalability, and maintainability. He has also supported and mentored less-experienced engineers through technical guidance, debugging, code discussions, and knowledge sharing. His next career step is to expand this experience into Staff-level technical leadership.",
+            "es": "La experiencia de liderazgo de Rafa es principalmente técnica y práctica, más que de administración formal de personal. Ha asumido responsabilidad sobre aplicaciones e iniciativas técnicas importantes, colaborado con equipos de ingeniería, producto, diseño, marketing y project management, y contribuido a decisiones de implementación técnica. En Energy Ogre lideró la reconstrucción de aplicaciones principales enfocándose en rendimiento, escalabilidad y mantenibilidad. También ha apoyado y orientado a ingenieros con menor experiencia mediante guía técnica, debugging, discusiones de código e intercambio de conocimientos. Su siguiente etapa profesional consiste en ampliar esta experiencia hacia liderazgo técnico de nivel Staff."
+          },
+          "technologies": ["Software Architecture", "Code Reviews", "System Design", "Technical Leadership"],
+          "tags": ["leadership", "mentoring", "technical ownership", "technical leadership", "Staff Engineer"]
+        },
+        {
+          "id": "working-style",
+          "topic": "collaboration communication and engineering approach",
+          "text": {
+            "en": "Rafa works as a hands-on engineer who is comfortable owning problems from investigation through implementation and production support. He has several years of experience working remotely and collaborating with engineers, product teams, designers, marketing analysts, and project managers. His engineering approach emphasizes understanding the business problem, breaking complex problems into manageable components, communicating technical tradeoffs, writing maintainable solutions, testing changes, and addressing production issues when they occur. He is comfortable learning unfamiliar technologies when required by a project.",
+            "es": "Rafa trabaja como un ingeniero hands-on capaz de asumir responsabilidad sobre un problema desde su investigación hasta la implementación y soporte en producción. Cuenta con varios años de experiencia trabajando remotamente y colaborando con ingenieros, equipos de producto, diseñadores, analistas de marketing y project managers. Su enfoque de ingeniería consiste en comprender primero el problema de negocio, dividir problemas complejos en componentes manejables, comunicar tradeoffs técnicos, desarrollar soluciones mantenibles, probar los cambios y resolver problemas de producción cuando aparecen. También se siente cómodo aprendiendo tecnologías nuevas cuando un proyecto lo requiere."
+          },
+          "technologies": ["Agile", "Git", "Testing", "Production Support"],
+          "tags": ["working style", "collaboration", "remote work", "ownership", "problem solving"]
+        },
+        {
+          "id": "architecture-experience",
+          "topic": "software architecture system design and technical decisions",
+          "text": {
+            "en": "Rafa has practical architecture experience gained through modernizing existing applications, designing APIs, optimizing database access, improving application structure, and integrating external technologies. At Sourcemap, he refactored legacy architecture toward a fat-model, thin-controller structure, reducing technical debt by 60%. He has designed RESTful APIs supporting dashboards and data visualizations and worked with relational, document, graph, and geospatial data. At Energy Ogre, he contributed to rebuilding core applications for improved performance, scalability, reliability, and maintainability. He is currently strengthening broader system-design and distributed-systems knowledge as part of his progression toward Staff and Architect-level roles.",
+            "es": "Rafa cuenta con experiencia práctica en arquitectura obtenida mediante modernización de aplicaciones existentes, diseño de APIs, optimización de acceso a bases de datos, mejora de la estructura de aplicaciones e integración de tecnologías externas. En Sourcemap refactorizó arquitectura legacy hacia una estructura de fat model y thin controller, reduciendo la deuda técnica en un 60%. Ha diseñado RESTful APIs para dashboards y visualizaciones de datos y trabajado con información relacional, documental, de grafos y geoespacial. En Energy Ogre contribuyó a reconstruir aplicaciones principales para mejorar rendimiento, escalabilidad, confiabilidad y mantenibilidad. Actualmente está fortaleciendo conocimientos más amplios de system design y sistemas distribuidos como parte de su avance hacia posiciones Staff y Architect."
+          },
+          "technologies": ["REST APIs", "System Design", "SQL Server", "MongoDB", "Neo4j", "Mapbox", "Software Architecture"],
+          "tags": ["architecture", "system design", "technical decisions", "scalability", "technical debt"]
+        },
+        {
+          "id": "ai-engineering-practices",
+          "topic": "AI engineering development testing and reliability practices",
+          "text": {
+            "en": "Rafa's current AI engineering work focuses on building and testing practical AI-powered applications rather than only experimenting with prompts. His experience includes OpenAI APIs, RAG workflows, vector databases, agent orchestration, multi-step automation, prompt engineering, Python, and FastAPI. He tests AI agents and workflows as part of development and is expanding his knowledge of production AI system design. Formal large-scale AI observability, model monitoring, and evaluation infrastructure are areas he is continuing to develop rather than areas he claims extensive production experience in.",
+            "es": "El trabajo actual de AI Engineering de Rafa se enfoca en construir y probar aplicaciones prácticas impulsadas por IA en lugar de limitarse a experimentar con prompts. Su experiencia incluye OpenAI APIs, workflows RAG, bases de datos vectoriales, orquestación de agentes, automatización multi-step, prompt engineering, Python y FastAPI. Prueba agentes y workflows de IA como parte del proceso de desarrollo y está ampliando sus conocimientos sobre diseño de sistemas de IA para producción. La observabilidad de IA a gran escala, el monitoreo de modelos y la infraestructura formal de evaluación son áreas que continúa desarrollando y no áreas en las que afirma tener amplia experiencia de producción."
+          },
+          "technologies": ["OpenAI APIs", "RAG", "Vector Databases", "AI Agents", "Agent Orchestration", "Prompt Engineering", "Python", "FastAPI"],
+          "tags": ["AI engineering", "AI evaluation", "AI agents", "RAG", "AI reliability"]
+        },
+        {
+          "id": "project-case-studies",
+          "topic": "representative software engineering projects and technical challenges",
+          "text": {
+            "en": "Representative projects from Rafa's experience include supply-chain visualization and API development at Sourcemap, application modernization and database optimization at Energy Ogre, and AI-powered applications through his independent work. At Sourcemap, he developed APIs and interactive geospatial functionality supporting supply-chain dashboards and integrated Mapbox for geographic visualization. He also modernized legacy architecture and improved automated testing. At Energy Ogre, he worked across web, mobile, internal tools, SQL Server, APIs, and application rebuilds focused on performance and scalability. His current independent projects explore RAG systems, AI agents, vector databases, automation workflows, and AI-assisted development.",
+            "es": "Algunos proyectos representativos de la experiencia de Rafa incluyen visualización de cadenas de suministro y desarrollo de APIs en Sourcemap, modernización de aplicaciones y optimización de bases de datos en Energy Ogre y aplicaciones impulsadas por IA mediante su trabajo independiente. En Sourcemap desarrolló APIs y funcionalidad geoespacial interactiva para dashboards de supply chain e integró Mapbox para visualización geográfica. También modernizó arquitectura legacy y mejoró el testing automatizado. En Energy Ogre trabajó con aplicaciones web, mobile, herramientas internas, SQL Server, APIs y reconstrucción de aplicaciones enfocándose en rendimiento y escalabilidad. Sus proyectos independientes actuales exploran sistemas RAG, agentes de IA, bases vectoriales, workflows de automatización y desarrollo asistido por IA."
+          },
+          "technologies": ["React", "Angular", "Node.js", ".NET", "SQL Server", "MongoDB", "Neo4j", "Mapbox", "RAG", "AI Agents"],
+          "tags": ["case studies", "Sourcemap", "Energy Ogre", "AI projects", "software projects"]
+        },
+        {
+          "id": "measurable-impact",
+          "topic": "quantifiable engineering results and business impact",
+          "text": {
+            "en": "Rafa has delivered measurable improvements across reliability, maintainability, testing, and application performance. At Sourcemap, automated testing work increased test coverage to 60%, improving release stability and reducing production bugs. He refactored legacy architecture in a way that reduced technical debt by approximately 60% and improved maintainability and development speed. He also developed APIs and geospatial visualization capabilities that supported faster supply-chain analysis and decision-making. At Energy Ogre, he optimized SQL queries and stored procedures supporting high-volume application usage and helped rebuild core applications to improve performance, scalability, and reliability.",
+            "es": "Rafa ha generado mejoras medibles en confiabilidad, mantenibilidad, testing y rendimiento de aplicaciones. En Sourcemap, su trabajo de automatización de pruebas aumentó la cobertura de testing al 60%, mejorando la estabilidad de releases y reduciendo bugs en producción. Refactorizó arquitectura legacy de una forma que redujo aproximadamente 60% de la deuda técnica y mejoró la mantenibilidad y velocidad de desarrollo. También desarrolló APIs y capacidades de visualización geoespacial que facilitaron análisis y toma de decisiones relacionados con supply chains. En Energy Ogre optimizó consultas SQL y stored procedures utilizadas por aplicaciones de alto volumen y participó en la reconstrucción de aplicaciones principales para mejorar rendimiento, escalabilidad y confiabilidad."
+          },
+          "technologies": ["Automated Testing", "REST APIs", "SQL Server", "Mapbox", "Software Architecture"],
+          "tags": ["measurable impact", "60% test coverage", "60% technical debt reduction", "performance", "reliability"]
+        },
+        {
+          "id": "lessons-learned",
+          "topic": "technical challenges professional growth and engineering lessons",
+          "text": {
+            "en": "Rafa's experience has reinforced the importance of maintainable architecture, testing, observability, database performance, and production ownership. Working with legacy applications taught him that delivering new features is only part of engineering; reducing technical debt and improving application structure can significantly increase development speed over time. Production incidents and performance issues strengthened his approach to systematic debugging and understanding problems before changing code. His work across different stacks has also reinforced the importance of choosing technologies based on system requirements rather than personal preference.",
+            "es": "La experiencia de Rafa ha reforzado la importancia de una arquitectura mantenible, testing, observabilidad, rendimiento de bases de datos y ownership de sistemas en producción. Trabajar con aplicaciones legacy le enseñó que desarrollar nuevas funcionalidades es solamente una parte de la ingeniería; reducir deuda técnica y mejorar la estructura de una aplicación puede aumentar significativamente la velocidad de desarrollo a largo plazo. Los incidentes de producción y problemas de rendimiento fortalecieron su enfoque de debugging sistemático y de comprender un problema antes de modificar código. Su trabajo con distintos stacks también reforzó la importancia de seleccionar tecnologías basándose en las necesidades del sistema en lugar de preferencias personales."
+          },
+          "technologies": ["Testing", "Database Optimization", "Software Architecture", "Production Support", "System Design"],
+          "tags": ["lessons learned", "technical challenges", "debugging", "technical debt", "engineering growth"]
+        },
+        {
+          "id": "client-process",
+          "topic": "independent software development and client engagement process",
+          "text": {
+            "en": "When working independently with clients, Rafa starts by understanding the business objective and translating it into clear technical requirements. He then evaluates the appropriate technologies, structures the implementation into manageable stages, develops and tests the solution, communicates progress and technical considerations, and iterates based on feedback. His independent work has included responsive websites, AI-powered applications, automation workflows, AI agents, and generative AI workflows. His goal is to build solutions that are maintainable and technically sound while remaining aligned with the client's actual business needs.",
+            "es": "Cuando trabaja de manera independiente con clientes, Rafa comienza por comprender el objetivo de negocio y convertirlo en requerimientos técnicos claros. Posteriormente evalúa las tecnologías apropiadas, divide la implementación en etapas manejables, desarrolla y prueba la solución, comunica avances y consideraciones técnicas e itera basándose en feedback. Su trabajo independiente ha incluido sitios web responsivos, aplicaciones impulsadas por IA, workflows de automatización, agentes de IA y procesos de IA generativa. Su objetivo es desarrollar soluciones mantenibles y técnicamente sólidas que permanezcan alineadas con las necesidades reales del negocio del cliente."
+          },
+          "technologies": ["React", "TypeScript", "JavaScript", "Python", "FastAPI", "AI Agents", "Workflow Automation"],
+          "tags": ["client process", "consulting", "independent contractor", "requirements", "delivery"]
+        },
+        {
+          "id": "contact-preferences",
+          "topic": "professional contact information and recruiting communication",
+          "text": {
+            "en": "Rafa can be contacted professionally through email or LinkedIn regarding software engineering opportunities. His preferred opportunities are remote roles in the United States, particularly Senior Software Engineer, Full Stack Software Engineer, Senior Full Stack Engineer, and software engineering positions involving modern frontend technologies, backend development, cloud systems, or artificial intelligence. His professional email is rvaldezdev.2020@gmail.com, and his resume also provides links to his portfolio, GitHub, and LinkedIn profiles.",
+            "es": "Rafa puede ser contactado profesionalmente por correo electrónico o LinkedIn para oportunidades de ingeniería de software. Prefiere posiciones remotas en Estados Unidos, particularmente oportunidades como Senior Software Engineer, Full Stack Software Engineer, Senior Full Stack Engineer y posiciones relacionadas con tecnologías frontend modernas, desarrollo backend, sistemas cloud o inteligencia artificial. Su correo profesional es rvaldezdev.2020@gmail.com y su currículum también incluye enlaces a su portafolio, GitHub y LinkedIn."
+          },
+          "technologies": [],
+          "tags": ["contact", "email", "LinkedIn", "recruiting", "remote opportunities"]
+        },
+        {
+          "id": "feature-ownership",
+          "topic": "end-to-end feature ownership and independent delivery",
+          "text": {
+            "en": "At Energy Ogre, Rafa took ownership of an internal tool called OgreLoader, which agents used to automatically populate customer information into electricity-provider forms. He became the primary engineer responsible for improvements, feature changes, debugging, and production issues with little day-to-day direction. At Sourcemap, he also took significant ownership of the Mapbox-based geospatial visualization layer. He worked across frontend and backend systems to retrieve supplier information, coordinates, routes, and geographic boundaries through APIs, transform the data correctly, and render it interactively in Mapbox. He also introduced visualization improvements that made complex supply-chain information clearer, more useful, and more visually compelling for customers.",
+            "es": "En Energy Ogre, Rafa asumió la responsabilidad de una herramienta interna llamada OgreLoader, utilizada por los agentes para llenar automáticamente formularios de proveedores de electricidad con información de clientes. Se convirtió en el principal ingeniero responsable de mejoras, nuevas funcionalidades, debugging y problemas de producción con poca supervisión diaria. En Sourcemap también asumió una responsabilidad importante sobre la capa de visualización geoespacial basada en Mapbox. Trabajó tanto en frontend como backend para obtener información de proveedores, coordenadas, rutas y límites geográficos mediante APIs, transformar correctamente los datos y mostrarlos de forma interactiva en Mapbox. También implementó mejoras de visualización que hicieron que la información compleja de supply chain fuera más clara, útil y visualmente atractiva para los clientes."
+          },
+          "technologies": ["React", "JavaScript", "TypeScript", "Mapbox.js", "REST APIs", "SQL", ".NET"],
+          "tags": ["feature ownership", "end-to-end delivery", "OgreLoader", "Mapbox", "independent engineering"]
+        },
+        {
+          "id": "difficult-production-problem",
+          "topic": "complex production debugging and root cause analysis",
+          "text": {
+            "en": "One of the most difficult production problems Rafa worked on involved incorrect geographic information appearing in Sourcemap's Mapbox-based application. Because the issue could have originated in the frontend, API, data transformations, caching layer, or Mapbox integration, he traced the complete data flow rather than assuming a specific cause. He reviewed frontend changes and mapping behavior and then worked backward through the APIs and backend data. Working with another engineer, he discovered that a small expression introduced during caching-related work was incorrectly modifying coordinate data. The logic was corrected before the problem reached customers. The experience demonstrated systematic debugging across several application layers and evidence-based collaboration when engineers initially had different theories about the root cause.",
+            "es": "Uno de los problemas de producción más difíciles en los que Rafa trabajó involucró información geográfica incorrecta dentro de una aplicación de Sourcemap basada en Mapbox. Como el problema podía originarse en el frontend, API, transformaciones de datos, cache o integración con Mapbox, investigó todo el flujo de datos en lugar de asumir una causa específica. Revisó cambios recientes de frontend y el comportamiento del sistema de mapas y posteriormente siguió el flujo hacia las APIs y datos del backend. Trabajando con otro ingeniero, descubrió que una pequeña expresión introducida durante cambios relacionados con caching estaba modificando incorrectamente las coordenadas. La lógica fue corregida antes de que el problema llegara a los clientes. Esta experiencia demostró debugging sistemático a través de múltiples capas de la aplicación y colaboración basada en evidencia cuando inicialmente existían diferentes teorías sobre la causa."
+          },
+          "technologies": ["Mapbox", "REST APIs", "Caching", "Frontend Debugging", "Backend Debugging"],
+          "tags": ["production incident", "debugging", "root cause analysis", "geospatial", "problem solving"]
+        },
+        {
+          "id": "performance-improvement",
+          "topic": "application and database performance optimization",
+          "text": {
+            "en": "Rafa improved the performance and maintainability of a legacy Angular application that had accumulated large components, repeated API calls, inefficient data handling, and unused code and styles. He divided large components into smaller responsibilities, moved reusable logic into services, removed unnecessary code and CSS, and reduced duplicate API requests. These changes made the application more responsive and easier to maintain. At Energy Ogre, he also improved database performance by optimizing SQL Server queries and stored procedures supporting high-volume application workflows.",
+            "es": "Rafa mejoró el rendimiento y mantenibilidad de una aplicación legacy en Angular que había acumulado componentes demasiado grandes, llamadas repetidas a APIs, manejo ineficiente de datos y código y estilos sin utilizar. Dividió grandes componentes en responsabilidades más pequeñas, movió lógica reutilizable a servicios, eliminó código y CSS innecesario y redujo llamadas duplicadas a APIs. Estos cambios hicieron que la aplicación fuera más responsiva y fácil de mantener. En Energy Ogre también mejoró el rendimiento de bases de datos mediante la optimización de queries y stored procedures de SQL Server utilizados por workflows de alto volumen."
+          },
+          "technologies": ["Angular", "REST APIs", "SQL Server", "Stored Procedures", "Performance Optimization"],
+          "tags": ["performance", "optimization", "legacy application", "database performance", "maintainability"]
+        },
+        {
+          "id": "difficult-database-problem",
+          "topic": "SQL Server performance and database troubleshooting",
+          "text": {
+            "en": "At Energy Ogre, Rafa worked with SQL Server queries and stored procedures supporting core application workflows. As application usage and data volume increased, some operations became slower. He reviewed the queries and stored procedures involved, identified inefficient logic and unnecessary database work, and improved the way data was retrieved. His work included rewriting stored-procedure logic and optimizing query execution so applications could respond faster under higher usage. The experience reinforced his view that database performance must be investigated as part of the complete application flow rather than in isolation.",
+            "es": "En Energy Ogre, Rafa trabajó con queries y stored procedures de SQL Server que soportaban workflows principales de la aplicación. Conforme aumentaron el uso de la aplicación y el volumen de datos, algunas operaciones comenzaron a volverse más lentas. Revisó los queries y stored procedures involucrados, identificó lógica ineficiente y operaciones innecesarias en la base de datos y mejoró la forma en que se recuperaban los datos. Su trabajo incluyó reescribir lógica de stored procedures y optimizar la ejecución de queries para que las aplicaciones respondieran más rápidamente bajo mayor uso. Esta experiencia reforzó su enfoque de investigar el rendimiento de la base de datos como parte del flujo completo de la aplicación."
+          },
+          "technologies": ["SQL Server", "SQL", "Stored Procedures", "Database Optimization"],
+          "tags": ["database", "SQL", "performance", "stored procedures", "troubleshooting"]
+        },
+        {
+          "id": "api-design",
+          "topic": "REST API design and architectural tradeoffs",
+          "text": {
+            "en": "At Sourcemap, Rafa designed and implemented RESTful APIs powering dashboards and supply-chain data visualization features. His API design approach begins with understanding what the client actually needs, defining clear resource boundaries, creating predictable request and response structures, implementing validation and error handling, and avoiding unnecessary data transfer. For visualization systems, he also evaluates whether transformations should happen on the server or client. In one case, he shaped API data closer to the format required by the frontend because a highly normalized approach introduced too many joins and transformations for large map datasets. The tradeoff improved responsiveness while keeping the system maintainable.",
+            "es": "En Sourcemap, Rafa diseñó e implementó RESTful APIs utilizadas por dashboards y funcionalidades de visualización de supply chains. Su enfoque para diseñar APIs comienza por comprender lo que realmente necesita el cliente, definir límites claros de recursos, crear estructuras predecibles de requests y responses, implementar validación y manejo de errores y evitar transferencia innecesaria de datos. Para sistemas de visualización también evalúa si las transformaciones deben realizarse en el servidor o en el cliente. En un caso, estructuró los datos de una API de manera más cercana al formato que necesitaba el frontend porque un enfoque altamente normalizado generaba demasiados joins y transformaciones para grandes datasets geográficos. El tradeoff mejoró el rendimiento sin hacer que el sistema fuera difícil de mantener."
+          },
+          "technologies": ["REST APIs", "Node.js", "Data Modeling", "Mapbox", "SQL", "NoSQL"],
+          "tags": ["API design", "REST", "architecture", "tradeoffs", "data transformation"]
+        },
+        {
+          "id": "code-review-disagreement",
+          "topic": "handling technical disagreements and code reviews",
+          "text": {
+            "en": "Rafa approaches technical disagreements by focusing on evidence rather than authority or assumptions. During a Sourcemap geospatial debugging incident, he believed recent caching changes could be responsible for incorrect map data while a more senior teammate initially believed the caching implementation was correct. Rafa explained the specific behavior he was seeing and proposed reviewing the complete data path together. The engineers traced the changes and discovered the coordinate expression causing the issue. Rafa applies the same approach during code reviews: make concerns specific, explain the technical consequence, understand the other engineer's reasoning, and use tests, profiling, documentation, or small experiments to reach the best decision.",
+            "es": "Rafa aborda los desacuerdos técnicos enfocándose en evidencia en lugar de autoridad o suposiciones. Durante un problema geoespacial en Sourcemap, sospechó que cambios recientes relacionados con caching podían estar causando información incorrecta en el mapa, mientras que un compañero con mayor seniority inicialmente consideraba que la implementación del cache era correcta. Rafa explicó específicamente el comportamiento que estaba observando y propuso revisar juntos el flujo completo de datos. Finalmente encontraron la expresión que estaba modificando incorrectamente las coordenadas. Rafa aplica el mismo enfoque durante code reviews: identificar claramente la preocupación, explicar la consecuencia técnica, comprender el razonamiento del otro ingeniero y utilizar tests, profiling, documentación o pequeños experimentos para llegar a la mejor decisión."
+          },
+          "technologies": ["Code Review", "Testing", "Profiling", "Debugging"],
+          "tags": ["code review", "technical disagreement", "collaboration", "communication", "evidence-based decisions"]
+        },
+        {
+          "id": "mentoring-engineers",
+          "topic": "mentoring and supporting less-experienced engineers",
+          "text": {
+            "en": "Rafa has supported less-experienced engineers through pair debugging, application-flow walkthroughs, code reviews, technical discussions, and explanations of why particular implementation approaches are preferable. At Sourcemap, he worked with teammates on map-data problems by tracing issues across APIs, transformations, and Mapbox integration. His goal when mentoring is not only to solve the immediate issue but also to provide a debugging or design approach the engineer can reuse independently in the future. He describes this accurately as mentoring and technical guidance rather than formal people management.",
+            "es": "Rafa ha apoyado a ingenieros con menor experiencia mediante pair debugging, explicaciones de flujos de aplicaciones, code reviews, discusiones técnicas y explicaciones sobre por qué ciertos enfoques de implementación son preferibles. En Sourcemap trabajó con compañeros en problemas relacionados con datos geográficos siguiendo los errores a través de APIs, transformaciones e integración con Mapbox. Su objetivo al orientar a otro ingeniero no es solamente resolver el problema inmediato, sino proporcionar un enfoque de debugging o diseño que pueda reutilizar de manera independiente en el futuro. Describe esta experiencia correctamente como mentoring y guía técnica, no como administración formal de personal."
+          },
+          "technologies": ["Code Review", "Debugging", "REST APIs", "Mapbox"],
+          "tags": ["mentoring", "junior engineers", "technical guidance", "knowledge sharing", "leadership"]
+        },
+        {
+          "id": "unclear-requirements",
+          "topic": "handling ambiguity and unclear product requirements",
+          "text": {
+            "en": "When requirements are unclear, Rafa first works to identify the desired user or business outcome before writing significant code. He clarifies expected behavior, important edge cases, constraints, and what success should look like. Because he has collaborated with product managers, designers, engineers, project managers, and marketing teams, he is comfortable bringing together the appropriate stakeholders when requirements cross disciplines. He converts ambiguous requests into concrete acceptance criteria and confirms assumptions before implementation. When an assumption cannot be resolved immediately, he documents it so it can be corrected early.",
+            "es": "Cuando los requerimientos no están claros, Rafa primero busca identificar el resultado esperado para el usuario o negocio antes de escribir una cantidad significativa de código. Aclara comportamiento esperado, edge cases importantes, restricciones y cómo debería medirse el éxito. Debido a que ha colaborado con product managers, diseñadores, ingenieros, project managers y equipos de marketing, se siente cómodo reuniendo a las personas apropiadas cuando un requerimiento involucra varias disciplinas. Convierte solicitudes ambiguas en criterios de aceptación concretos y confirma las suposiciones antes de comenzar la implementación. Cuando una suposición no puede resolverse inmediatamente, la documenta para que pueda corregirse temprano."
+          },
+          "technologies": [],
+          "tags": ["requirements", "ambiguity", "acceptance criteria", "product collaboration", "communication"]
+        },
+        {
+          "id": "feature-estimation",
+          "topic": "estimating and breaking down large software features",
+          "text": {
+            "en": "Rafa estimates large features by first separating them into their major technical layers and risks, including user experience, frontend work, APIs, database changes, integrations, testing, and deployment. He then identifies dependencies and technical unknowns, prioritizing investigation of high-risk unknowns because they may significantly change the estimate. The feature is divided into smaller deliverables that can be implemented, reviewed, and tested independently. His estimates account for implementation, integration, testing, review, and production risk rather than only coding time. When new information changes an estimate, he communicates the change early.",
+            "es": "Rafa estima funcionalidades grandes dividiéndolas primero en sus principales capas técnicas y riesgos, incluyendo experiencia de usuario, frontend, APIs, cambios de bases de datos, integraciones, testing y deployment. Después identifica dependencias y desconocidos técnicos, priorizando la investigación de los elementos de mayor riesgo porque pueden modificar significativamente la estimación. La funcionalidad se divide en entregables más pequeños que pueden implementarse, revisarse y probarse de forma independiente. Sus estimaciones consideran implementación, integración, testing, revisión y riesgo de producción, y no solamente tiempo de programación. Cuando nueva información cambia una estimación, comunica el cambio de manera anticipada."
+          },
+          "technologies": [],
+          "tags": ["estimation", "feature planning", "risk management", "technical planning", "delivery"]
+        },
+        {
+          "id": "urgent-production-incident",
+          "topic": "production incident response and system reliability",
+          "text": {
+            "en": "At Sourcemap, Rafa handled critical production issues under tight SLAs for enterprise clients. His first priority during an incident is understanding customer impact and stabilizing the system. He attempts to reproduce the issue, reviews recent changes and available system behavior, and narrows the failure to the responsible layer. When appropriate, he considers a safe rollback or containment strategy before attempting a risky fix under pressure. After stabilizing the system, he investigates the root cause and adds tests, validation, or code improvements to reduce the likelihood of recurrence.",
+            "es": "En Sourcemap, Rafa resolvió problemas críticos de producción bajo SLAs estrictos para clientes empresariales. Su primera prioridad durante un incidente es comprender el impacto sobre los usuarios y estabilizar el sistema. Intenta reproducir el problema, revisa cambios recientes y el comportamiento observable del sistema y reduce progresivamente la investigación hasta encontrar la capa responsable. Cuando es apropiado, considera un rollback seguro o alguna estrategia de contención antes de realizar un cambio riesgoso bajo presión. Después de estabilizar el sistema, investiga la causa raíz e implementa tests, validaciones o mejoras de código para reducir la posibilidad de que el problema vuelva a ocurrir."
+          },
+          "technologies": ["Production Support", "Testing", "Debugging", "Monitoring"],
+          "tags": ["production incident", "SLA", "reliability", "root cause analysis", "incident response"]
+        },
+        {
+          "id": "senior-level-project",
+          "topic": "project demonstrating Senior Software Engineer capabilities",
+          "text": {
+            "en": "Rafa's work at Sourcemap best demonstrates his Senior Software Engineer capabilities. He contributed across the entire application stack by collaborating with product and design, developing frontend applications, designing REST APIs, handling complex data transformations, integrating Mapbox, improving automated testing, refactoring legacy architecture, and resolving production incidents under tight SLAs. This experience demonstrates Senior-level engineering because it required ownership of outcomes across multiple layers of the platform, architectural and implementation tradeoffs, improvements to overall codebase health, and the ability to diagnose complex problems in production.",
+            "es": "El trabajo de Rafa en Sourcemap es el mejor ejemplo de sus capacidades como Senior Software Engineer. Contribuyó en todo el stack de la aplicación colaborando con producto y diseño, desarrollando aplicaciones frontend, diseñando REST APIs, manejando transformaciones complejas de datos, integrando Mapbox, mejorando testing automatizado, refactorizando arquitectura legacy y resolviendo incidentes de producción bajo SLAs estrictos. Esta experiencia demuestra capacidades de nivel Senior porque requirió ownership de resultados a través de múltiples capas de la plataforma, decisiones y tradeoffs técnicos, mejoras en la salud general del codebase y capacidad para diagnosticar problemas complejos en producción."
+          },
+          "technologies": ["React", "Angular", "TypeScript", "Node.js", "REST APIs", "MongoDB", "Neo4j", "Mapbox"],
+          "tags": ["Senior Software Engineer", "Sourcemap", "ownership", "architecture", "full stack"]
+        },
+        {
+          "id": "reason-for-job-search",
+          "topic": "motivation for seeking a new software engineering position",
+          "text": {
+            "en": "Rafa is currently doing independent software and AI development but is looking for a long-term remote position where he can contribute more deeply to a product and engineering organization. He wants a role where he can use his full-stack experience, own meaningful technical areas, continue developing his system-design and architecture capabilities, and increasingly contribute to AI-powered products where AI provides genuine business value. His longer-term objective is to progress toward Staff Software Engineer and Software Architect responsibilities.",
+            "es": "Actualmente Rafa realiza desarrollo independiente de software e IA, pero busca una posición remota a largo plazo donde pueda contribuir más profundamente dentro de un equipo de producto e ingeniería. Busca una posición donde pueda utilizar su experiencia full-stack, asumir responsabilidad sobre áreas técnicas importantes, continuar desarrollando sus capacidades de system design y arquitectura y participar cada vez más en productos impulsados por IA donde esta tecnología genere verdadero valor de negocio. Su objetivo a largo plazo es avanzar hacia responsabilidades de Staff Software Engineer y Software Architect."
+          },
+          "technologies": ["Full Stack Development", "System Design", "Software Architecture", "AI Engineering"],
+          "tags": ["job search", "career goals", "remote role", "Staff Engineer", "Software Architect"]
+        },
+        {
+          "id": "reasons-for-leaving-positions",
+          "topic": "reasons for leaving previous software engineering positions",
+          "text": {
+            "en": "Rafa's Sourcemap position ended as part of a company reduction and layoff. Since then, he has continued coding through independent client projects, software development, and AI-focused work. He left Energy Ogre to continue his professional growth and joined Sourcemap, where he gained broader full-stack experience involving supply-chain systems, APIs, geospatial visualization, and a different technical environment. Becoming You was a short-term part-time contract that concluded after the agreed engagement, while his earlier independent work consisted of project-based client engagements rather than permanent positions.",
+            "es": "La posición de Rafa en Sourcemap terminó como parte de una reducción de personal de la compañía. Desde entonces, ha continuado programando mediante proyectos independientes para clientes, desarrollo de software y trabajo enfocado en IA. Dejó Energy Ogre para continuar su crecimiento profesional y se unió a Sourcemap, donde obtuvo experiencia full-stack más amplia trabajando con sistemas de supply chain, APIs, visualización geoespacial y un entorno técnico diferente. Becoming You fue un contrato part-time de corto plazo que terminó después del periodo acordado, mientras que sus trabajos independientes anteriores fueron proyectos para clientes y no posiciones permanentes."
+          },
+          "technologies": [],
+          "tags": ["employment history", "layoff", "career progression", "Sourcemap", "Energy Ogre"]
+        },
+        {
+          "id": "compensation-expectations",
+          "topic": "salary and contract compensation expectations",
+          "text": {
+            "en": "For a Senior Software Engineer position that strongly matches his experience, Rafa generally targets a base salary between approximately $130,000 and $160,000 per year for full-time employment. For contract opportunities, he generally targets approximately $60 per hour or higher depending on contract structure, benefits, responsibilities, and engagement length. He remains open to discussing the complete compensation package when the role, engineering team, and responsibilities are a strong fit.",
+            "es": "Para una posición de Senior Software Engineer que tenga una fuerte alineación con su experiencia, Rafa generalmente busca un salario base de aproximadamente $130,000 a $160,000 anuales para posiciones full-time. Para oportunidades por contrato, generalmente busca aproximadamente $60 por hora o más dependiendo de la estructura del contrato, beneficios, responsabilidades y duración. Está abierto a discutir el paquete completo de compensación cuando la posición, equipo de ingeniería y responsabilidades representan una buena oportunidad."
+          },
+          "technologies": [],
+          "tags": ["salary", "compensation", "130k", "160k", "60 per hour", "contract"]
+        },
+        {
+          "id": "start-date",
+          "topic": "employment start date and availability",
+          "text": {
+            "en": "Rafa is available to start a new software engineering position as soon as the company's hiring process and onboarding allow. Because he is currently working independently rather than serving a traditional employment notice period, he has flexibility regarding his start date.",
+            "es": "Rafa está disponible para comenzar una nueva posición de ingeniería de software tan pronto como lo permitan el proceso de contratación y onboarding de la empresa. Debido a que actualmente trabaja de manera independiente y no necesita cumplir con un periodo tradicional de aviso laboral, tiene flexibilidad respecto a su fecha de inicio."
+          },
+          "technologies": [],
+          "tags": ["availability", "start date", "available immediately", "hiring"]
+        },
+        {
+          "id": "preferred-senior-engineer-environment",
+          "topic": "preferred Senior Engineer role and company environment",
+          "text": {
+            "en": "Rafa is looking for a remote Senior Software Engineer or Senior Full Stack Engineer position where he can remain hands-on while owning meaningful features and technical areas. His strongest fit is with teams building web applications or data-driven products using technologies such as React, Angular, TypeScript, JavaScript, Node.js, .NET, REST APIs, SQL or NoSQL databases, cloud platforms, and CI/CD. He is also particularly interested in organizations integrating AI into real products. Rafa works best in environments with clear goals, strong communication, engineering ownership, thoughtful code reviews, autonomy in technical decision-making, collaboration with product and design, and a culture of continuous improvement.",
+            "es": "Rafa busca una posición remota como Senior Software Engineer o Senior Full Stack Engineer donde pueda continuar siendo hands-on mientras asume ownership de funcionalidades y áreas técnicas importantes. Su mejor alineación está con equipos que desarrollan aplicaciones web o productos basados en datos utilizando tecnologías como React, Angular, TypeScript, JavaScript, Node.js, .NET, REST APIs, bases de datos SQL o NoSQL, plataformas cloud y CI/CD. También tiene especial interés en organizaciones que estén integrando IA en productos reales. Rafa trabaja mejor en ambientes con objetivos claros, buena comunicación, ownership de ingeniería, code reviews cuidadosos, autonomía para tomar decisiones técnicas, colaboración con producto y diseño y una cultura de mejora continua."
+          },
+          "technologies": ["React", "Angular", "TypeScript", "JavaScript", "Node.js", ".NET", "REST APIs", "SQL", "NoSQL", "Cloud", "CI/CD", "AI Engineering"],
+          "tags": ["preferred environment", "Senior Software Engineer", "remote", "engineering culture", "technical ownership"]
+        },
+        {
+          "id": "origin-location-languages",
+          "topic": "location and languages",
+          "text": {
+            "en": "Rafa was born in Houston, Texas, raised in San Luis Potosí, Mexico, and later moved back to Houston, where he is currently based. He speaks English and Spanish, including several dialects.",
+            "es": "Rafa nació en Houston, Texas, creció en San Luis Potosí, México, y posteriormente regresó a Houston, donde vive actualmente. Habla inglés y español, incluyendo varios dialectos."
+          },
+          "tags": ["Houston", "San Luis Potosí", "English", "Spanish"]
+        },
+        {
+          "id": "personal-interests",
+          "topic": "personal interests",
+          "text": {
+            "en": "Rafa's hobbies include Tae Kwon Do, cooking, traveling, technology, video games, and video editing. His favorite color is green, and his favorite foods include tacos, pho, wings, and pozole. His favorite countries for hiking are Switzerland, Guatemala, and Colombia.",
+            "es": "Los pasatiempos de Rafa incluyen Tae Kwon Do, cocinar, viajar, la tecnología, los videojuegos y la edición de video. Su color favorito es el verde y entre sus comidas favoritas están los tacos, el pho, las alitas y el pozole. Sus países favoritos para hacer senderismo son Suiza, Guatemala y Colombia."
+          },
+          "tags": ["travel", "hiking", "food", "hobbies"]
+        },
+        {
+          "id": "favorite-travel-experience",
+          "topic": "favorite travel experience and memorable destinations",
+          "text": {
+            "en": "Rafa's favorite travel experience was visiting Thailand. He explored several regions of the country and particularly enjoyed its history, ancient temples, and cultural sites. Chiang Mai and the mountains of northern Thailand were especially memorable. He also visited coastal destinations such as Phuket and Kata Beach, which gave him the opportunity to experience both the cultural and natural sides of the country.",
+            "es": "La experiencia de viaje favorita de Rafa fue visitar Tailandia. Recorrió varias regiones del país y disfrutó especialmente de su historia, templos antiguos y sitios culturales. Chiang Mai y las montañas del norte de Tailandia fueron particularmente memorables. También visitó destinos costeros como Phuket y Kata Beach, lo que le permitió conocer tanto el lado cultural como natural del país."
+          },
+          "technologies": [],
+          "tags": ["travel", "Thailand", "Chiang Mai", "Phuket", "Kata Beach", "culture"]
+        },
+        {
+          "id": "countries-lived",
+          "topic": "countries lived in and international experience",
+          "text": {
+            "en": "Rafa has lived or studied in the United States, Mexico, and Chile. These international experiences have helped him become more adaptable and comfortable communicating, collaborating, and building relationships with people from different cultural backgrounds.",
+            "es": "Rafa ha vivido o estudiado en Estados Unidos, México y Chile. Estas experiencias internacionales le han ayudado a ser más adaptable y a sentirse cómodo comunicándose, colaborando y construyendo relaciones con personas de diferentes contextos culturales."
+          },
+          "technologies": [],
+          "tags": ["international experience", "United States", "Mexico", "Chile", "adaptability", "cultural diversity"]
+        },
+        {
+          "id": "favorite-technology",
+          "topic": "favorite programming language and technology",
+          "text": {
+            "en": "Rafa's favorite technology is React with TypeScript because it allows him to build scalable, maintainable, and interactive user experiences while benefiting from strong typing and reusable component-based architecture. He is also increasingly interested in Python and artificial intelligence technologies, including FastAPI, OpenAI APIs, RAG architectures, vector databases, and agent-based workflows.",
+            "es": "La tecnología favorita de Rafa es React con TypeScript porque le permite desarrollar experiencias de usuario escalables, mantenibles e interactivas, aprovechando al mismo tiempo tipado fuerte y una arquitectura reutilizable basada en componentes. También tiene un interés creciente en Python y tecnologías de inteligencia artificial, incluyendo FastAPI, OpenAI APIs, arquitecturas RAG, bases de datos vectoriales y workflows basados en agentes."
+          },
+          "technologies": ["React", "TypeScript", "Python", "FastAPI", "OpenAI APIs", "RAG", "Vector Databases", "AI Agents"],
+          "tags": ["favorite technology", "React", "TypeScript", "AI engineering", "Python"]
+        },
+        {
+          "id": "favorite-portfolio-project",
+          "topic": "favorite portfolio project and RafaBot",
+          "text": {
+            "en": "One of Rafa's favorite projects is his personal portfolio and RafaBot, an AI-powered chatbot designed to help visitors explore his professional experience, technical skills, projects, and background in an engaging and interactive way. The project combines traditional web development with AI capabilities and serves as both a professional portfolio and a practical demonstration of how conversational AI can improve the way users discover information.",
+            "es": "Uno de los proyectos favoritos de Rafa es su portafolio personal y RafaBot, un chatbot impulsado por IA diseñado para ayudar a los visitantes a explorar su experiencia profesional, habilidades técnicas, proyectos y trayectoria de una manera atractiva e interactiva. El proyecto combina desarrollo web tradicional con capacidades de IA y funciona tanto como portafolio profesional como demostración práctica de cómo la IA conversacional puede mejorar la forma en que los usuarios encuentran información."
+          },
+          "technologies": ["AI", "Chatbot", "RAG", "Web Development", "React", "OpenAI APIs"],
+          "tags": ["RafaBot", "portfolio", "AI chatbot", "personal project", "interactive experience"]
+        },
+        {
+          "id": "personal-motivation",
+          "topic": "personal motivation and long-term professional goals",
+          "text": {
+            "en": "Rafa is motivated by continuous growth and by the opportunity to build technology that solves meaningful problems. His long-term professional goal is to grow into a Staff Software Engineer and eventually a Software Architect, combining strong software engineering fundamentals with advanced expertise in artificial intelligence. He is motivated not only by learning new technologies, but by applying them to create practical products, improve systems, and deliver meaningful value to users and businesses.",
+            "es": "Rafa está motivado por el crecimiento continuo y por la oportunidad de desarrollar tecnología que resuelva problemas significativos. Su objetivo profesional a largo plazo es convertirse en Staff Software Engineer y posteriormente en Software Architect, combinando fundamentos sólidos de ingeniería de software con conocimientos avanzados de inteligencia artificial. No está motivado únicamente por aprender nuevas tecnologías, sino por aplicarlas para crear productos prácticos, mejorar sistemas y generar valor significativo para usuarios y empresas."
+          },
+          "technologies": ["Software Engineering", "AI Engineering", "System Design", "Software Architecture"],
+          "tags": ["motivation", "career goals", "Staff Software Engineer", "Software Architect", "continuous growth"]
+        },
+        {
+          "id": "most-proud-of",
+          "topic": "personal achievement and software engineering journey",
+          "text": {
+            "en": "Rafa is most proud of becoming a software engineer and transforming a lifelong interest in technology into a meaningful professional career. His curiosity about technology began during childhood while playing Nintendo 64, long before he imagined that he would eventually build software professionally. Since entering the industry, he has contributed to projects across multiple companies, developed solutions used by real users, and created business value through technology. For him, becoming an engineer represents both a major personal achievement and the beginning of a much larger professional journey.",
+            "es": "Rafa está especialmente orgulloso de haberse convertido en ingeniero de software y de transformar un interés de toda la vida por la tecnología en una carrera profesional significativa. Su curiosidad por la tecnología comenzó durante su infancia mientras jugaba Nintendo 64, mucho antes de imaginar que algún día desarrollaría software profesionalmente. Desde que ingresó a la industria, ha contribuido a proyectos en múltiples empresas, desarrollado soluciones utilizadas por usuarios reales y generado valor de negocio mediante tecnología. Para él, convertirse en ingeniero representa tanto un importante logro personal como el comienzo de una trayectoria profesional mucho más amplia."
+          },
+          "technologies": [],
+          "tags": ["personal achievement", "software engineering journey", "technology", "career growth", "Nintendo 64"]
+        },
+        {
+          "id": "preferred-video-games",
+          "topic": "favorite video games and gaming interests",
+          "text": {
+            "en": "Some of Rafa's favorite video game franchises are The Legend of Zelda, Battlefield, Resident Evil, and The Witcher. He particularly enjoys games that combine immersive worlds, strong storytelling, strategic challenges, exploration, and engaging gameplay.",
+            "es": "Algunas de las franquicias de videojuegos favoritas de Rafa son The Legend of Zelda, Battlefield, Resident Evil y The Witcher. Disfruta especialmente los juegos que combinan mundos inmersivos, buenas historias, desafíos estratégicos, exploración y gameplay atractivo."
+          },
+          "technologies": [],
+          "tags": ["video games", "The Legend of Zelda", "Battlefield", "Resident Evil", "The Witcher", "gaming"]
+        },
+        {
+          "id": "favorite-cooking",
+          "topic": "cooking interests and favorite foods to prepare",
+          "text": {
+            "en": "Rafa enjoys cooking Mexican food, especially dishes with bold and spicy flavors. Some of his favorite foods to prepare include huevos rancheros, different types of homemade salsa, and a variety of tacos. He enjoys experimenting with flavors while keeping the strong character of traditional Mexican cuisine.",
+            "es": "Rafa disfruta cocinar comida mexicana, especialmente platillos con sabores intensos y picantes. Entre sus comidas favoritas para preparar se encuentran los huevos rancheros, diferentes tipos de salsa casera y una variedad de tacos. Le gusta experimentar con sabores manteniendo al mismo tiempo el carácter fuerte de la cocina tradicional mexicana."
+          },
+          "technologies": [],
+          "tags": ["cooking", "Mexican food", "tacos", "salsa", "huevos rancheros"]
+        },
+        {
+          "id": "taekwondo-experience",
+          "topic": "Tae Kwon Do experience and competitive athletics",
+          "text": {
+            "en": "Rafa trained in Tae Kwon Do for 16 years and competed as a high-performance athlete. During his competitive career, he was selected to represent his home state of San Luis Potosí and also represented Mexico in several competitions. The experience required years of disciplined training, preparation, competition, and continuous improvement. Tae Kwon Do taught him discipline, perseverance, focus, resilience, and the importance of consistent preparation toward long-term goals.",
+            "es": "Rafa entrenó Tae Kwon Do durante 16 años y compitió como atleta de alto rendimiento. Durante su carrera competitiva, fue seleccionado para representar a su estado natal de San Luis Potosí y también representó a México en varias competencias. La experiencia requirió años de entrenamiento disciplinado, preparación, competencia y mejora continua. El Tae Kwon Do le enseñó disciplina, perseverancia, concentración, resiliencia y la importancia de una preparación constante para alcanzar objetivos a largo plazo."
+          },
+          "technologies": [],
+          "tags": ["Tae Kwon Do", "high-performance athlete", "Mexico", "San Luis Potosí", "discipline", "perseverance"]
+        },
+        {
+          "id": "weekend-activities",
+          "topic": "weekend activities outdoor interests and freediving",
+          "text": {
+            "en": "On weekends, Rafa enjoys outdoor activities such as hiking and swimming. He is also a certified freediver and enjoys practicing freediving whenever he has the opportunity to visit the ocean. These activities allow him to stay active, spend time outdoors, challenge himself physically and mentally, and disconnect from his regular work routine.",
+            "es": "Durante los fines de semana, Rafa disfruta actividades al aire libre como hiking y natación. También es freediver certificado y disfruta practicar apnea cuando tiene la oportunidad de visitar el océano. Estas actividades le permiten mantenerse activo, pasar tiempo al aire libre, desafiarse física y mentalmente y desconectarse de su rutina habitual de trabajo."
+          },
+          "technologies": [],
+          "tags": ["weekend activities", "hiking", "swimming", "freediving", "outdoors"]
+        },
+        {
+          "id": "favorite-books-movies-music",
+          "topic": "favorite books movies music and entertainment interests",
+          "text": {
+            "en": "Rafa enjoys personal-development and productivity books, particularly Atomic Habits and Deep Work. He generally prefers practical nonfiction over fantasy because he enjoys ideas that can be applied to personal and professional growth. Although he does not watch many movies, he enjoys action films and anime. His musical interests include rock, techno, and reggaeton, with a preference for upbeat and energetic music that creates a positive atmosphere and makes people want to dance.",
+            "es": "Rafa disfruta libros de desarrollo personal y productividad, particularmente Atomic Habits y Deep Work. Generalmente prefiere nonfiction práctica sobre fantasía porque disfruta ideas que pueden aplicarse al crecimiento personal y profesional. Aunque no ve muchas películas, disfruta las películas de acción y el anime. Sus intereses musicales incluyen rock, techno y reggaeton, con preferencia por música energética y positiva que genere un buen ambiente y haga que las personas quieran bailar."
+          },
+          "technologies": [],
+          "tags": ["Atomic Habits", "Deep Work", "books", "anime", "rock", "techno", "reggaeton"]
+        },
+        {
+          "id": "definition-of-success",
+          "topic": "personal definition of success and continuous growth",
+          "text": {
+            "en": "For Rafa, success means defining a meaningful goal, working toward it consistently, and eventually achieving it through discipline, time, preparation, and sustained effort. However, he does not view success as a final destination. Reaching one goal should create an opportunity to identify the next challenge, develop new skills, and continue growing. Although financial rewards can be a positive result of professional success, Rafa primarily measures success by accomplishing what he set out to achieve and becoming more capable through the process.",
+            "es": "Para Rafa, el éxito significa definir un objetivo significativo, trabajar consistentemente para alcanzarlo y finalmente lograrlo mediante disciplina, tiempo, preparación y esfuerzo sostenido. Sin embargo, no considera el éxito como un destino final. Alcanzar un objetivo debe crear la oportunidad de identificar el siguiente desafío, desarrollar nuevas habilidades y continuar creciendo. Aunque las recompensas financieras pueden ser un resultado positivo del éxito profesional, Rafa mide principalmente el éxito por lograr aquello que se propuso y convertirse en una persona más capaz durante el proceso."
+          },
+          "technologies": [],
+          "tags": ["success", "discipline", "goals", "continuous improvement", "personal growth", "motivation"]
+        }
+      ]
+    },
+    {
+      "id": "education-flatiron",
+      "type": "education",
+      "title": {
+        "en": "Flatiron School",
+        "es": "Flatiron School"
+      },
+      "organization": "Flatiron School",
+      "location": {
+        "en": "Houston, United States",
+        "es": "Houston, Estados Unidos"
+      },
+      "tags": ["education", "software development"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "program",
+          "topic": "education",
+          "text": {
+            "en": "Rafa completed the Full Stack Web Development program at Flatiron School in Houston, United States.",
+            "es": "Rafa completó el programa de Desarrollo Web Full Stack en Flatiron School en Houston, Estados Unidos."
+          }
+        }
+      ]
+    },
+    {
+      "id": "education-uaslp",
+      "type": "education",
+      "title": {
+        "en": "Business Administration",
+        "es": "Administración de Empresas"
+      },
+      "organization": "UASLP",
+      "location": {
+        "en": "San Luis Potosí, Mexico",
+        "es": "San Luis Potosí, México"
+      },
+      "tags": ["education", "business"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "degree",
+          "topic": "education",
+          "text": {
+            "en": "Rafa earned a Bachelor of Arts in Business Administration from UASLP in San Luis Potosí, Mexico.",
+            "es": "Rafa obtuvo una licenciatura en Administración de Empresas en la UASLP, en San Luis Potosí, México."
+          }
+        }
+      ]
+    },
+    {
+      "id": "education-uv",
+      "type": "education",
+      "title": {
+        "en": "International Business",
+        "es": "Negocios Internacionales"
+      },
+      "organization": "UV",
+      "location": {
+        "en": "Valparaíso, Chile",
+        "es": "Valparaíso, Chile"
+      },
+      "tags": ["education", "business"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "degree",
+          "topic": "education",
+          "text": {
+            "en": "Rafa earned a Bachelor of Arts in International Business from UV in Valparaíso, Chile.",
+            "es": "Rafa obtuvo una licenciatura en Negocios Internacionales en la UV, en Valparaíso, Chile."
+          }
+        }
+      ]
+    },
+    {
+      "id": "skills-toolkit",
+      "type": "skill",
+      "title": {
+        "en": "Technical toolkit",
+        "es": "Herramientas técnicas"
+      },
+      "tags": ["skills", "technologies"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "frontend",
+          "topic": "frontend technologies",
+          "text": {
+            "en": "Rafa's frontend experience includes Angular, React, TypeScript, JavaScript, HTML5, CSS3, React Native, Redux, Styled Components, jQuery, Material UI, and Sass.",
+            "es": "La experiencia frontend de Rafa incluye Angular, React, TypeScript, JavaScript, HTML5, CSS3, React Native, Redux, Styled Components, jQuery, Material UI y Sass."
+          },
+          "technologies": ["Angular", "React", "TypeScript", "JavaScript", "HTML5", "CSS3", "React Native", "Redux", "Styled Components", "jQuery", "Material UI", "Sass"]
+        },
+        {
+          "id": "backend",
+          "topic": "backend technologies",
+          "text": {
+            "en": "Rafa's backend and data experience includes Python, Node.js, C#, MongoDB, Neo4j, the Microsoft .NET Framework, Microsoft SQL Server, and SQL.",
+            "es": "La experiencia de Rafa en backend y datos incluye Python, Node.js, C#, MongoDB, Neo4j, Microsoft .NET Framework, Microsoft SQL Server y SQL."
+          },
+          "technologies": ["Python", "Node.js", "C#", "MongoDB", "Neo4j", ".NET", "Microsoft SQL Server", "SQL"]
+        },
+        {
+          "id": "ai",
+          "topic": "AI technologies",
+          "text": {
+            "en": "Rafa builds AI-powered applications using Python, FastAPI, OpenAI APIs, RAG workflows, vector databases, and agent-based workflows. He has built and tested AI agents and multi-step automation workflows, using AI coding tools such as Codex to accelerate development, debugging, and refactoring. He also creates AI-assisted image and video workflows using generative AI tools and prompt engineering techniques.",
+            "es": "Rafa desarrolla aplicaciones impulsadas por IA utilizando Python, FastAPI, APIs de OpenAI, flujos RAG, bases de datos vectoriales y flujos de trabajo basados en agentes. Ha creado y probado agentes de IA y automatizaciones de varios pasos, utilizando herramientas de programación con IA como Codex para acelerar el desarrollo, la depuración y la refactorización. También crea flujos de trabajo de imágenes y video asistidos por IA mediante herramientas de IA generativa y técnicas de ingeniería de prompts."
+          },
+          "technologies": ["Python", "FastAPI", "OpenAI API", "RAG", "Vector Databases", "AI Agents", "Codex", "Generative AI", "Prompt Engineering"]
+        },
+        {
+          "id": "platforms-tools",
+          "topic": "platforms and tools",
+          "text": {
+            "en": "Rafa has worked with Amazon Web Services, Docker, Firebase, Git, Netlify, and Expo.",
+            "es": "Rafa ha trabajado con Amazon Web Services, Docker, Firebase, Git, Netlify y Expo."
+          },
+          "technologies": ["AWS", "Docker", "Firebase", "Git", "Netlify", "Expo"]
+        },
+        {
+          "id": "methodologies",
+          "topic": "software methodologies",
+          "text": {
+            "en": "Rafa has experience with object-oriented programming, MVC, REST APIs, and AJAX.",
+            "es": "Rafa tiene experiencia con programación orientada a objetos, MVC, APIs REST y AJAX."
+          },
+          "technologies": ["OOP", "MVC", "REST API", "AJAX"]
+        }
+      ]
+    },
+    {
+      "id": "services-overview",
+      "type": "service",
+      "title": {
+        "en": "Professional services",
+        "es": "Servicios profesionales"
+      },
+      "tags": ["services", "web development", "AI", "software development"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "website-development",
+          "topic": "website development services",
+          "text": {
+            "en": "Rafa offers modern, responsive website development designed to make businesses look professional, load quickly, and convert visitors into customers. This includes business websites, landing pages, and portfolios.",
+            "es": "Rafa ofrece desarrollo de sitios web modernos y responsivos para que los negocios luzcan profesionales, carguen rápido y conviertan visitantes en clientes. Esto incluye sitios web empresariales, páginas de aterrizaje y portafolios."
+          }
+        },
+        {
+          "id": "ai-products",
+          "topic": "AI product services",
+          "text": {
+            "en": "Rafa offers AI products that automate repetitive work, reduce operational costs, and help businesses operate more efficiently. These services include chatbots, personal assistants, and retrieval-augmented generation systems.",
+            "es": "Rafa ofrece productos de IA que automatizan tareas repetitivas, reducen costos operativos y ayudan a que los negocios funcionen con mayor eficiencia. Estos servicios incluyen chatbots, asistentes personales y sistemas de generación aumentada por recuperación."
+          },
+          "technologies": ["AI", "RAG"]
+        },
+        {
+          "id": "code-projects",
+          "topic": "custom software development services",
+          "text": {
+            "en": "Rafa offers custom coding solutions that add needed features, connect systems, and streamline business operations. This includes full-stack applications, integrations, and APIs.",
+            "es": "Rafa ofrece soluciones de programación a medida que agregan funciones necesarias, conectan sistemas y optimizan las operaciones de un negocio. Esto incluye aplicaciones full-stack, integraciones y APIs."
+          }
+        }
+      ]
+    },
+    {
+      "id": "experience-independent-contractor",
+      "type": "experience",
+      "title": {
+        "en": "Software Engineer & AI Developer — Independent Contractor",
+        "es": "Ingeniero de Software y Desarrollador de IA — Contratista Independiente"
+      },
+      "organization": "Independent Contractor",
+      "role": {
+        "en": "Software Engineer & AI Developer",
+        "es": "Ingeniero de Software y Desarrollador de IA"
+      },
+      "location": {
+        "en": "Houston, TX",
+        "es": "Houston, Texas"
+      },
+      "startDate": "2025-09",
+      "tags": ["employment", "independent contractor", "AI", "client work"],
+      "technologies": ["Python", "FastAPI", "OpenAI API", "RAG", "Vector Databases", "AI Agents", "Codex", "Generative AI", "Prompt Engineering", "React", "TypeScript", "JavaScript"],
+      "sections": [
+        {
+          "id": "ai-applications",
+          "topic": "AI application development",
+          "text": {
+            "en": "Since September 2025, Rafa has worked as an independent Software Engineer and AI Developer in Houston. He builds AI-powered applications using Python, FastAPI, OpenAI APIs, RAG workflows, vector databases, and agent-based workflows.",
+            "es": "Desde septiembre de 2025, Rafa trabaja como Ingeniero de Software y Desarrollador de IA independiente en Houston. Desarrolla aplicaciones impulsadas por IA utilizando Python, FastAPI, APIs de OpenAI, flujos RAG, bases de datos vectoriales y flujos de trabajo basados en agentes."
+          },
+          "technologies": ["Python", "FastAPI", "OpenAI API", "RAG", "Vector Databases", "AI Agents"]
+        },
+        {
+          "id": "agent-automation",
+          "topic": "AI agents and automation workflows",
+          "text": {
+            "en": "Rafa builds and tests AI agents and multi-step automation workflows. He uses AI coding tools such as Codex to accelerate development, debugging, and refactoring.",
+            "es": "Rafa crea y prueba agentes de IA y flujos de automatización de varios pasos. Utiliza herramientas de programación con IA como Codex para acelerar el desarrollo, la depuración y la refactorización."
+          },
+          "technologies": ["AI Agents", "Codex"]
+        },
+        {
+          "id": "generative-media",
+          "topic": "AI-assisted image and video workflows",
+          "text": {
+            "en": "Rafa creates AI-assisted image and video workflows using generative AI tools and prompt engineering techniques.",
+            "es": "Rafa crea flujos de trabajo de imágenes y video asistidos por IA mediante herramientas de IA generativa y técnicas de ingeniería de prompts."
+          },
+          "technologies": ["Generative AI", "Prompt Engineering"]
+        },
+        {
+          "id": "client-websites",
+          "topic": "client website development",
+          "text": {
+            "en": "Rafa develops small website projects for clients using React, TypeScript, JavaScript, and modern responsive design practices.",
+            "es": "Rafa desarrolla pequeños proyectos de sitios web para clientes utilizando React, TypeScript, JavaScript y prácticas modernas de diseño responsivo."
+          },
+          "technologies": ["React", "TypeScript", "JavaScript"],
+          "tags": ["websites", "responsive design", "client projects"]
+        }
+      ]
+    },
+    {
+      "id": "experience-sourcemap",
+      "type": "experience",
+      "title": {
+        "en": "Full Stack Developer at Sourcemap",
+        "es": "Desarrollador Full Stack en Sourcemap"
+      },
+      "organization": "Sourcemap",
+      "role": {
+        "en": "Full Stack Developer",
+        "es": "Desarrollador Full Stack"
+      },
+      "location": {
+        "en": "New York City, remote",
+        "es": "Nueva York, remoto"
+      },
+      "startDate": "2023-07",
+      "endDate": "2025-07",
+      "tags": ["employment", "full time", "supply chain"],
+      "technologies": ["Jest", "Mapbox.js", "REST API"],
+      "sections": [
+        {
+          "id": "frontend-apis",
+          "topic": "frontend and API development",
+          "text": {
+            "en": "Rafa implemented Figma-based designs as performant, accessible, and user-friendly frontend applications. He also developed and integrated RESTful APIs for maps, dashboards, tables, and interfaces that supported data-driven decisions.",
+            "es": "Rafa implementó diseños de Figma como aplicaciones frontend rápidas, accesibles y fáciles de usar. También desarrolló e integró APIs REST para mapas, paneles, tablas e interfaces que apoyaban decisiones basadas en datos."
+          },
+          "technologies": ["Figma", "REST API"]
+        },
+        {
+          "id": "testing-reliability",
+          "topic": "testing and production reliability",
+          "text": {
+            "en": "Rafa built extensive Jest test suites that raised test coverage to 60 percent and reduced production bugs. He also delivered urgent client hotfixes to minimize downtime and maintain customer satisfaction.",
+            "es": "Rafa creó suites extensas de pruebas con Jest que elevaron la cobertura al 60 por ciento y redujeron errores en producción. También entregó correcciones urgentes para clientes con el fin de minimizar el tiempo de inactividad y mantener su satisfacción."
+          },
+          "technologies": ["Jest"],
+          "tags": ["testing", "hotfixes"]
+        },
+        {
+          "id": "legacy-refactoring",
+          "topic": "legacy application refactoring",
+          "text": {
+            "en": "Rafa refactored legacy applications using a fat-model, thin-controller design. This work reduced technical debt by 60 percent and improved application maintainability.",
+            "es": "Rafa refactorizó aplicaciones heredadas mediante un diseño de modelo robusto y controlador ligero. Este trabajo redujo la deuda técnica en un 60 por ciento y mejoró la mantenibilidad de las aplicaciones."
+          },
+          "tags": ["refactoring", "technical debt"]
+        },
+        {
+          "id": "mapbox-visualization",
+          "topic": "mapping and data visualization",
+          "text": {
+            "en": "Rafa integrated Mapbox.js and other services into supply-chain applications, giving users better supply-chain visibility through intuitive geographic data visualizations.",
+            "es": "Rafa integró Mapbox.js y otros servicios en aplicaciones de cadena de suministro, brindando a los usuarios mayor visibilidad mediante visualizaciones geográficas de datos intuitivas."
+          },
+          "technologies": ["Mapbox.js"],
+          "tags": ["maps", "data visualization"]
+        }
+      ]
+    },
+    {
+      "id": "experience-energy-ogre",
+      "type": "experience",
+      "title": {
+        "en": "Full Stack Developer at Energy Ogre",
+        "es": "Desarrollador Full Stack en Energy Ogre"
+      },
+      "organization": "Energy Ogre",
+      "role": {
+        "en": "Full Stack Developer",
+        "es": "Desarrollador Full Stack"
+      },
+      "location": {
+        "en": "Houston, remote",
+        "es": "Houston, remoto"
+      },
+      "startDate": "2021-01",
+      "endDate": "2023-07",
+      "tags": ["employment", "full time", "energy"],
+      "technologies": ["React", "React Native", ".NET", "SQL"],
+      "sections": [
+        {
+          "id": "application-development",
+          "topic": "web and mobile development",
+          "text": {
+            "en": "Rafa developed and maintained web, mobile, and internal applications using React, React Native, and .NET. He led rebuilds of core applications to improve their performance and maintainability.",
+            "es": "Rafa desarrolló y mantuvo aplicaciones web, móviles e internas con React, React Native y .NET. Lideró reconstrucciones de aplicaciones principales para mejorar su rendimiento y mantenibilidad."
+          },
+          "technologies": ["React", "React Native", ".NET"]
+        },
+        {
+          "id": "collaboration",
+          "topic": "cross-functional collaboration",
+          "text": {
+            "en": "Rafa collaborated with engineers, analysts, and managers to deliver high-impact software solutions.",
+            "es": "Rafa colaboró con ingenieros, analistas y gerentes para entregar soluciones de software de alto impacto."
+          },
+          "tags": ["collaboration"]
+        },
+        {
+          "id": "sql-data",
+          "topic": "SQL database development",
+          "text": {
+            "en": "Rafa worked with SQL databases by creating stored procedures, updating schemas, and managing database tables.",
+            "es": "Rafa trabajó con bases de datos SQL mediante la creación de procedimientos almacenados, la actualización de esquemas y la administración de tablas."
+          },
+          "technologies": ["SQL"],
+          "tags": ["databases"]
+        }
+      ]
+    },
+    {
+      "id": "experience-becoming-you",
+      "type": "experience",
+      "title": {
+        "en": "Front End Developer at Becoming You",
+        "es": "Desarrollador Frontend en Becoming You"
+      },
+      "organization": "Becoming You",
+      "role": {
+        "en": "Front End Developer",
+        "es": "Desarrollador Frontend"
+      },
+      "location": {
+        "en": "Houston, remote",
+        "es": "Houston, remoto"
+      },
+      "startDate": "2021-05",
+      "endDate": "2021-07",
+      "tags": ["employment", "contract"],
+      "technologies": ["React"],
+      "sections": [
+        {
+          "id": "responsive-landing-pages",
+          "topic": "responsive frontend development",
+          "text": {
+            "en": "Rafa built responsive React landing pages optimized for mobile and desktop experiences.",
+            "es": "Rafa creó páginas de destino responsivas con React, optimizadas para experiencias móviles y de escritorio."
+          },
+          "technologies": ["React"],
+          "tags": ["responsive design", "landing pages"]
+        },
+        {
+          "id": "quality-scalability",
+          "topic": "frontend quality and scalability",
+          "text": {
+            "en": "Rafa refactored and tested frontend codebases to improve performance and reliability. He designed scalable applications and integrated third-party services to enhance the user experience.",
+            "es": "Rafa refactorizó y probó bases de código frontend para mejorar el rendimiento y la confiabilidad. Diseñó aplicaciones escalables e integró servicios de terceros para mejorar la experiencia del usuario."
+          },
+          "tags": ["refactoring", "testing", "scalability"]
+        }
+      ]
+    },
+    {
+      "id": "loadbalancer",
+      "type": "project",
+      "archiveOrder": 10,
+      "title": { "en": "Load Balancer", "es": "Load Balancer" },
+      "tags": ["project", "load balancing", "routing", "monitoring"],
+      "technologies": ["Python", "React", "TypeScript", "Docker", "Nginx"],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "production load balancer architecture",
+          "text": {
+            "en": "Rafa built a production-minded load balancer from scratch with Python, React, TypeScript, Docker, and Nginx. It demonstrates round-robin and least-connections routing, automatic health checks, safe retries, failure isolation, metrics, structured logs, and a real-time monitoring dashboard.",
+            "es": "Rafa construyó desde cero un balanceador de carga orientado a producción con Python, React, TypeScript, Docker y Nginx. Demuestra enrutamiento round-robin y por menor número de conexiones, verificaciones automáticas de estado, reintentos seguros, aislamiento de fallos, métricas, registros estructurados y un panel de monitoreo en tiempo real."
+          }
+        }
+      ]
+    },
+    {
+      "id": "scraper",
+      "type": "project",
+      "archiveOrder": 11,
+      "title": { "en": "Scraper and API Project", "es": "Proyecto de Scraper y API" },
+      "tags": ["project", "scraper", "data pipeline", "well data"],
+      "technologies": ["Python", "FastAPI", "SQLite"],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "web scraping data pipeline and API",
+          "text": {
+            "en": "Rafa built a complete data pipeline that scrapes publicly available well data, normalizes and validates the results, stores them in SQLite, and exposes the data through a FastAPI REST API.",
+            "es": "Rafa construyó un pipeline completo que extrae datos públicos de pozos, normaliza y valida los resultados, los almacena en SQLite y expone la información mediante una API REST con FastAPI."
+          }
+        }
+      ]
+    },
+    {
+      "id": "website-creation-workflow",
+      "type": "project",
+      "archiveOrder": 12,
+      "title": { "en": "Website Creation Workflow", "es": "Flujo de Creación de Sitios Web" },
+      "tags": ["project", "AI", "workflow", "human review"],
+      "technologies": ["Codex", "Google Stitch"],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "approval-based website creation workflow",
+          "text": {
+            "en": "Rafa designed a structured, approval-based workflow for creating professional websites with Codex and Google Stitch. It covers client discovery, visual design, technical handoff, development, final quality assurance, human review, and reliable documentation.",
+            "es": "Rafa diseñó un flujo estructurado y basado en aprobaciones para crear sitios web profesionales con Codex y Google Stitch. Incluye descubrimiento del cliente, diseño visual, entrega técnica, desarrollo, control final de calidad, revisión humana y documentación confiable."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rafaglot",
+      "type": "project",
+      "archiveOrder": 13,
+      "title": { "en": "RafaGlot!", "es": "RafaGlot!" },
+      "tags": ["project", "AI", "translation", "image generation"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "AI translation and image generation application",
+          "text": {
+            "en": "RafaGlot is Rafa's AI application where users enter text, translate it into selected languages, and generate an image based on that text.",
+            "es": "RafaGlot es la aplicación de IA de Rafa donde los usuarios ingresan texto, lo traducen a los idiomas seleccionados y generan una imagen basada en ese texto."
+          }
+        }
+      ]
+    },
+    {
+      "id": "eo-pages",
+      "type": "project",
+      "archiveOrder": 20,
+      "title": { "en": "EO Pages", "es": "Páginas de EO" },
+      "tags": ["project", "landing pages", "collaboration", "responsive design"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "collaborative responsive landing pages",
+          "text": {
+            "en": "EO Pages is a collection of landing pages Rafa built in collaboration with engineers and marketing teams. He integrated features, made the pages responsive on mobile, and ensured strong overall performance.",
+            "es": "Páginas de EO es una colección de páginas que Rafa creó en colaboración con ingenieros y equipos de marketing. Integró funciones, adaptó las páginas para dispositivos móviles y aseguró un buen rendimiento general."
+          }
+        }
+      ]
+    },
+    {
+      "id": "chillflix",
+      "type": "project",
+      "archiveOrder": 30,
+      "title": { "en": "Chillflix", "es": "Chillflix" },
+      "tags": ["project", "movies", "trailers", "responsive design"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "trending movie trailer website",
+          "text": {
+            "en": "Chillflix is Rafa's mobile-friendly website where users can discover trailers for movies that are trending in the United States.",
+            "es": "Chillflix es el sitio web adaptable a dispositivos móviles de Rafa donde los usuarios pueden descubrir avances de las películas más populares en Estados Unidos."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hermes",
+      "type": "project",
+      "archiveOrder": 40,
+      "title": { "en": "Hermes", "es": "Hermes" },
+      "tags": ["project", "real-time", "messaging", "teams"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "real-time messaging application",
+          "text": {
+            "en": "Hermes is Rafa's web application where users can message each other in real time. It is designed for teams or groups of friends.",
+            "es": "Hermes es la aplicación web de Rafa donde los usuarios pueden enviarse mensajes en tiempo real. Está diseñada para equipos o grupos de amigos."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sell-it",
+      "type": "project",
+      "archiveOrder": 50,
+      "title": { "en": "Sell it", "es": "Véndelo" },
+      "tags": ["project", "mobile", "marketplace", "Android", "iOS"],
+      "technologies": ["React Native"],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "cross-platform mobile marketplace",
+          "text": {
+            "en": "Sell it is Rafa's marketplace application where users can buy and sell products from other users. It was built with React Native and works on Android and iOS.",
+            "es": "Véndelo es la aplicación de mercado de Rafa donde los usuarios pueden comprar y vender productos a otros usuarios. Fue creada con React Native y funciona en Android e iOS."
+          }
+        }
+      ]
+    },
+    {
+      "id": "shopper",
+      "type": "project",
+      "archiveOrder": 60,
+      "title": { "en": "Shopper", "es": "Shopper" },
+      "tags": ["project", "e-commerce", "authentication", "technology products"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "authenticated technology e-commerce website",
+          "text": {
+            "en": "Shopper is Rafa's e-commerce website where users can register and buy technology products online.",
+            "es": "Shopper es el sitio de comercio electrónico de Rafa donde los usuarios pueden registrarse y comprar productos tecnológicos en línea."
+          }
+        }
+      ]
+    },
+    {
+      "id": "picpock",
+      "type": "project",
+      "archiveOrder": 70,
+      "title": { "en": "Picpock", "es": "Picpock" },
+      "tags": ["project", "social media", "real-time", "responsive design"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "real-time social media application",
+          "text": {
+            "en": "Picpock is Rafa's mobile-friendly social media application where users share pictures, publish comments, and like posts in real time.",
+            "es": "Picpock es la aplicación de red social adaptable a móviles de Rafa donde los usuarios comparten imágenes, publican comentarios y dan me gusta en tiempo real."
+          }
+        }
+      ]
+    },
+    {
+      "id": "master-query",
+      "type": "project",
+      "archiveOrder": 80,
+      "title": { "en": "Master Query", "es": "Master Query" },
+      "tags": ["project", "search", "Google", "responsive design"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "mobile-friendly Google search application",
+          "text": {
+            "en": "Master Query is Rafa's mobile-friendly application where users can search for terms using the Google search engine.",
+            "es": "Master Query es la aplicación adaptable a móviles de Rafa donde los usuarios pueden buscar términos mediante el motor de búsqueda de Google."
+          }
+        }
+      ]
+    },
+    {
+      "id": "budget-app",
+      "type": "project",
+      "archiveOrder": 90,
+      "title": { "en": "Budget App", "es": "Aplicación de Presupuesto" },
+      "tags": ["project", "expenses", "finance", "React Hooks"],
+      "technologies": ["React", "React Hooks"],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "expense calculator built to practice React Hooks",
+          "text": {
+            "en": "Budget App is Rafa's expense calculator. He created the project primarily to practice using React Hooks.",
+            "es": "Aplicación de Presupuesto es la calculadora de gastos de Rafa. Creó el proyecto principalmente para practicar el uso de React Hooks."
+          }
+        }
+      ]
+    },
+    {
+      "id": "pet-life",
+      "type": "project",
+      "archiveOrder": 100,
+      "title": { "en": "Pet Life", "es": "Pet Life" },
+      "tags": ["project", "pet care", "business", "booking"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "pet care franchise business website",
+          "text": {
+            "en": "Pet Life is a business website Rafa built for a pet care franchise. Users can book a visit, review services, find locations, and join the community.",
+            "es": "Pet Life es el sitio web empresarial que Rafa creó para una franquicia de cuidado de mascotas. Los usuarios pueden reservar una visita, consultar servicios, encontrar ubicaciones y unirse a la comunidad."
+          }
+        }
+      ]
+    },
+    {
+      "id": "vidly",
+      "type": "project",
+      "archiveOrder": 110,
+      "title": { "en": "Vidly", "es": "Vidly" },
+      "tags": ["project", "movies", "authentication", "validation"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "movie browsing authentication and validation application",
+          "text": {
+            "en": "Vidly is Rafa's application for browsing a list of movies. He built it to strengthen his authentication and validation skills.",
+            "es": "Vidly es la aplicación de Rafa para consultar una lista de películas. La creó para fortalecer sus habilidades de autenticación y validación."
+          }
+        }
+      ]
+    },
+    {
+      "id": "shoptastic",
+      "type": "project",
+      "archiveOrder": 120,
+      "title": { "en": "Shoptastic", "es": "Shoptastic" },
+      "tags": ["project", "e-commerce", "product search", "store locations"],
+      "technologies": [],
+      "sections": [
+        {
+          "id": "overview",
+          "topic": "e-commerce product and store location website",
+          "text": {
+            "en": "Shoptastic is an e-commerce website Rafa worked on where users can search for products, see available store locations in cities across the United States, and buy items.",
+            "es": "Shoptastic es un sitio de comercio electrónico en el que trabajó Rafa, donde los usuarios pueden buscar productos, ver tiendas disponibles en ciudades de Estados Unidos y comprar artículos."
+          }
+        }
+      ]
+    }
+  ]
+}

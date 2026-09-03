@@ -1,0 +1,668 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "career-change-en",
+      "locale": "en",
+      "category": "profile",
+      "question": "When did Rafa start coding and why?",
+      "expectedChunkIds": ["profile-overview-career-change-en"]
+    },
+    {
+      "id": "career-change-es",
+      "locale": "es",
+      "category": "profile",
+      "question": "¿Cuándo comenzó Rafa a programar y por qué?",
+      "expectedChunkIds": ["profile-overview-career-change-es"]
+    },
+    {
+      "id": "current-location-en",
+      "locale": "en",
+      "category": "profile",
+      "question": "Where is Rafa currently based?",
+      "expectedChunkIds": ["profile-overview-origin-location-languages-en"]
+    },
+    {
+      "id": "current-location-es",
+      "locale": "es",
+      "category": "profile",
+      "question": "¿Dónde vive Rafa actualmente?",
+      "expectedChunkIds": ["profile-overview-origin-location-languages-es"]
+    },
+    {
+      "id": "favorite-foods-en",
+      "locale": "en",
+      "category": "profile",
+      "question": "What are Rafa's favorite foods?",
+      "expectedChunkIds": ["profile-overview-personal-interests-en"]
+    },
+    {
+      "id": "favorite-foods-es",
+      "locale": "es",
+      "category": "profile",
+      "question": "¿Cuáles son las comidas favoritas de Rafa?",
+      "expectedChunkIds": ["profile-overview-personal-interests-es"]
+    },
+    {
+      "id": "hiking-en",
+      "locale": "en",
+      "category": "profile",
+      "question": "Which countries does Rafa like for hiking?",
+      "expectedChunkIds": ["profile-overview-personal-interests-en"]
+    },
+    {
+      "id": "hiking-es",
+      "locale": "es",
+      "category": "profile",
+      "question": "¿En qué países le gusta hacer senderismo a Rafa?",
+      "expectedChunkIds": ["profile-overview-personal-interests-es"]
+    },
+    {
+      "id": "flatiron-en",
+      "locale": "en",
+      "category": "education",
+      "question": "What did Rafa study at Flatiron School?",
+      "expectedChunkIds": ["education-flatiron-program-en"]
+    },
+    {
+      "id": "flatiron-es",
+      "locale": "es",
+      "category": "education",
+      "question": "¿Qué estudió Rafa en Flatiron School?",
+      "expectedChunkIds": ["education-flatiron-program-es"]
+    },
+    {
+      "id": "business-degree-en",
+      "locale": "en",
+      "category": "education",
+      "question": "Where did Rafa study Business Administration?",
+      "expectedChunkIds": ["education-uaslp-degree-en"]
+    },
+    {
+      "id": "business-degree-es",
+      "locale": "es",
+      "category": "education",
+      "question": "¿Dónde estudió Rafa Administración de Empresas?",
+      "expectedChunkIds": ["education-uaslp-degree-es"]
+    },
+    {
+      "id": "frontend-skills-en",
+      "locale": "en",
+      "category": "skills",
+      "question": "Which frontend technologies has Rafa used?",
+      "expectedChunkIds": ["skills-toolkit-frontend-en"]
+    },
+    {
+      "id": "frontend-skills-es",
+      "locale": "es",
+      "category": "skills",
+      "question": "¿Qué tecnologías frontend ha utilizado Rafa?",
+      "expectedChunkIds": ["skills-toolkit-frontend-es"]
+    },
+    {
+      "id": "backend-skills-en",
+      "locale": "en",
+      "category": "skills",
+      "question": "Does Rafa have backend and database experience?",
+      "expectedChunkIds": ["skills-toolkit-backend-en"]
+    },
+    {
+      "id": "backend-skills-es",
+      "locale": "es",
+      "category": "skills",
+      "question": "¿Rafa tiene experiencia en backend y bases de datos?",
+      "expectedChunkIds": ["skills-toolkit-backend-es"]
+    },
+    {
+      "id": "sourcemap-apis-en",
+      "locale": "en",
+      "category": "experience",
+      "question": "What kinds of APIs and interfaces did Rafa build at Sourcemap?",
+      "expectedChunkIds": ["experience-sourcemap-frontend-apis-en"]
+    },
+    {
+      "id": "sourcemap-apis-es",
+      "locale": "es",
+      "category": "experience",
+      "question": "¿Qué tipos de APIs e interfaces creó Rafa en Sourcemap?",
+      "expectedChunkIds": ["experience-sourcemap-frontend-apis-es"]
+    },
+    {
+      "id": "sourcemap-testing-en",
+      "locale": "en",
+      "category": "experience",
+      "question": "How did Rafa improve testing at Sourcemap?",
+      "expectedChunkIds": ["experience-sourcemap-testing-reliability-en"]
+    },
+    {
+      "id": "sourcemap-testing-es",
+      "locale": "es",
+      "category": "experience",
+      "question": "¿Cómo mejoró Rafa las pruebas en Sourcemap?",
+      "expectedChunkIds": ["experience-sourcemap-testing-reliability-es"]
+    },
+    {
+      "id": "sourcemap-refactoring-en",
+      "locale": "en",
+      "category": "experience",
+      "question": "How much technical debt did Rafa reduce at Sourcemap?",
+      "expectedChunkIds": ["experience-sourcemap-legacy-refactoring-en"]
+    },
+    {
+      "id": "sourcemap-refactoring-es",
+      "locale": "es",
+      "category": "experience",
+      "question": "¿Cuánta deuda técnica redujo Rafa en Sourcemap?",
+      "expectedChunkIds": ["experience-sourcemap-legacy-refactoring-es"]
+    },
+    {
+      "id": "sourcemap-mapbox-en",
+      "locale": "en",
+      "category": "experience",
+      "question": "Has Rafa worked with Mapbox?",
+      "expectedChunkIds": [
+        "experience-sourcemap-mapbox-visualization-en",
+        "profile-overview-feature-ownership-en",
+        "profile-overview-project-case-studies-en",
+        "profile-overview-senior-level-project-en"
+      ]
+    },
+    {
+      "id": "sourcemap-mapbox-es",
+      "locale": "es",
+      "category": "experience",
+      "question": "¿Rafa ha trabajado con Mapbox?",
+      "expectedChunkIds": ["experience-sourcemap-mapbox-visualization-es"]
+    },
+    {
+      "id": "energy-ogre-apps-en",
+      "locale": "en",
+      "category": "experience",
+      "question": "What applications did Rafa build at Energy Ogre?",
+      "expectedChunkIds": ["experience-energy-ogre-application-development-en"]
+    },
+    {
+      "id": "energy-ogre-apps-es",
+      "locale": "es",
+      "category": "experience",
+      "question": "¿Qué aplicaciones desarrolló Rafa en Energy Ogre?",
+      "expectedChunkIds": ["experience-energy-ogre-application-development-es"]
+    },
+    {
+      "id": "energy-ogre-sql-en",
+      "locale": "en",
+      "category": "experience",
+      "question": "What SQL work did Rafa do at Energy Ogre?",
+      "expectedChunkIds": ["experience-energy-ogre-sql-data-en"]
+    },
+    {
+      "id": "energy-ogre-sql-es",
+      "locale": "es",
+      "category": "experience",
+      "question": "¿Qué trabajo de SQL realizó Rafa en Energy Ogre?",
+      "expectedChunkIds": ["experience-energy-ogre-sql-data-es"]
+    },
+    {
+      "id": "becoming-you-responsive-en",
+      "locale": "en",
+      "category": "experience",
+      "question": "Did Rafa build responsive React landing pages?",
+      "expectedChunkIds": ["experience-becoming-you-responsive-landing-pages-en"]
+    },
+    {
+      "id": "becoming-you-responsive-es",
+      "locale": "es",
+      "category": "experience",
+      "question": "¿Rafa creó páginas de destino responsivas con React?",
+      "expectedChunkIds": ["experience-becoming-you-responsive-landing-pages-es"]
+    },
+    {
+      "id": "loadbalancer-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which Rafa project demonstrates round-robin routing, health checks, and a monitoring dashboard?",
+      "expectedChunkIds": ["loadbalancer-overview-en"]
+    },
+    {
+      "id": "loadbalancer-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué proyecto de Rafa demuestra enrutamiento round-robin, verificaciones de estado y un panel de monitoreo?",
+      "expectedChunkIds": ["loadbalancer-overview-es"]
+    },
+    {
+      "id": "scraper-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which project scrapes public well data and exposes it through FastAPI?",
+      "expectedChunkIds": ["scraper-overview-en"]
+    },
+    {
+      "id": "scraper-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué proyecto extrae datos públicos de pozos y los expone mediante FastAPI?",
+      "expectedChunkIds": ["scraper-overview-es"]
+    },
+    {
+      "id": "website-workflow-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "How does Rafa's Website Creation Workflow use Codex and Google Stitch?",
+      "expectedChunkIds": ["website-creation-workflow-overview-en"]
+    },
+    {
+      "id": "website-workflow-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Cómo utiliza Codex y Google Stitch el Flujo de Creación de Sitios Web de Rafa?",
+      "expectedChunkIds": ["website-creation-workflow-overview-es"]
+    },
+    {
+      "id": "rafaglot-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which Rafa AI app translates text and generates an image from it?",
+      "expectedChunkIds": ["rafaglot-overview-en"]
+    },
+    {
+      "id": "rafaglot-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué aplicación de IA de Rafa traduce texto y genera una imagen a partir de él?",
+      "expectedChunkIds": ["rafaglot-overview-es"]
+    },
+    {
+      "id": "eo-pages-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which landing page project did Rafa build with engineering and marketing teams?",
+      "expectedChunkIds": ["eo-pages-overview-en"]
+    },
+    {
+      "id": "eo-pages-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué proyecto de páginas creó Rafa con equipos de ingeniería y marketing?",
+      "expectedChunkIds": ["eo-pages-overview-es"]
+    },
+    {
+      "id": "chillflix-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which mobile-friendly project helps users find trending movie trailers?",
+      "expectedChunkIds": ["chillflix-overview-en"]
+    },
+    {
+      "id": "chillflix-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué proyecto adaptable a móviles permite encontrar avances de películas populares?",
+      "expectedChunkIds": ["chillflix-overview-es"]
+    },
+    {
+      "id": "hermes-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which Rafa project provides real-time messaging for teams and friends?",
+      "expectedChunkIds": ["hermes-overview-en"]
+    },
+    {
+      "id": "hermes-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué proyecto de Rafa ofrece mensajería en tiempo real para equipos y amigos?",
+      "expectedChunkIds": ["hermes-overview-es"]
+    },
+    {
+      "id": "sell-it-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which React Native marketplace by Rafa works on Android and iOS?",
+      "expectedChunkIds": ["sell-it-overview-en"]
+    },
+    {
+      "id": "sell-it-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué mercado creado por Rafa con React Native funciona en Android e iOS?",
+      "expectedChunkIds": ["sell-it-overview-es"]
+    },
+    {
+      "id": "shopper-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which e-commerce project lets users register and buy technology products?",
+      "expectedChunkIds": ["shopper-overview-en"]
+    },
+    {
+      "id": "shopper-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué proyecto de comercio electrónico permite registrarse y comprar productos tecnológicos?",
+      "expectedChunkIds": ["shopper-overview-es"]
+    },
+    {
+      "id": "picpock-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which social app lets users share pictures, comment, and like posts in real time?",
+      "expectedChunkIds": ["picpock-overview-en"]
+    },
+    {
+      "id": "picpock-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué aplicación social permite compartir imágenes, comentar y dar me gusta en tiempo real?",
+      "expectedChunkIds": ["picpock-overview-es"]
+    },
+    {
+      "id": "master-query-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which mobile-friendly project searches for terms with the Google search engine?",
+      "expectedChunkIds": ["master-query-overview-en"]
+    },
+    {
+      "id": "master-query-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué proyecto adaptable a móviles busca términos con el motor de Google?",
+      "expectedChunkIds": ["master-query-overview-es"]
+    },
+    {
+      "id": "budget-app-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which expense calculator did Rafa build to practice React Hooks?",
+      "expectedChunkIds": ["budget-app-overview-en"]
+    },
+    {
+      "id": "budget-app-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué calculadora de gastos creó Rafa para practicar React Hooks?",
+      "expectedChunkIds": ["budget-app-overview-es"]
+    },
+    {
+      "id": "pet-life-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which pet care franchise website supports bookings, services, and locations?",
+      "expectedChunkIds": ["pet-life-overview-en"]
+    },
+    {
+      "id": "pet-life-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué sitio para una franquicia de mascotas permite reservar visitas, consultar servicios y encontrar ubicaciones?",
+      "expectedChunkIds": ["pet-life-overview-es"]
+    },
+    {
+      "id": "vidly-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which movie browsing project helped Rafa practice authentication and validation?",
+      "expectedChunkIds": ["vidly-overview-en"]
+    },
+    {
+      "id": "vidly-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué proyecto para consultar películas ayudó a Rafa a practicar autenticación y validación?",
+      "expectedChunkIds": ["vidly-overview-es"]
+    },
+    {
+      "id": "shoptastic-project-en",
+      "locale": "en",
+      "category": "project",
+      "question": "Which e-commerce project combines product search with US store locations?",
+      "expectedChunkIds": ["shoptastic-overview-en"]
+    },
+    {
+      "id": "shoptastic-project-es",
+      "locale": "es",
+      "category": "project",
+      "question": "¿Qué proyecto de comercio electrónico combina búsqueda de productos con tiendas en Estados Unidos?",
+      "expectedChunkIds": ["shoptastic-overview-es"]
+    },
+    {
+      "id": "recruiter-feature-ownership-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "Can you give an example of a feature or application Rafa owned independently from development through production support?",
+      "expectedChunkIds": ["profile-overview-feature-ownership-en"]
+    },
+    {
+      "id": "recruiter-feature-ownership-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Puedes dar un ejemplo de una funcionalidad o aplicación que Rafa manejó de forma independiente desde el desarrollo hasta soporte en producción?",
+      "expectedChunkIds": ["profile-overview-feature-ownership-es"]
+    },
+    {
+      "id": "recruiter-production-problem-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "What is one of the most difficult production problems Rafa has debugged?",
+      "expectedChunkIds": ["profile-overview-difficult-production-problem-en"]
+    },
+    {
+      "id": "recruiter-production-problem-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Cuál es uno de los problemas de producción más difíciles que Rafa ha investigado y resuelto?",
+      "expectedChunkIds": ["profile-overview-difficult-production-problem-es"]
+    },
+    {
+      "id": "recruiter-performance-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "How has Rafa improved application performance and maintainability?",
+      "expectedChunkIds": ["profile-overview-performance-improvement-en"]
+    },
+    {
+      "id": "recruiter-performance-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Cómo ha mejorado Rafa el rendimiento y la mantenibilidad de aplicaciones?",
+      "expectedChunkIds": ["profile-overview-performance-improvement-es"]
+    },
+    {
+      "id": "recruiter-database-problem-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "Tell me about a difficult SQL Server performance problem Rafa handled.",
+      "expectedChunkIds": ["profile-overview-difficult-database-problem-en"]
+    },
+    {
+      "id": "recruiter-database-problem-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "Cuéntame sobre un problema difícil de rendimiento en SQL Server que Rafa haya resuelto.",
+      "expectedChunkIds": ["profile-overview-difficult-database-problem-es"]
+    },
+    {
+      "id": "recruiter-api-design-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "How does Rafa design REST APIs and decide where data transformations should happen?",
+      "expectedChunkIds": ["profile-overview-api-design-en"]
+    },
+    {
+      "id": "recruiter-api-design-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Cómo diseña Rafa APIs REST y decide dónde deben realizarse las transformaciones de datos?",
+      "expectedChunkIds": ["profile-overview-api-design-es"]
+    },
+    {
+      "id": "recruiter-disagreement-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "How does Rafa handle a technical disagreement during a code review?",
+      "expectedChunkIds": ["profile-overview-code-review-disagreement-en"]
+    },
+    {
+      "id": "recruiter-disagreement-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Cómo maneja Rafa un desacuerdo técnico durante un code review?",
+      "expectedChunkIds": ["profile-overview-code-review-disagreement-es"]
+    },
+    {
+      "id": "recruiter-mentoring-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "How has Rafa mentored or supported less-experienced engineers?",
+      "expectedChunkIds": ["profile-overview-mentoring-engineers-en"]
+    },
+    {
+      "id": "recruiter-mentoring-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Cómo ha orientado o apoyado Rafa a ingenieros con menos experiencia?",
+      "expectedChunkIds": ["profile-overview-mentoring-engineers-es"]
+    },
+    {
+      "id": "recruiter-unclear-requirements-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "What does Rafa do when product requirements are ambiguous or incomplete?",
+      "expectedChunkIds": ["profile-overview-unclear-requirements-en"]
+    },
+    {
+      "id": "recruiter-unclear-requirements-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Qué hace Rafa cuando los requerimientos de producto son ambiguos o están incompletos?",
+      "expectedChunkIds": ["profile-overview-unclear-requirements-es"]
+    },
+    {
+      "id": "recruiter-feature-estimation-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "How does Rafa estimate and break down a large software feature?",
+      "expectedChunkIds": ["profile-overview-feature-estimation-en"]
+    },
+    {
+      "id": "recruiter-feature-estimation-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Cómo estima y divide Rafa una funcionalidad grande de software?",
+      "expectedChunkIds": ["profile-overview-feature-estimation-es"]
+    },
+    {
+      "id": "recruiter-incident-response-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "How does Rafa respond to an urgent production incident under a strict SLA?",
+      "expectedChunkIds": ["profile-overview-urgent-production-incident-en"]
+    },
+    {
+      "id": "recruiter-incident-response-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Cómo responde Rafa ante un incidente urgente de producción con un SLA estricto?",
+      "expectedChunkIds": ["profile-overview-urgent-production-incident-es"]
+    },
+    {
+      "id": "recruiter-senior-capabilities-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "Which experience best demonstrates that Rafa can operate as a Senior Software Engineer?",
+      "expectedChunkIds": ["profile-overview-senior-level-project-en"]
+    },
+    {
+      "id": "recruiter-senior-capabilities-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Qué experiencia demuestra mejor que Rafa puede trabajar como Senior Software Engineer?",
+      "expectedChunkIds": ["profile-overview-senior-level-project-es"]
+    },
+    {
+      "id": "recruiter-job-search-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "Why is Rafa looking for a new software engineering position?",
+      "expectedChunkIds": ["profile-overview-reason-for-job-search-en"]
+    },
+    {
+      "id": "recruiter-job-search-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Por qué está buscando Rafa una nueva posición de ingeniería de software?",
+      "expectedChunkIds": ["profile-overview-reason-for-job-search-es"]
+    },
+    {
+      "id": "recruiter-leaving-positions-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "Why did Rafa leave Sourcemap, Energy Ogre, and Becoming You?",
+      "expectedChunkIds": ["profile-overview-reasons-for-leaving-positions-en"]
+    },
+    {
+      "id": "recruiter-leaving-positions-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Por qué dejó Rafa sus posiciones en Sourcemap, Energy Ogre y Becoming You?",
+      "expectedChunkIds": ["profile-overview-reasons-for-leaving-positions-es"]
+    },
+    {
+      "id": "recruiter-compensation-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "What compensation range is Rafa targeting for full-time and contract opportunities?",
+      "expectedChunkIds": ["profile-overview-compensation-expectations-en"]
+    },
+    {
+      "id": "recruiter-compensation-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Qué rango de compensación busca Rafa para oportunidades full-time y por contrato?",
+      "expectedChunkIds": ["profile-overview-compensation-expectations-es"]
+    },
+    {
+      "id": "recruiter-start-date-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "When would Rafa be available to start a new position?",
+      "expectedChunkIds": ["profile-overview-start-date-en"]
+    },
+    {
+      "id": "recruiter-start-date-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Cuándo estaría disponible Rafa para comenzar una nueva posición?",
+      "expectedChunkIds": ["profile-overview-start-date-es"]
+    },
+    {
+      "id": "recruiter-environment-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "What type of Senior Engineer role, team, and company environment is Rafa seeking?",
+      "expectedChunkIds": ["profile-overview-preferred-senior-engineer-environment-en"]
+    },
+    {
+      "id": "recruiter-environment-es",
+      "locale": "es",
+      "category": "recruiter",
+      "question": "¿Qué tipo de posición Senior, equipo y ambiente de empresa está buscando Rafa?",
+      "expectedChunkIds": ["profile-overview-preferred-senior-engineer-environment-es"]
+    },
+    {
+      "id": "unknown-salary-en",
+      "locale": "en",
+      "category": "unknown",
+      "question": "What is Rafa's current salary?",
+      "expectedChunkIds": []
+    },
+    {
+      "id": "unknown-salary-es",
+      "locale": "es",
+      "category": "unknown",
+      "question": "¿Cuál es el salario actual de Rafa?",
+      "expectedChunkIds": []
+    }
+  ]
+}

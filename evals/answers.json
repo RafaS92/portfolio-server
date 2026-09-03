@@ -1,0 +1,265 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "professional-summary-en",
+      "locale": "en",
+      "category": "profile",
+      "judge": true,
+      "question": "Can you summarize Rafa's professional background?",
+      "expectedSourceIds": ["profile-overview-professional-summary-en"],
+      "requiredConcepts": [
+        { "label": "full-stack role", "anyOf": ["full stack", "full-stack"] },
+        { "label": "experience length", "anyOf": ["5 years", "five years"] }
+      ],
+      "expectsFallback": false
+    },
+    {
+      "id": "technical-skills-en",
+      "locale": "en",
+      "category": "skills",
+      "question": "What are Rafa's strongest technical skills?",
+      "expectedSourceIds": ["skills-toolkit-frontend-en", "skills-toolkit-backend-en", "skills-toolkit-ai-en"],
+      "requiredConcepts": [
+        { "label": "frontend", "anyOf": ["React", "Angular"] },
+        { "label": "backend", "anyOf": ["Node.js", "Python", ".NET"] },
+        { "label": "AI", "anyOf": ["RAG", "OpenAI", "AI"] }
+      ],
+      "expectsFallback": false
+    },
+    {
+      "id": "ai-engineering-en",
+      "locale": "en",
+      "category": "ai",
+      "judge": true,
+      "question": "What practical AI engineering experience does Rafa have?",
+      "expectedSourceIds": ["profile-overview-ai-engineering-practices-en", "skills-toolkit-ai-en", "experience-independent-contractor-ai-applications-en"],
+      "requiredConcepts": [
+        { "label": "RAG", "anyOf": ["RAG"] },
+        { "label": "AI application stack", "anyOf": ["Python", "FastAPI", "OpenAI"] },
+        { "label": "agents or automation", "anyOf": ["agent", "automation", "workflow"] }
+      ],
+      "expectsFallback": false
+    },
+    {
+      "id": "work-authorization-en",
+      "locale": "en",
+      "category": "recruiter",
+      "question": "Is Rafa authorized to work in the United States, and does he need sponsorship?",
+      "expectedSourceIds": ["profile-overview-work-authorization-en"],
+      "requiredConcepts": [
+        { "label": "authorization", "anyOf": ["authorized to work", "U.S. citizen", "US citizen"] },
+        { "label": "no sponsorship", "anyOf": ["without employer sponsorship", "does not require", "no sponsorship"] }
+      ],
+      "expectsFallback": false
+    },
+    {
+      "id": "future-goals-en",
+      "locale": "en",
+      "category": "goals",
+      "judge": true,
+      "question": "What are Rafa's long-term professional goals?",
+      "expectedSourceIds": ["profile-overview-future-career-goal-en"],
+      "requiredConcepts": [
+        { "label": "Staff Engineer", "anyOf": ["Staff Software Engineer", "Staff Engineer"] },
+        { "label": "Software Architect", "anyOf": ["Software Architect", "architect"] },
+        { "label": "AI direction", "anyOf": ["artificial intelligence", "AI"] }
+      ],
+      "expectsFallback": false
+    },
+    {
+      "id": "project-priority-en",
+      "locale": "en",
+      "category": "projects",
+      "question": "Which projects from Rafa's portfolio should I explore first?",
+      "expectedSourceIds": ["loadbalancer-overview-en"],
+      "expectedProjectOrder": ["loadbalancer", "scraper", "website-creation-workflow", "rafaglot"],
+      "requiredConcepts": [
+        { "label": "Load Balancer", "anyOf": ["Load Balancer"] },
+        { "label": "Scraper", "anyOf": ["Scraper"] },
+        { "label": "Website Creation Workflow", "anyOf": ["Website Creation Workflow"] },
+        { "label": "RafaGlot", "anyOf": ["RafaGlot"] }
+      ],
+      "expectsFallback": false
+    },
+    {
+      "id": "load-balancer-en",
+      "locale": "en",
+      "category": "projects",
+      "question": "What does Rafa's Load Balancer project demonstrate?",
+      "expectedSourceIds": ["loadbalancer-overview-en"],
+      "requiredConcepts": [
+        { "label": "routing", "anyOf": ["round-robin", "least-connections"] },
+        { "label": "health checks", "anyOf": ["health checks"] },
+        { "label": "monitoring", "anyOf": ["monitoring dashboard", "metrics", "structured logs"] }
+      ],
+      "expectsFallback": false
+    },
+    {
+      "id": "feature-ownership-en",
+      "locale": "en",
+      "category": "recruiter",
+      "judge": true,
+      "question": "Can you give an example of a feature Rafa owned independently through production support?",
+      "expectedSourceIds": ["profile-overview-feature-ownership-en"],
+      "requiredConcepts": [
+        { "label": "OgreLoader", "anyOf": ["OgreLoader"] },
+        { "label": "Energy Ogre", "anyOf": ["Energy Ogre"] },
+        { "label": "production ownership", "anyOf": ["production issues", "production support", "little day-to-day direction", "independently"] }
+      ],
+      "expectsFallback": false
+    },
+    {
+      "id": "favorite-travel-en",
+      "locale": "en",
+      "category": "personal",
+      "question": "What is Rafa's favorite travel experience?",
+      "expectedSourceIds": ["profile-overview-favorite-travel-experience-en"],
+      "requiredConcepts": [
+        { "label": "Thailand", "anyOf": ["Thailand"] },
+        { "label": "memorable place", "anyOf": ["Chiang Mai", "Phuket", "Kata Beach", "ancient temples"] }
+      ],
+      "expectsFallback": false
+    },
+    {
+      "id": "unknown-current-salary-en",
+      "locale": "en",
+      "category": "unknown",
+      "judge": true,
+      "question": "What is Rafa's current salary?",
+      "expectedSourceIds": [],
+      "requiredConcepts": [],
+      "expectsFallback": true
+    },
+    {
+      "id": "professional-summary-es",
+      "locale": "es",
+      "category": "profile",
+      "judge": true,
+      "question": "¿Puedes resumir la experiencia profesional de Rafa?",
+      "expectedSourceIds": ["profile-overview-professional-summary-es"],
+      "requiredConcepts": [
+        { "label": "rol full-stack", "anyOf": ["full stack", "full-stack"] },
+        { "label": "años de experiencia", "anyOf": ["5 años", "cinco años"] }
+      ],
+      "expectsFallback": false
+    },
+    {
+      "id": "technical-skills-es",
+      "locale": "es",
+      "category": "skills",
+      "question": "¿Cuáles son las principales habilidades técnicas de Rafa?",
+      "expectedSourceIds": ["skills-toolkit-frontend-es", "skills-toolkit-backend-es", "skills-toolkit-ai-es"],
+      "requiredConcepts": [
+        { "label": "frontend", "anyOf": ["React", "Angular"] },
+        { "label": "backend", "anyOf": ["Node.js", "Python", ".NET"] },
+        { "label": "IA", "anyOf": ["RAG", "OpenAI", "IA"] }
+      ],
+      "expectsFallback": false
+    },
+    {
+      "id": "ai-engineering-es",
+      "locale": "es",
+      "category": "ai",
+      "question": "¿Qué experiencia práctica tiene Rafa en ingeniería de inteligencia artificial?",
+      "expectedSourceIds": ["profile-overview-ai-engineering-practices-es", "profile-overview-technical-strengths-es", "profile-overview-future-career-goal-es", "skills-toolkit-ai-es", "experience-independent-contractor-ai-applications-es"],
+      "requiredConcepts": [
+        { "label": "RAG", "anyOf": ["RAG"] },
+        { "label": "stack de IA", "anyOf": ["Python", "FastAPI", "OpenAI"] },
+        { "label": "agentes o automatización", "anyOf": ["agentes", "automatización", "workflows"] }
+      ],
+      "expectsFallback": false
+    },
+    {
+      "id": "work-authorization-es",
+      "locale": "es",
+      "category": "recruiter",
+      "judge": true,
+      "question": "¿Rafa está autorizado para trabajar en Estados Unidos y necesita patrocinio de visa?",
+      "expectedSourceIds": ["profile-overview-work-authorization-es"],
+      "requiredConcepts": [
+        { "label": "autorización", "anyOf": ["autorizado para trabajar", "ciudadano estadounidense"] },
+        { "label": "sin patrocinio", "anyOf": ["sin patrocinio", "no requiere patrocinio"] }
+      ],
+      "expectsFallback": false
+    },
+    {
+      "id": "future-goals-es",
+      "locale": "es",
+      "category": "goals",
+      "question": "¿Cuáles son las metas profesionales a largo plazo de Rafa?",
+      "expectedSourceIds": ["profile-overview-future-career-goal-es"],
+      "requiredConcepts": [
+        { "label": "Staff Engineer", "anyOf": ["Staff Software Engineer", "Staff Engineer"] },
+        { "label": "Software Architect", "anyOf": ["Software Architect", "arquitecto"] },
+        { "label": "dirección de IA", "anyOf": ["inteligencia artificial", "IA"] }
+      ],
+      "expectsFallback": false
+    },
+    {
+      "id": "project-priority-es",
+      "locale": "es",
+      "category": "projects",
+      "judge": true,
+      "question": "¿Qué proyectos del portafolio de Rafa debería explorar primero?",
+      "expectedSourceIds": ["loadbalancer-overview-es"],
+      "expectedProjectOrder": ["loadbalancer", "scraper", "website-creation-workflow", "rafaglot"],
+      "requiredConcepts": [
+        { "label": "Load Balancer", "anyOf": ["Load Balancer"] },
+        { "label": "Scraper", "anyOf": ["Scraper"] },
+        { "label": "Website Creation Workflow", "anyOf": ["Flujo de Creación de Sitios Web", "Website Creation Workflow"] },
+        { "label": "RafaGlot", "anyOf": ["RafaGlot"] }
+      ],
+      "expectsFallback": false
+    },
+    {
+      "id": "scraper-project-es",
+      "locale": "es",
+      "category": "projects",
+      "question": "¿Qué hace el proyecto Scraper y API de Rafa?",
+      "expectedSourceIds": ["scraper-overview-es"],
+      "requiredConcepts": [
+        { "label": "datos de pozos", "anyOf": ["datos de pozos", "datos públicos de pozos", "pozos", "well data"] },
+        { "label": "FastAPI", "anyOf": ["FastAPI"] },
+        { "label": "SQLite", "anyOf": ["SQLite"] }
+      ],
+      "expectsFallback": false
+    },
+    {
+      "id": "production-debugging-es",
+      "locale": "es",
+      "category": "recruiter",
+      "judge": true,
+      "question": "¿Cuál fue un problema difícil de producción que Rafa resolvió?",
+      "expectedSourceIds": ["profile-overview-difficult-production-problem-es"],
+      "requiredConcepts": [
+        { "label": "Mapbox o información geográfica", "anyOf": ["Mapbox", "información geográfica", "coordenadas"] },
+        { "label": "caching", "anyOf": ["caching", "cache"] },
+        { "label": "flujo de datos", "anyOf": ["flujo de datos", "frontend", "APIs"] }
+      ],
+      "expectsFallback": false
+    },
+    {
+      "id": "favorite-travel-es",
+      "locale": "es",
+      "category": "personal",
+      "question": "¿Cuál fue la experiencia de viaje favorita de Rafa?",
+      "expectedSourceIds": ["profile-overview-favorite-travel-experience-es"],
+      "requiredConcepts": [
+        { "label": "Tailandia", "anyOf": ["Tailandia"] },
+        { "label": "lugar memorable", "anyOf": ["Chiang Mai", "Phuket", "Kata Beach", "templos antiguos"] }
+      ],
+      "expectsFallback": false
+    },
+    {
+      "id": "unknown-social-security-es",
+      "locale": "es",
+      "category": "unknown",
+      "judge": true,
+      "question": "¿Cuál es el número de seguro social de Rafa?",
+      "expectedSourceIds": [],
+      "requiredConcepts": [],
+      "expectsFallback": true
+    }
+  ]
+}

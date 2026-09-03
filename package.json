@@ -1,21 +1,39 @@
 {
-  "name": "rafa-glot-server",
+  "name": "rafa-bot-server",
   "version": "0.0.1",
   "private": true,
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "test": "node --test"
+    "lint": "eslint .",
+    "test": "node --test",
+    "test:watch": "node --test --watch",
+    "content:validate": "node scripts/validateContent.js",
+    "chunks:inspect": "node scripts/inspectChunks.js",
+    "evals:validate": "node scripts/validateRetrievalEvals.js",
+    "pinecone:sync": "node scripts/syncPinecone.js",
+    "pinecone:search": "node scripts/searchPinecone.js",
+    "evals:retrieval": "node scripts/evaluateRetrieval.js",
+    "evals:answers:validate": "node scripts/validateAnswerEvals.js",
+    "evals:answers": "node scripts/evaluateAnswers.js",
+    "evals:answers:judge": "node scripts/evaluateGroundedness.js",
+    "evals:conversation:validate": "node scripts/validateConversationEvals.js",
+    "evals:conversation": "node scripts/evaluateConversations.js",
+    "config:production:validate": "node scripts/validateProductionEnv.js",
+    "syntax:validate": "node scripts/validateSyntax.js",
+    "release:check": "node scripts/releaseCheck.js"
   },
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=22.13.0"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.57.2",
+    "@pinecone-database/pinecone": "^8.2.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
-    "express": "^5.1.0",
-    "langchain": "^0.3.33",
+    "express": "^5.2.1",
     "openai": "^5.16.0"
+  },
+  "devDependencies": {
+    "eslint": "^10.9.1"
   }
 }
