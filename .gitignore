@@ -5,3 +5,4 @@ node_modules/
 !.env.production.example
 docs/*
 !docs/ARCHITECTURE.md
+!docs/RAG_VIDEO_SCRIPT.md

@@ -156,10 +156,55 @@ test("broad project questions use featured discovery while named projects do not
 
 test("recognizes the guided About Rafa questions in both languages", () => {
   assert.equal(retrievalPolicy.isAboutRafaQuery("Who is Rafa?"), true);
+  assert.equal(retrievalPolicy.isAboutRafaQuery("Who is Rafael?"), true);
+  assert.equal(
+    retrievalPolicy.isAboutRafaQuery("Who is Rafael Salvador Valdez Vanegas?"),
+    true,
+  );
   assert.equal(retrievalPolicy.isAboutRafaQuery("Tell me about Rafa"), true);
+  assert.equal(retrievalPolicy.isAboutRafaQuery("Tell me about Rafael"), true);
   assert.equal(retrievalPolicy.isAboutRafaQuery("¿Quién es Rafa?"), true);
+  assert.equal(retrievalPolicy.isAboutRafaQuery("¿Quién es Rafael?"), true);
   assert.equal(retrievalPolicy.isAboutRafaQuery("Cuéntame sobre Rafa"), true);
   assert.equal(retrievalPolicy.isAboutRafaQuery("Who is Rafael Nadal?"), false);
+});
+
+test("recognizes likely misspellings of Rafa without matching other people", () => {
+  assert.equal(retrievalPolicy.isAboutRafaQuery("Who is Rafeal?"), true);
+  assert.equal(retrievalPolicy.isAboutRafaQuery("Who's Rafal?"), true);
+  assert.equal(retrievalPolicy.isAboutRafaQuery("Tell me about Raphael"), true);
+  assert.equal(
+    retrievalPolicy.isAboutRafaQuery("Who is Rafael Salvadore Valdes Vanega?"),
+    true,
+  );
+  assert.equal(retrievalPolicy.isAboutRafaQuery("Who is Raphael Nadal?"), false);
+});
+
+test("Rafael aliases use the canonical Rafa retrieval query", () => {
+  assert.equal(
+    retrievalPolicy.plan({
+      message: "Who is Rafeal?",
+      locale: "en",
+      history: [],
+    }).query,
+    "Who is Rafa?",
+  );
+  assert.equal(
+    retrievalPolicy.plan({
+      message: "Who is Rafael?",
+      locale: "en",
+      history: [],
+    }).query,
+    "Who is Rafa?",
+  );
+  assert.equal(
+    retrievalPolicy.plan({
+      message: "¿Quién es Rafael Salvador Valdez Vanegas?",
+      locale: "es",
+      history: [],
+    }).query,
+    "¿Quién es Rafa?",
+  );
 });
 
 test("recognizes future career-goal questions in English and Spanish", () => {

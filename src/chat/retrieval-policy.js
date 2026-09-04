@@ -2,15 +2,9 @@ const PROJECT_DISCOVERY_TOP_K = 100;
 const PROJECT_RECOMMENDATION_LIMIT = 4;
 const PROJECT_DISCOVERY_PATTERN =
   /\b(projects?|portfolio work|work samples?|showcase|built|build|created|recommend(?:ed|ation|ations)?|suggest(?:ed|ion|ions)?|proyectos?|trabajos?|muestras?|construy[oó]|cre[oó]|recomienda|recomendar|sugiere|sugerencias)\b/iu;
-const ABOUT_RAFA_QUERIES = new Set([
-  "who is rafa",
-  "tell me about rafa",
-  "describe rafa",
-  "quien es rafa",
-  "cuentame sobre rafa",
-  "hablame de rafa",
-  "describe a rafa",
-]);
+const ABOUT_RAFA_PATTERN =
+  /^(?:who is|who s|tell me about|describe|quien es|cuentame sobre|hablame de|describe a) (.+)$/u;
+const RAFA_FULL_NAME = ["rafael", "salvador", "valdez", "vanegas"];
 const FUTURE_GOAL_PATTERNS = [
   /\b(?:future|long term|career|professional) (?:goal|goals|plan|plans|direction|aspiration|aspirations|project|projects)\b/u,
   /\b(?:working|work) toward\b/u,
@@ -50,6 +44,44 @@ function normalizeReference(value) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
+}
+
+function editDistance(left, right) {
+  const distances = Array.from(
+    { length: left.length + 1 },
+    (_, index) => index,
+  );
+
+  for (let rightIndex = 1; rightIndex <= right.length; rightIndex += 1) {
+    let diagonal = distances[0];
+    distances[0] = rightIndex;
+
+    for (let leftIndex = 1; leftIndex <= left.length; leftIndex += 1) {
+      const previous = distances[leftIndex];
+      distances[leftIndex] = Math.min(
+        distances[leftIndex] + 1,
+        distances[leftIndex - 1] + 1,
+        diagonal + (left[leftIndex - 1] === right[rightIndex - 1] ? 0 : 1),
+      );
+      diagonal = previous;
+    }
+  }
+
+  return distances[left.length];
+}
+
+function isLikelyRafaName(value) {
+  const nameParts = value.split(" ");
+
+  if (nameParts.length === 1) {
+    return editDistance(nameParts[0], "rafa") <= 1 ||
+      editDistance(nameParts[0], "rafael") <= 2;
+  }
+
+  return nameParts.length === RAFA_FULL_NAME.length &&
+    nameParts.every((part, index) =>
+      editDistance(part, RAFA_FULL_NAME[index]) <= (index === 0 ? 2 : 1),
+    );
 }
 
 function toLocalHit(chunk) {
@@ -138,7 +170,8 @@ export function createRetrievalPolicy({ portfolio, chunks }) {
   }
 
   function isAboutRafaQuery(message) {
-    return ABOUT_RAFA_QUERIES.has(normalizeReference(message));
+    const match = normalizeReference(message).match(ABOUT_RAFA_PATTERN);
+    return Boolean(match && isLikelyRafaName(match[1]));
   }
 
   function isFutureGoalQuery(message) {
@@ -226,7 +259,9 @@ export function createRetrievalPolicy({ portfolio, chunks }) {
       futureGoal,
       guidedTopic,
       projectDiscovery,
-      query: buildRetrievalQuery(request),
+      query: aboutRafa
+        ? (request.locale === "es" ? "¿Quién es Rafa?" : "Who is Rafa?")
+        : buildRetrievalQuery(request),
       topK: projectDiscovery || aboutRafa ? PROJECT_DISCOVERY_TOP_K : 3,
       localHits: estimateInquiry
         ? []

@@ -84,6 +84,8 @@ test("grounded generation uses the Responses API without storing responses", asy
   assert.equal(request.temperature, 0.2);
   assert.match(request.instructions, /Use only facts supported/);
   assert.match(request.instructions, /clearly unrelated to Rafa or his portfolio/);
+  assert.match(request.instructions, /Rafael Salvador Valdez Vanegas/);
+  assert.match(request.instructions, /obvious misspellings of Rafa or Rafael/);
   assert.match(request.instructions, new RegExp(OUT_OF_SCOPE_ANSWERS.en.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   assert.match(request.instructions, /interpret omitted human subjects and pronouns/);
   assert.match(request.instructions, /replies with a short yes or no/);

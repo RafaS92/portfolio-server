@@ -13,6 +13,17 @@ test("portfolio content passes validation", () => {
   assert.ok(portfolio.items.length > 0);
 });
 
+test("portfolio knowledge identifies Rafael and Rafa as the same person", () => {
+  const profile = loadPortfolio().items.find(
+    (item) => item.id === "profile-overview",
+  );
+  const identity = profile.sections.find((section) => section.id === "identity");
+
+  assert.match(identity.text.en, /Rafael Salvador Valdez Vanegas/);
+  assert.match(identity.text.en, /Rafa and Rafael both refer to the same person/);
+  assert.match(identity.text.es, /Rafa y Rafael se refieren a la misma persona/);
+});
+
 test("portfolio knowledge contains all 15 published project IDs", () => {
   const expectedProjectIds = new Set([
     "loadbalancer",
