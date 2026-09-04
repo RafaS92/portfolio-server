@@ -7,9 +7,12 @@ import {
 import {
   buildRetrievalQuery,
   createRetrievalPolicy,
+  getContactQueryType,
+  getConversationClosing,
   isBotIdentityQuery,
   isGreetingQuery,
   isProjectEstimateQuery,
+  isResumeQuery,
 } from "../src/chat/retrieval-policy.js";
 import { createChatService } from "../src/chat/service.js";
 import { createPortfolioChunks } from "../src/portfolio/chunks.js";
@@ -115,6 +118,60 @@ test("recognizes basic greetings and questions about RafaBot", () => {
     assert.equal(isBotIdentityQuery(message), true);
   }
   assert.equal(isBotIdentityQuery("Who is he?"), false);
+});
+
+test("recognizes gratitude, goodbyes, resume, and contact requests", () => {
+  assert.equal(getConversationClosing("Thank you!"), "gratitude");
+  assert.equal(getConversationClosing("That was helpful"), "gratitude");
+  assert.equal(getConversationClosing("Goodbye"), "goodbye");
+  assert.equal(getConversationClosing("Hasta luego"), "goodbye");
+  assert.equal(isResumeQuery("Can I see his résumé?"), true);
+  assert.equal(isResumeQuery("¿Dónde está el currículum de Rafa?"), true);
+  assert.equal(getContactQueryType("What is Rafa's LinkedIn?"), "linkedin");
+  assert.equal(getContactQueryType("Show me his GitHub"), "github");
+  assert.equal(getContactQueryType("How can I contact Rafa?"), "contact");
+});
+
+test("resume and contact requests return UI actions and skip search", async () => {
+  const answerPortfolioQuestion = createTestChatService({
+    async search() {
+      assert.fail("static resume and contact responses should not search Pinecone");
+    },
+    async generate() {
+      return "Static response.";
+    },
+  });
+
+  const resume = await answerPortfolioQuestion({
+    message: "Can I see Rafa's resume?",
+    locale: "en",
+    history: [],
+  });
+  const linkedin = await answerPortfolioQuestion({
+    message: "What is Rafa's LinkedIn?",
+    locale: "en",
+    history: [],
+  });
+  const contact = await answerPortfolioQuestion({
+    message: "How can I contact Rafa?",
+    locale: "en",
+    history: [],
+  });
+
+  assert.deepEqual(resume.actions, [{
+    type: "scroll_to_section",
+    sectionId: "resume",
+    label: "View Rafa's resume",
+  }]);
+  assert.deepEqual(linkedin.actions, [{
+    type: "external_link",
+    url: "https://www.linkedin.com/in/rafael-salvador-valdez",
+    label: "Rafa's LinkedIn",
+  }]);
+  assert.equal(contact.actions.length, 3);
+  assert.equal(contact.actions[0].url, "mailto:rvaldezdev.2020@gmail.com");
+  assert.equal(contact.actions[1].url, "https://www.linkedin.com/in/rafael-salvador-valdez");
+  assert.equal(contact.actions[2].url, "https://github.com/RafaS92");
 });
 
 test("greetings and bot identity questions skip portfolio search", async () => {

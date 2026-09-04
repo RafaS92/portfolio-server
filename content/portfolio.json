@@ -191,11 +191,11 @@
           "id": "contact-preferences",
           "topic": "professional contact information and recruiting communication",
           "text": {
-            "en": "Rafa can be contacted professionally through email or LinkedIn regarding software engineering opportunities. His preferred opportunities are remote roles in the United States, particularly Senior Software Engineer, Full Stack Software Engineer, Senior Full Stack Engineer, and software engineering positions involving modern frontend technologies, backend development, cloud systems, or artificial intelligence. His professional email is rvaldezdev.2020@gmail.com, and his resume also provides links to his portfolio, GitHub, and LinkedIn profiles.",
-            "es": "Rafa puede ser contactado profesionalmente por correo electrónico o LinkedIn para oportunidades de ingeniería de software. Prefiere posiciones remotas en Estados Unidos, particularmente oportunidades como Senior Software Engineer, Full Stack Software Engineer, Senior Full Stack Engineer y posiciones relacionadas con tecnologías frontend modernas, desarrollo backend, sistemas cloud o inteligencia artificial. Su correo profesional es rvaldezdev.2020@gmail.com y su currículum también incluye enlaces a su portafolio, GitHub y LinkedIn."
+            "en": "Rafa can be contacted professionally through email or LinkedIn regarding software engineering opportunities. His preferred opportunities are remote roles in the United States, particularly Senior Software Engineer, Full Stack Software Engineer, Senior Full Stack Engineer, and software engineering positions involving modern frontend technologies, backend development, cloud systems, or artificial intelligence. His professional email is rvaldezdev.2020@gmail.com. His LinkedIn profile is https://www.linkedin.com/in/rafael-salvador-valdez and his GitHub profile is https://github.com/RafaS92. His resume is available in the resume section of this portfolio.",
+            "es": "Rafa puede ser contactado profesionalmente por correo electrónico o LinkedIn para oportunidades de ingeniería de software. Prefiere posiciones remotas en Estados Unidos, particularmente oportunidades como Senior Software Engineer, Full Stack Software Engineer, Senior Full Stack Engineer y posiciones relacionadas con tecnologías frontend modernas, desarrollo backend, sistemas cloud o inteligencia artificial. Su correo profesional es rvaldezdev.2020@gmail.com. Su perfil de LinkedIn es https://www.linkedin.com/in/rafael-salvador-valdez y su perfil de GitHub es https://github.com/RafaS92. Su currículum está disponible en la sección de currículum de este portafolio."
           },
           "technologies": [],
-          "tags": ["contact", "email", "LinkedIn", "recruiting", "remote opportunities"]
+          "tags": ["contact", "email", "LinkedIn", "GitHub", "resume", "recruiting", "remote opportunities"]
         },
         {
           "id": "feature-ownership",

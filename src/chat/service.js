@@ -50,6 +50,9 @@ export function createChatService({
         estimateInquiry: retrievalPlan.estimateInquiry,
         greeting: retrievalPlan.greeting,
         botIdentityInquiry: retrievalPlan.botIdentityInquiry,
+        conversationClosing: retrievalPlan.conversationClosing,
+        resumeInquiry: retrievalPlan.resumeInquiry,
+        contactInquiry: retrievalPlan.contactInquiry,
       },
       { signal },
     );
@@ -58,6 +61,9 @@ export function createChatService({
       content,
       locale: request.locale,
       sources: sourceHits.map(toPublicSource),
+      ...(retrievalPlan.actions.length > 0
+        ? { actions: retrievalPlan.actions }
+        : {}),
     };
   };
 }

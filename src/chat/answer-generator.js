@@ -23,6 +23,37 @@ export const BOT_IDENTITY_ANSWERS = Object.freeze({
   es: "Soy RafaBot, un asistente de IA basado en el portafolio, las experiencias y el conocimiento de Rafa. Puedo ayudarte a conocer el trabajo, las habilidades, los proyectos, los servicios o la información de contacto de Rafa.",
 });
 
+export const CONVERSATION_CLOSING_ANSWERS = Object.freeze({
+  gratitude: Object.freeze({
+    en: "You're welcome! I'm glad I could help you learn more about Rafa.",
+    es: "¡De nada! Me alegra haberte ayudado a conocer más sobre Rafa.",
+  }),
+  goodbye: Object.freeze({
+    en: "Thanks for visiting Rafa's portfolio. Goodbye!",
+    es: "Gracias por visitar el portafolio de Rafa. ¡Hasta luego!",
+  }),
+});
+
+export const RESUME_ANSWERS = Object.freeze({
+  en: "You can view Rafa's resume in the resume section of this portfolio. Use the button below to go directly to it.",
+  es: "Puedes consultar el currículum de Rafa en la sección de currículum de este portafolio. Usa el botón de abajo para ir directamente a ella.",
+});
+
+export const CONTACT_ANSWERS = Object.freeze({
+  contact: Object.freeze({
+    en: "You can contact Rafa at rvaldezdev.2020@gmail.com, connect with him on LinkedIn, or view his work on GitHub.",
+    es: "Puedes contactar a Rafa en rvaldezdev.2020@gmail.com, conectar con él en LinkedIn o consultar su trabajo en GitHub.",
+  }),
+  linkedin: Object.freeze({
+    en: "You can connect with Rafa on LinkedIn: https://www.linkedin.com/in/rafael-salvador-valdez",
+    es: "Puedes conectar con Rafa en LinkedIn: https://www.linkedin.com/in/rafael-salvador-valdez",
+  }),
+  github: Object.freeze({
+    en: "You can view Rafa's work on GitHub: https://github.com/RafaS92",
+    es: "Puedes consultar el trabajo de Rafa en GitHub: https://github.com/RafaS92",
+  }),
+});
+
 const PROFESSIONAL_FOLLOW_UP_PATTERN =
   /\b(?:project|portfolio|professional|work|career|experience|skill|service|contact|hire|resume|software|technical|background|profile|proyecto|portafolio|profesional|trabajo|carrera|experiencia|habilidad|servicio|contacto|contratar|curr[ií]culum|t[eé]cnic[oa])s?\b/iu;
 const PERSONAL_FOLLOW_UP_PATTERN =
@@ -85,9 +116,17 @@ export function createAnswerGenerator({ openAIClient, model }) {
       estimateInquiry = false,
       greeting = false,
       botIdentityInquiry = false,
+      conversationClosing = null,
+      resumeInquiry = false,
+      contactInquiry = null,
     },
     { signal } = {},
   ) {
+    if (conversationClosing) {
+      return CONVERSATION_CLOSING_ANSWERS[conversationClosing][locale];
+    }
+    if (resumeInquiry) return RESUME_ANSWERS[locale];
+    if (contactInquiry) return CONTACT_ANSWERS[contactInquiry][locale];
     if (greeting) return GREETING_ANSWERS[locale];
     if (botIdentityInquiry) return BOT_IDENTITY_ANSWERS[locale];
     if (estimateInquiry) return ESTIMATE_ANSWERS[locale];

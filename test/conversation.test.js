@@ -2,12 +2,15 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import {
   BOT_IDENTITY_ANSWERS,
+  CONTACT_ANSWERS,
+  CONVERSATION_CLOSING_ANSWERS,
   createAnswerGenerator,
   ESTIMATE_ANSWERS,
   enforceFollowUpScope,
   formatRetrievedContext,
   GREETING_ANSWERS,
   OUT_OF_SCOPE_ANSWERS,
+  RESUME_ANSWERS,
 } from "../src/chat/answer-generator.js";
 
 test("retrieved chunks are clearly separated in model context", () => {
@@ -51,6 +54,56 @@ test("greetings and bot identity questions return localized answers without Open
       botIdentityInquiry: true,
     }),
     BOT_IDENTITY_ANSWERS.es,
+  );
+});
+
+test("conversation endings and contact requests return static localized answers", async () => {
+  const generateGroundedAnswer = createAnswerGenerator({
+    openAIClient: {
+      responses: {
+        async create() {
+          assert.fail("static conversational responses should not call OpenAI");
+        },
+      },
+    },
+    model: "gpt-4o-mini",
+  });
+
+  assert.equal(
+    await generateGroundedAnswer({
+      message: "Thanks",
+      locale: "en",
+      hits: [],
+      conversationClosing: "gratitude",
+    }),
+    CONVERSATION_CLOSING_ANSWERS.gratitude.en,
+  );
+  assert.equal(
+    await generateGroundedAnswer({
+      message: "Adios",
+      locale: "es",
+      hits: [],
+      conversationClosing: "goodbye",
+    }),
+    CONVERSATION_CLOSING_ANSWERS.goodbye.es,
+  );
+  assert.equal(
+    await generateGroundedAnswer({
+      message: "Can I see his resume?",
+      locale: "en",
+      hits: [],
+      resumeInquiry: true,
+    }),
+    RESUME_ANSWERS.en,
+  );
+  assert.equal(
+    await generateGroundedAnswer({
+      message: "What is Rafa's LinkedIn?",
+      locale: "en",
+      hits: [],
+      contactInquiry: "linkedin",
+    }),
+    CONTACT_ANSWERS.linkedin.en,
   );
 });
 

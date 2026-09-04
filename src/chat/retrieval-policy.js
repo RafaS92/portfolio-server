@@ -40,6 +40,20 @@ const GREETING_PATTERN =
   /^(?:hey|hello|hi|hi there|hey there|good morning|good afternoon|good evening|hola|buenos dias|buenas tardes|buenas noches|que tal|saludos)[!.]?$/u;
 const BOT_IDENTITY_PATTERN =
   /^(?:who are you|what are you|who am i (?:talking|speaking) (?:to|with)|who is this|is this rafa|are you rafa|am i (?:talking|speaking) (?:to|with) rafa|what is rafabot|who is rafabot|quien eres|que eres|con quien estoy hablando|quien habla|quien es este|eres rafa|estoy hablando con rafa|que es rafabot|quien es rafabot)$/u;
+const GRATITUDE_PATTERN =
+  /^(?:thanks|thank you|thanks a lot|thank you very much|thanks for (?:the )?help|i appreciate it|appreciate it|great|awesome|perfect|that helps|that was helpful|got it|gracias|muchas gracias|te lo agradezco|excelente|perfecto|eso ayuda|entendido)[!.]?$/u;
+const GOODBYE_PATTERN =
+  /^(?:bye|goodbye|see you|see you later|talk to you later|have a good day|have a nice day|take care|adios|hasta luego|nos vemos|hablamos luego|que tengas buen dia|cuidate)[!.]?$/u;
+const RESUME_PATTERN =
+  /\b(?:resume|cv|curriculum vitae|curriculum|hoja de vida)\b/u;
+const LINKEDIN_PATTERN = /\blinkedin\b/u;
+const GITHUB_PATTERN = /\bgithub\b/u;
+const GENERAL_CONTACT_PATTERN =
+  /\b(?:contact|email|e mail|reach|write to|message|correo|contactar|contacto|comunicarme|escribirle|mensaje)\b/u;
+
+const LINKEDIN_URL = "https://www.linkedin.com/in/rafael-salvador-valdez";
+const GITHUB_URL = "https://github.com/RafaS92";
+const EMAIL_URL = "mailto:rvaldezdev.2020@gmail.com";
 
 function normalizeReference(value) {
   return value
@@ -152,6 +166,50 @@ export function isBotIdentityQuery(message) {
   return BOT_IDENTITY_PATTERN.test(normalizeReference(message));
 }
 
+export function getConversationClosing(message) {
+  const normalizedMessage = normalizeReference(message);
+  if (GRATITUDE_PATTERN.test(normalizedMessage)) return "gratitude";
+  if (GOODBYE_PATTERN.test(normalizedMessage)) return "goodbye";
+  return null;
+}
+
+export function isResumeQuery(message) {
+  return RESUME_PATTERN.test(normalizeReference(message));
+}
+
+export function getContactQueryType(message) {
+  const normalizedMessage = normalizeReference(message);
+  if (LINKEDIN_PATTERN.test(normalizedMessage)) return "linkedin";
+  if (GITHUB_PATTERN.test(normalizedMessage)) return "github";
+  if (GENERAL_CONTACT_PATTERN.test(normalizedMessage)) return "contact";
+  return null;
+}
+
+function buildActions({ locale, resumeInquiry, contactInquiry }) {
+  if (resumeInquiry) {
+    return [{
+      type: "scroll_to_section",
+      sectionId: "resume",
+      label: locale === "es" ? "Ver currículum de Rafa" : "View Rafa's resume",
+    }];
+  }
+
+  const labels = locale === "es"
+    ? { contact: "Enviar correo a Rafa", linkedin: "LinkedIn de Rafa", github: "GitHub de Rafa" }
+    : { contact: "Email Rafa", linkedin: "Rafa's LinkedIn", github: "Rafa's GitHub" };
+  const urls = { contact: EMAIL_URL, linkedin: LINKEDIN_URL, github: GITHUB_URL };
+
+  if (!contactInquiry) return [];
+  if (contactInquiry !== "contact") {
+    return [{ type: "external_link", url: urls[contactInquiry], label: labels[contactInquiry] }];
+  }
+  return Object.keys(urls).map((type) => ({
+    type: "external_link",
+    url: urls[type],
+    label: labels[type],
+  }));
+}
+
 export function createRetrievalPolicy({ portfolio, chunks }) {
   const projectItems = portfolio.items.filter((item) => item.type === "project");
   const rankedProjectIds = [...projectItems]
@@ -257,6 +315,11 @@ export function createRetrievalPolicy({ portfolio, chunks }) {
   }
 
   function plan(request) {
+    const conversationClosing = getConversationClosing(request.message);
+    const resumeInquiry = isResumeQuery(request.message);
+    const contactInquiry = resumeInquiry
+      ? null
+      : getContactQueryType(request.message);
     const greeting = isGreetingQuery(request.message);
     const botIdentityInquiry = isBotIdentityQuery(request.message);
     const estimateInquiry = isProjectEstimateQuery(request.message);
@@ -269,9 +332,13 @@ export function createRetrievalPolicy({ portfolio, chunks }) {
 
     return {
       aboutRafa,
+      actions: buildActions({ locale: request.locale, resumeInquiry, contactInquiry }),
       botIdentityInquiry,
+      contactInquiry,
+      conversationClosing,
       estimateInquiry,
       greeting,
+      resumeInquiry,
       futureGoal,
       guidedTopic,
       projectDiscovery,
@@ -279,7 +346,8 @@ export function createRetrievalPolicy({ portfolio, chunks }) {
         ? (request.locale === "es" ? "¿Quién es Rafa?" : "Who is Rafa?")
         : buildRetrievalQuery(request),
       topK: projectDiscovery || aboutRafa ? PROJECT_DISCOVERY_TOP_K : 3,
-      localHits: greeting || botIdentityInquiry || estimateInquiry
+      localHits: conversationClosing || resumeInquiry || contactInquiry ||
+        greeting || botIdentityInquiry || estimateInquiry
         ? []
         : useLocalPortfolio
           ? localPortfolioHits.filter((hit) => hit.locale === request.locale)
@@ -309,10 +377,13 @@ export function createRetrievalPolicy({ portfolio, chunks }) {
 
   return Object.freeze({
     getGuidedTopic,
+    getContactQueryType,
+    getConversationClosing,
     isAboutRafaQuery,
     isBotIdentityQuery,
     isFutureGoalQuery,
     isGreetingQuery,
+    isResumeQuery,
     isProjectEstimateQuery,
     isProjectDiscoveryQuery,
     plan,
