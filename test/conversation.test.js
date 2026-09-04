@@ -182,6 +182,31 @@ test("grounded generation uses the Responses API without storing responses", asy
   assert.match(request.input.at(-1).content, /Who is Rafa\?/);
 });
 
+test("Why hire generation receives persuasive but grounded guidance", async () => {
+  let request;
+  const generateGroundedAnswer = createAnswerGenerator({
+    openAIClient: {
+      responses: {
+        async create(options) {
+          request = options;
+          return { output_text: "Rafa would bring strong engineering ownership." };
+        },
+      },
+    },
+    model: "gpt-4o-mini",
+  });
+
+  await generateGroundedAnswer({
+    message: "Why should we hire Rafa?",
+    locale: "en",
+    hits: [{ id: "profile-overview-why-hire-rafa-en", chunk_text: "Grounded evidence." }],
+    whyHire: true,
+  });
+
+  assert.match(request.instructions, /direct, confident summary/);
+  assert.match(request.instructions, /do not exaggerate or invent qualifications/);
+});
+
 test("out-of-scope redirects are localized and remain unchanged", () => {
   assert.equal(
     enforceFollowUpScope(OUT_OF_SCOPE_ANSWERS.en, "en"),

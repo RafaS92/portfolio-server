@@ -211,6 +211,13 @@ Successful response:
 }
 ```
 
+Some conversational responses include an optional `actions` array for the
+portfolio UI. A resume request returns a scroll action such as
+`{"type":"scroll_to_section","sectionId":"resume","label":"View Rafa's resume"}`.
+Contact requests return `external_link` actions with a `url` and `label` for
+email, LinkedIn, or GitHub. Clients that do not render actions can continue to
+display `content`; the contact URLs are also included in the text response.
+
 If the selected evidence cannot answer the question, the model is instructed
 to return a fixed localized fallback instead of inventing details.
 

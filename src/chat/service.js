@@ -53,6 +53,7 @@ export function createChatService({
         conversationClosing: retrievalPlan.conversationClosing,
         resumeInquiry: retrievalPlan.resumeInquiry,
         contactInquiry: retrievalPlan.contactInquiry,
+        whyHire: retrievalPlan.whyHire,
       },
       { signal },
     );

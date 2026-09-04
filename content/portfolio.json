@@ -308,6 +308,16 @@
           "tags": ["Senior Software Engineer", "Sourcemap", "ownership", "architecture", "full stack"]
         },
         {
+          "id": "why-hire-rafa",
+          "topic": "why hire Rafa and the value he brings to an engineering team",
+          "text": {
+            "en": "Rafa would bring a strong learning mindset, Senior Software Engineer capabilities, hands-on technical depth, and dependable collaboration to an engineering team. He taught himself to code after changing careers and has continued learning across frontend, backend, databases, production systems, and AI engineering. His technical strengths include full-stack development, APIs, application architecture, database optimization, testing, debugging, and production ownership. His soft skills include clear communication, adaptability, cross-functional collaboration, and taking responsibility for outcomes. His greatest value is his genuine love of programming and his drive to build useful software that solves meaningful problems and has a positive impact on people's lives.",
+            "es": "Rafa aportaría a un equipo de ingeniería una gran capacidad de aprendizaje, habilidades de nivel Senior Software Engineer, profundidad técnica práctica y colaboración confiable. Aprendió programación de forma autodidacta después de cambiar de carrera y ha continuado aprendiendo sobre frontend, backend, bases de datos, sistemas en producción e ingeniería de IA. Sus fortalezas técnicas incluyen desarrollo full-stack, APIs, arquitectura de aplicaciones, optimización de bases de datos, testing, debugging y responsabilidad sobre sistemas en producción. Sus habilidades interpersonales incluyen comunicación clara, adaptabilidad, colaboración multidisciplinaria y responsabilidad por los resultados. Su mayor valor es su amor genuino por la programación y su motivación para crear software útil que resuelva problemas importantes y genere un impacto positivo en la vida de las personas."
+          },
+          "technologies": ["Full Stack Development", "REST APIs", "Software Architecture", "Database Optimization", "Testing", "AI Engineering"],
+          "tags": ["why hire Rafa", "Senior Software Engineer", "learning", "technical skills", "soft skills", "collaboration", "ownership", "impact"]
+        },
+        {
           "id": "reason-for-job-search",
           "topic": "motivation for seeking a new software engineering position",
           "text": {

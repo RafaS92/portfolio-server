@@ -13,6 +13,7 @@ import {
   isGreetingQuery,
   isProjectEstimateQuery,
   isResumeQuery,
+  isWhyHireQuery,
 } from "../src/chat/retrieval-policy.js";
 import { createChatService } from "../src/chat/service.js";
 import { createPortfolioChunks } from "../src/portfolio/chunks.js";
@@ -130,6 +131,49 @@ test("recognizes gratitude, goodbyes, resume, and contact requests", () => {
   assert.equal(getContactQueryType("What is Rafa's LinkedIn?"), "linkedin");
   assert.equal(getContactQueryType("Show me his GitHub"), "github");
   assert.equal(getContactQueryType("How can I contact Rafa?"), "contact");
+});
+
+test("recognizes common Why hire Rafa recruiter questions", () => {
+  for (const message of [
+    "Why should we hire Rafa?",
+    "Why hire Rafael?",
+    "What makes Rafa stand out?",
+    "What value would he bring?",
+    "Is Rafa a strong candidate?",
+    "¿Por qué deberíamos contratar a Rafa?",
+    "¿Qué valor aportaría Rafael?",
+  ]) {
+    assert.equal(isWhyHireQuery(message), true, message);
+  }
+});
+
+test("Why hire Rafa uses only the dedicated local evidence", async () => {
+  let generationInput;
+  const answerPortfolioQuestion = createTestChatService({
+    async search() {
+      assert.fail("Why hire questions should not call semantic search");
+    },
+    async generate(input) {
+      generationInput = input;
+      return "Rafa would bring strong Senior-level engineering capabilities.";
+    },
+  });
+
+  const result = await answerPortfolioQuestion({
+    message: "Why should we hire Rafa?",
+    locale: "en",
+    history: [],
+  });
+
+  assert.equal(generationInput.whyHire, true);
+  assert.deepEqual(
+    generationInput.hits.map((hit) => `${hit.item_id}:${hit.section_id}`),
+    ["profile-overview:why-hire-rafa"],
+  );
+  assert.deepEqual(
+    result.sources.map((source) => `${source.itemId}:${source.sectionId}`),
+    ["profile-overview:why-hire-rafa"],
+  );
 });
 
 test("resume and contact requests return UI actions and skip search", async () => {

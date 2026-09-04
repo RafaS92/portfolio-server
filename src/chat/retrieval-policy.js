@@ -54,6 +54,17 @@ const GENERAL_CONTACT_PATTERN =
 const LINKEDIN_URL = "https://www.linkedin.com/in/rafael-salvador-valdez";
 const GITHUB_URL = "https://github.com/RafaS92";
 const EMAIL_URL = "mailto:rvaldezdev.2020@gmail.com";
+const WHY_HIRE_PATTERNS = [
+  /\bwhy (?:should|would) (?:we|i|a company|an employer) hire (?:rafa|rafael|him|you)\b/u,
+  /\bwhy hire (?:rafa|rafael|him)\b/u,
+  /\bwhat makes (?:rafa|rafael|him) stand out\b/u,
+  /\bwhat value (?:would|could|can) (?:rafa|rafael|he) bring\b/u,
+  /\b(?:is|why is) (?:rafa|rafael|he) (?:a )?(?:good|strong) (?:candidate|hire|fit)\b/u,
+  /\bpor que (?:deberiamos|deberia|contratarian) contratar a (?:rafa|rafael|el)\b/u,
+  /\bpor que contratar a (?:rafa|rafael)\b/u,
+  /\bque hace (?:que )?(?:rafa|rafael) (?:destaque|sobresalga)\b/u,
+  /\bque valor (?:aportaria|aporta|puede aportar) (?:rafa|rafael|el)\b/u,
+];
 
 function normalizeReference(value) {
   return value
@@ -185,6 +196,11 @@ export function getContactQueryType(message) {
   return null;
 }
 
+export function isWhyHireQuery(message) {
+  const normalizedMessage = normalizeReference(message);
+  return WHY_HIRE_PATTERNS.some((pattern) => pattern.test(normalizedMessage));
+}
+
 function buildActions({ locale, resumeInquiry, contactInquiry }) {
   if (resumeInquiry) {
     return [{
@@ -271,6 +287,14 @@ export function createRetrievalPolicy({ portfolio, chunks }) {
     );
   }
 
+  function selectWhyHireHits(hits) {
+    return hits.filter(
+      (hit) =>
+        hit.item_id === "profile-overview" &&
+        hit.section_id === "why-hire-rafa",
+    );
+  }
+
   function prioritizeProjectHitsByArchiveOrder(
     hits,
     limit = PROJECT_RECOMMENDATION_LIMIT,
@@ -323,12 +347,13 @@ export function createRetrievalPolicy({ portfolio, chunks }) {
     const greeting = isGreetingQuery(request.message);
     const botIdentityInquiry = isBotIdentityQuery(request.message);
     const estimateInquiry = isProjectEstimateQuery(request.message);
+    const whyHire = isWhyHireQuery(request.message);
     const futureGoal = isFutureGoalQuery(request.message);
     const projectDiscovery =
       !futureGoal && isProjectDiscoveryQuery(request.message);
     const aboutRafa = isAboutRafaQuery(request.message);
     const guidedTopic = getGuidedTopic(request.message);
-    const useLocalPortfolio = Boolean(guidedTopic || futureGoal);
+    const useLocalPortfolio = Boolean(guidedTopic || futureGoal || whyHire);
 
     return {
       aboutRafa,
@@ -339,6 +364,7 @@ export function createRetrievalPolicy({ portfolio, chunks }) {
       estimateInquiry,
       greeting,
       resumeInquiry,
+      whyHire,
       futureGoal,
       guidedTopic,
       projectDiscovery,
@@ -362,6 +388,9 @@ export function createRetrievalPolicy({ portfolio, chunks }) {
     if (retrievalPlan.futureGoal) {
       return selectFutureGoalHits(retrievedHits);
     }
+    if (retrievalPlan.whyHire) {
+      return selectWhyHireHits(retrievedHits);
+    }
     if (retrievalPlan.guidedTopic) {
       return selectGuidedTopicHits(retrievedHits, retrievalPlan.guidedTopic);
     }
@@ -384,6 +413,7 @@ export function createRetrievalPolicy({ portfolio, chunks }) {
     isFutureGoalQuery,
     isGreetingQuery,
     isResumeQuery,
+    isWhyHireQuery,
     isProjectEstimateQuery,
     isProjectDiscoveryQuery,
     plan,
@@ -392,6 +422,7 @@ export function createRetrievalPolicy({ portfolio, chunks }) {
     selectFutureGoalHits,
     selectGenerationHits,
     selectGuidedTopicHits,
+    selectWhyHireHits,
     selectSourceHits,
   });
 }

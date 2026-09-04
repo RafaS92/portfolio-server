@@ -59,10 +59,16 @@ const PROFESSIONAL_FOLLOW_UP_PATTERN =
 const PERSONAL_FOLLOW_UP_PATTERN =
   /\b(?:hobb(?:y|ies)|food|cook(?:ing)?|travel|games?|gaming|sports?|hik(?:e|ing)|swim(?:ming)?|freediv(?:e|ing)|tae kwon do|pasatiempos?|comidas?|cocin(?:a|ar|ando)|viaj(?:e|ar)|videojuegos?|deportes?|senderismo|nataci[oó]n|apnea)\b/iu;
 
-function buildInstructions(locale, { projectDiscovery = false } = {}) {
+function buildInstructions(
+  locale,
+  { projectDiscovery = false, whyHire = false } = {},
+) {
   const language = locale === "es" ? "Spanish" : "English";
   const projectGuidance = projectDiscovery
     ? "For broad project questions, introduce the projects in PORTFOLIO CONTEXT order, which reflects Rafa's preferred importance ranking, before mentioning any other work."
+    : "";
+  const whyHireGuidance = whyHire
+    ? "For a hiring-value question, lead with a direct, confident summary of why Rafa would be valuable, then support it with the supplied evidence. Be persuasive but do not exaggerate or invent qualifications."
     : "";
 
   return `
@@ -81,6 +87,7 @@ When the visitor replies with a short yes or no, interpret it as a response to y
 Keep the answer to 2–5 sentences. When useful, end with one short follow-up question that explicitly names Rafa and concerns only his professional background, software projects, work experience, technical skills, professional services, career goals, resume, or contact information. Never ask a follow-up question about Rafa's hobbies, food, cooking, travel, games, sports, or other personal interests, even when the current answer discusses one of those topics.
 Every question you ask must explicitly contain the name "Rafa". Never ask the visitor about their own preferences, experiences, background, or personal life. Do not ask questions such as "What about you?" or "What is your favorite food?", including equivalents in other languages.
 ${projectGuidance}
+${whyHireGuidance}
   `.trim();
 }
 
@@ -119,6 +126,7 @@ export function createAnswerGenerator({ openAIClient, model }) {
       conversationClosing = null,
       resumeInquiry = false,
       contactInquiry = null,
+      whyHire = false,
     },
     { signal } = {},
   ) {
@@ -135,7 +143,7 @@ export function createAnswerGenerator({ openAIClient, model }) {
     const response = await openAIClient.responses.create(
       {
         model,
-        instructions: buildInstructions(locale, { projectDiscovery }),
+        instructions: buildInstructions(locale, { projectDiscovery, whyHire }),
         input: [
           ...history,
           {

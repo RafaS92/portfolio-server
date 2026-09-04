@@ -24,6 +24,22 @@ test("portfolio knowledge identifies Rafael and Rafa as the same person", () => 
   assert.match(identity.text.es, /Rafa y Rafael se refieren a la misma persona/);
 });
 
+test("portfolio knowledge contains Rafa's grounded hiring value proposition", () => {
+  const profile = loadPortfolio().items.find(
+    (item) => item.id === "profile-overview",
+  );
+  const whyHire = profile.sections.find(
+    (section) => section.id === "why-hire-rafa",
+  );
+
+  assert.match(whyHire.text.en, /strong learning mindset/);
+  assert.match(whyHire.text.en, /Senior Software Engineer capabilities/);
+  assert.match(whyHire.text.en, /technical strengths/);
+  assert.match(whyHire.text.en, /soft skills/);
+  assert.match(whyHire.text.en, /positive impact on people's lives/);
+  assert.match(whyHire.text.es, /capacidad de aprendizaje/);
+});
+
 test("portfolio knowledge contains all 15 published project IDs", () => {
   const expectedProjectIds = new Set([
     "loadbalancer",
