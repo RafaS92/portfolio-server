@@ -36,6 +36,10 @@ const ESTIMATE_INQUIRY_PATTERNS = [
   /\b(?:dar|enviar|necesito|solicitar|obtener)\b.*\b(?:estimacion|cotizacion|presupuesto)\b/u,
   /\bcuanto (?:costaria|cuesta)\b/u,
 ];
+const GREETING_PATTERN =
+  /^(?:hey|hello|hi|hi there|hey there|good morning|good afternoon|good evening|hola|buenos dias|buenas tardes|buenas noches|que tal|saludos)[!.]?$/u;
+const BOT_IDENTITY_PATTERN =
+  /^(?:who are you|what are you|who am i (?:talking|speaking) (?:to|with)|who is this|is this rafa|are you rafa|am i (?:talking|speaking) (?:to|with) rafa|what is rafabot|who is rafabot|quien eres|que eres|con quien estoy hablando|quien habla|quien es este|eres rafa|estoy hablando con rafa|que es rafabot|quien es rafabot)$/u;
 
 function normalizeReference(value) {
   return value
@@ -138,6 +142,14 @@ export function isProjectEstimateQuery(message) {
   return ESTIMATE_INQUIRY_PATTERNS.some((pattern) =>
     pattern.test(normalizedMessage),
   );
+}
+
+export function isGreetingQuery(message) {
+  return GREETING_PATTERN.test(normalizeReference(message));
+}
+
+export function isBotIdentityQuery(message) {
+  return BOT_IDENTITY_PATTERN.test(normalizeReference(message));
 }
 
 export function createRetrievalPolicy({ portfolio, chunks }) {
@@ -245,6 +257,8 @@ export function createRetrievalPolicy({ portfolio, chunks }) {
   }
 
   function plan(request) {
+    const greeting = isGreetingQuery(request.message);
+    const botIdentityInquiry = isBotIdentityQuery(request.message);
     const estimateInquiry = isProjectEstimateQuery(request.message);
     const futureGoal = isFutureGoalQuery(request.message);
     const projectDiscovery =
@@ -255,7 +269,9 @@ export function createRetrievalPolicy({ portfolio, chunks }) {
 
     return {
       aboutRafa,
+      botIdentityInquiry,
       estimateInquiry,
+      greeting,
       futureGoal,
       guidedTopic,
       projectDiscovery,
@@ -263,7 +279,7 @@ export function createRetrievalPolicy({ portfolio, chunks }) {
         ? (request.locale === "es" ? "¿Quién es Rafa?" : "Who is Rafa?")
         : buildRetrievalQuery(request),
       topK: projectDiscovery || aboutRafa ? PROJECT_DISCOVERY_TOP_K : 3,
-      localHits: estimateInquiry
+      localHits: greeting || botIdentityInquiry || estimateInquiry
         ? []
         : useLocalPortfolio
           ? localPortfolioHits.filter((hit) => hit.locale === request.locale)
@@ -294,7 +310,9 @@ export function createRetrievalPolicy({ portfolio, chunks }) {
   return Object.freeze({
     getGuidedTopic,
     isAboutRafaQuery,
+    isBotIdentityQuery,
     isFutureGoalQuery,
+    isGreetingQuery,
     isProjectEstimateQuery,
     isProjectDiscoveryQuery,
     plan,

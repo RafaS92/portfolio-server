@@ -12,6 +12,15 @@
       "technologies": [],
       "sections": [
         {
+          "id": "identity",
+          "topic": "full name and identity",
+          "text": {
+            "en": "Rafa's full name is Rafael Salvador Valdez Vanegas. Rafa and Rafael both refer to the same person throughout this portfolio.",
+            "es": "El nombre completo de Rafa es Rafael Salvador Valdez Vanegas. Rafa y Rafael se refieren a la misma persona en todo este portafolio."
+          },
+          "tags": ["Rafa", "Rafael", "Rafael Salvador Valdez Vanegas", "full name", "identity"]
+        },
+        {
           "id": "career-change",
           "topic": "career journey",
           "text": {

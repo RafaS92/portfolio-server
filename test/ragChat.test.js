@@ -7,6 +7,8 @@ import {
 import {
   buildRetrievalQuery,
   createRetrievalPolicy,
+  isBotIdentityQuery,
+  isGreetingQuery,
   isProjectEstimateQuery,
 } from "../src/chat/retrieval-policy.js";
 import { createChatService } from "../src/chat/service.js";
@@ -96,6 +98,46 @@ test("recognizes project estimate requests without intercepting interview questi
     isProjectEstimateQuery("How does Rafa estimate and break down a large software feature?"),
     false,
   );
+});
+
+test("recognizes basic greetings and questions about RafaBot", () => {
+  for (const message of ["Hi", "Hello!", "Hey there", "Hola", "Buenos días"]) {
+    assert.equal(isGreetingQuery(message), true);
+  }
+  for (const message of [
+    "Who are you?",
+    "Who am I talking to?",
+    "Is this Rafa?",
+    "What is RafaBot?",
+    "¿Quién eres?",
+    "¿Con quién estoy hablando?",
+  ]) {
+    assert.equal(isBotIdentityQuery(message), true);
+  }
+  assert.equal(isBotIdentityQuery("Who is he?"), false);
+});
+
+test("greetings and bot identity questions skip portfolio search", async () => {
+  const generatedInputs = [];
+  const answerPortfolioQuestion = createTestChatService({
+    async search() {
+      assert.fail("static conversational responses should not search Pinecone");
+    },
+    async generate(input) {
+      generatedInputs.push(input);
+      return "Static response.";
+    },
+  });
+
+  await answerPortfolioQuestion({ message: "Hello", locale: "en", history: [] });
+  await answerPortfolioQuestion({
+    message: "Who am I talking to?",
+    locale: "en",
+    history: [],
+  });
+
+  assert.equal(generatedInputs[0].greeting, true);
+  assert.equal(generatedInputs[1].botIdentityInquiry, true);
 });
 
 test("estimate requests skip search and are marked for a static answer", async () => {

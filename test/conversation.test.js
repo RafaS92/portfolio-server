@@ -1,10 +1,12 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import {
+  BOT_IDENTITY_ANSWERS,
   createAnswerGenerator,
   ESTIMATE_ANSWERS,
   enforceFollowUpScope,
   formatRetrievedContext,
+  GREETING_ANSWERS,
   OUT_OF_SCOPE_ANSWERS,
 } from "../src/chat/answer-generator.js";
 
@@ -17,6 +19,38 @@ test("retrieved chunks are clearly separated in model context", () => {
   assert.equal(
     context,
     "[Portfolio source 1: one-en]\nFirst fact.\n\n[Portfolio source 2: two-en]\nSecond fact.",
+  );
+});
+
+test("greetings and bot identity questions return localized answers without OpenAI", async () => {
+  const generateGroundedAnswer = createAnswerGenerator({
+    openAIClient: {
+      responses: {
+        async create() {
+          assert.fail("static conversational responses should not call OpenAI");
+        },
+      },
+    },
+    model: "gpt-4o-mini",
+  });
+
+  assert.equal(
+    await generateGroundedAnswer({
+      message: "Hello",
+      locale: "en",
+      hits: [],
+      greeting: true,
+    }),
+    GREETING_ANSWERS.en,
+  );
+  assert.equal(
+    await generateGroundedAnswer({
+      message: "¿Quién eres?",
+      locale: "es",
+      hits: [],
+      botIdentityInquiry: true,
+    }),
+    BOT_IDENTITY_ANSWERS.es,
   );
 });
 

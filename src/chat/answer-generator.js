@@ -13,6 +13,16 @@ export const ESTIMATE_ANSWERS = Object.freeze({
   es: "Las estimaciones dependen del alcance, los requisitos, el plazo y la complejidad del proyecto. Para obtener una estimación precisa, lo mejor es contactar directamente a Rafa para que pueda conocer mejor el proyecto.",
 });
 
+export const GREETING_ANSWERS = Object.freeze({
+  en: "Hi! I'm RafaBot. I can tell you about Rafa's experience, software projects, technical skills, professional services, or contact information.",
+  es: "¡Hola! Soy RafaBot. Puedo contarte sobre la experiencia, los proyectos de software, las habilidades técnicas, los servicios profesionales o la información de contacto de Rafa.",
+});
+
+export const BOT_IDENTITY_ANSWERS = Object.freeze({
+  en: "I'm RafaBot, an AI assistant based on Rafa's portfolio, experiences, and knowledge. I can help you learn about Rafa's work, skills, projects, services, or contact information.",
+  es: "Soy RafaBot, un asistente de IA basado en el portafolio, las experiencias y el conocimiento de Rafa. Puedo ayudarte a conocer el trabajo, las habilidades, los proyectos, los servicios o la información de contacto de Rafa.",
+});
+
 const PROFESSIONAL_FOLLOW_UP_PATTERN =
   /\b(?:project|portfolio|professional|work|career|experience|skill|service|contact|hire|resume|software|technical|background|profile|proyecto|portafolio|profesional|trabajo|carrera|experiencia|habilidad|servicio|contacto|contratar|curr[ií]culum|t[eé]cnic[oa])s?\b/iu;
 const PERSONAL_FOLLOW_UP_PATTERN =
@@ -73,9 +83,13 @@ export function createAnswerGenerator({ openAIClient, model }) {
       history = [],
       projectDiscovery = false,
       estimateInquiry = false,
+      greeting = false,
+      botIdentityInquiry = false,
     },
     { signal } = {},
   ) {
+    if (greeting) return GREETING_ANSWERS[locale];
+    if (botIdentityInquiry) return BOT_IDENTITY_ANSWERS[locale];
     if (estimateInquiry) return ESTIMATE_ANSWERS[locale];
 
     const context = formatRetrievedContext(hits);

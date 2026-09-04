@@ -48,6 +48,8 @@ export function createChatService({
         hits,
         projectDiscovery: retrievalPlan.projectDiscovery,
         estimateInquiry: retrievalPlan.estimateInquiry,
+        greeting: retrievalPlan.greeting,
+        botIdentityInquiry: retrievalPlan.botIdentityInquiry,
       },
       { signal },
     );
