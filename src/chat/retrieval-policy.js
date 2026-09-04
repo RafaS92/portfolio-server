@@ -31,6 +31,17 @@ const GUIDED_TOPIC_QUERIES = new Map([
 const FOLLOW_UP_REFERENCE_PATTERN =
   /\b(it|its|that|this|those|these|he|his|she|her|they|them|their|also|more)\b|\b(eso|esa|ese|esto|este|esta|estos|estas|él|ella|ellos|ellas|su|sus|también|más)\b/iu;
 const EXPLICIT_RAFA_PATTERN = /\bRafa(?:el)?\b/iu;
+const YES_OR_NO_REPLY_PATTERN =
+  /^(?:yes|yeah|yep|sure|okay|ok|please|yes please|no|nope|no thanks|not now|s[ií]|claro|por supuesto|est[aá] bien|por favor|s[ií] por favor|no gracias|ahora no)[.!]?$/iu;
+const ESTIMATE_INQUIRY_PATTERNS = [
+  /\b(?:estimate|quote|quotation|pricing|price|cost|budget)\b.*\b(?:project|website|site|app|application|service|work|build|develop|development)\b/u,
+  /\b(?:project|website|site|app|application|service|work|build|develop|development)\b.*\b(?:estimate|quote|quotation|pricing|price|cost|budget)\b/u,
+  /\b(?:get|give|need|request|provide|send)\b.*\b(?:estimate|quote|quotation)\b/u,
+  /\b(?:cotizacion|presupuesto|precio|costo)\b.*\b(?:proyecto|sitio|pagina web|aplicacion|servicio|trabajo|desarrollo)\b/u,
+  /\b(?:proyecto|sitio|pagina web|aplicacion|servicio|trabajo|desarrollo)\b.*\b(?:cotizacion|presupuesto|precio|costo)\b/u,
+  /\b(?:dar|enviar|necesito|solicitar|obtener)\b.*\b(?:estimacion|cotizacion|presupuesto)\b/u,
+  /\bcuanto (?:costaria|cuesta)\b/u,
+];
 
 function normalizeReference(value) {
   return value
@@ -59,6 +70,16 @@ export function buildRetrievalQuery({ message, locale = "en", history = [] }) {
   const previousUserMessage = [...history]
     .reverse()
     .find((entry) => entry.role === "user")?.content;
+  const previousAssistantMessage = [...history]
+    .reverse()
+    .find((entry) => entry.role === "assistant")?.content;
+
+  if (YES_OR_NO_REPLY_PATTERN.test(message) && previousAssistantMessage) {
+    const replyLabel = locale === "es"
+      ? "El visitante respondió a esta oferta sobre Rafa"
+      : "The visitor replied to this offer about Rafa";
+    return `${previousAssistantMessage}\n${replyLabel}: ${message}`;
+  }
 
   if (FOLLOW_UP_REFERENCE_PATTERN.test(message) && previousUserMessage) {
     const followUpLabel = locale === "es"
@@ -73,6 +94,18 @@ export function buildRetrievalQuery({ message, locale = "en", history = [] }) {
     ? "Sobre Rafa y su portafolio"
     : "About Rafa and his portfolio";
   return `${subjectLabel}: ${message}`;
+}
+
+export function isProjectEstimateQuery(message) {
+  const normalizedMessage = normalizeReference(message);
+
+  if (/\bhow does rafa estimate\b|\bcomo estima rafa\b/u.test(normalizedMessage)) {
+    return false;
+  }
+
+  return ESTIMATE_INQUIRY_PATTERNS.some((pattern) =>
+    pattern.test(normalizedMessage),
+  );
 }
 
 export function createRetrievalPolicy({ portfolio, chunks }) {
@@ -179,6 +212,7 @@ export function createRetrievalPolicy({ portfolio, chunks }) {
   }
 
   function plan(request) {
+    const estimateInquiry = isProjectEstimateQuery(request.message);
     const futureGoal = isFutureGoalQuery(request.message);
     const projectDiscovery =
       !futureGoal && isProjectDiscoveryQuery(request.message);
@@ -188,14 +222,17 @@ export function createRetrievalPolicy({ portfolio, chunks }) {
 
     return {
       aboutRafa,
+      estimateInquiry,
       futureGoal,
       guidedTopic,
       projectDiscovery,
       query: buildRetrievalQuery(request),
       topK: projectDiscovery || aboutRafa ? PROJECT_DISCOVERY_TOP_K : 3,
-      localHits: useLocalPortfolio
-        ? localPortfolioHits.filter((hit) => hit.locale === request.locale)
-        : null,
+      localHits: estimateInquiry
+        ? []
+        : useLocalPortfolio
+          ? localPortfolioHits.filter((hit) => hit.locale === request.locale)
+          : null,
     };
   }
 
@@ -223,6 +260,7 @@ export function createRetrievalPolicy({ portfolio, chunks }) {
     getGuidedTopic,
     isAboutRafaQuery,
     isFutureGoalQuery,
+    isProjectEstimateQuery,
     isProjectDiscoveryQuery,
     plan,
     prioritizeProjectHitsByArchiveOrder,

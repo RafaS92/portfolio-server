@@ -43,7 +43,12 @@ export function createChatService({
       retrievedHits,
     );
     const content = await generateAnswer(
-      { ...request, hits, projectDiscovery: retrievalPlan.projectDiscovery },
+      {
+        ...request,
+        hits,
+        projectDiscovery: retrievalPlan.projectDiscovery,
+        estimateInquiry: retrievalPlan.estimateInquiry,
+      },
       { signal },
     );
 

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import {
   createAnswerGenerator,
+  ESTIMATE_ANSWERS,
   enforceFollowUpScope,
   formatRetrievedContext,
   OUT_OF_SCOPE_ANSWERS,
@@ -16,6 +17,38 @@ test("retrieved chunks are clearly separated in model context", () => {
   assert.equal(
     context,
     "[Portfolio source 1: one-en]\nFirst fact.\n\n[Portfolio source 2: two-en]\nSecond fact.",
+  );
+});
+
+test("estimate inquiries return a localized answer without calling OpenAI", async () => {
+  const generateGroundedAnswer = createAnswerGenerator({
+    openAIClient: {
+      responses: {
+        async create() {
+          assert.fail("estimate inquiries should not call OpenAI");
+        },
+      },
+    },
+    model: "gpt-4o-mini",
+  });
+
+  assert.equal(
+    await generateGroundedAnswer({
+      message: "Can I get an estimate for a website?",
+      locale: "en",
+      hits: [],
+      estimateInquiry: true,
+    }),
+    ESTIMATE_ANSWERS.en,
+  );
+  assert.equal(
+    await generateGroundedAnswer({
+      message: "¿Cuánto costaría desarrollar una aplicación?",
+      locale: "es",
+      hits: [],
+      estimateInquiry: true,
+    }),
+    ESTIMATE_ANSWERS.es,
   );
 });
 
@@ -53,6 +86,8 @@ test("grounded generation uses the Responses API without storing responses", asy
   assert.match(request.instructions, /clearly unrelated to Rafa or his portfolio/);
   assert.match(request.instructions, new RegExp(OUT_OF_SCOPE_ANSWERS.en.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   assert.match(request.instructions, /interpret omitted human subjects and pronouns/);
+  assert.match(request.instructions, /replies with a short yes or no/);
+  assert.match(request.instructions, /Never ask a follow-up question about Rafa's hobbies/);
   assert.match(request.instructions, /Every question you ask must explicitly contain the name "Rafa"/);
   assert.match(request.input.at(-1).content, /PORTFOLIO CONTEXT/);
   assert.match(request.input.at(-1).content, /Who is Rafa\?/);
@@ -86,13 +121,23 @@ test("visitor-directed follow-up questions are removed from grounded answers", (
   );
 });
 
-test("follow-up questions explicitly about Rafa are preserved", () => {
+test("professional follow-up questions explicitly about Rafa are preserved", () => {
   assert.equal(
     enforceFollowUpScope(
-      "Rafa enjoys cooking Mexican food. Would you like to know what Rafa likes to cook?",
+      "Rafa enjoys cooking Mexican food. Would you like to explore Rafa's software projects?",
       "en",
     ),
-    "Rafa enjoys cooking Mexican food. Would you like to know what Rafa likes to cook?",
+    "Rafa enjoys cooking Mexican food. Would you like to explore Rafa's software projects?",
+  );
+});
+
+test("follow-up questions about Rafa's hobbies are removed", () => {
+  assert.equal(
+    enforceFollowUpScope(
+      "Rafa enjoys cooking Mexican food. Would you like to know more about Rafa's cooking experience?",
+      "en",
+    ),
+    "Rafa enjoys cooking Mexican food.",
   );
 });
 

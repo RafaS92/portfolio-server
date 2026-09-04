@@ -7,6 +7,7 @@ import {
 import {
   buildRetrievalQuery,
   createRetrievalPolicy,
+  isProjectEstimateQuery,
 } from "../src/chat/retrieval-policy.js";
 import { createChatService } from "../src/chat/service.js";
 import { createPortfolioChunks } from "../src/portfolio/chunks.js";
@@ -66,6 +67,58 @@ test("pronouns without history default to Rafa", () => {
     }),
     "Sobre Rafa y su portafolio: Cuéntame sobre su trabajo",
   );
+});
+
+test("yes and no replies retrieve against the assistant's latest offer", () => {
+  const history = [
+    { role: "user", content: "Tell me about Rafa's technical skills" },
+    {
+      role: "assistant",
+      content: "Rafa works with React and Node.js. Would you like to hear about Rafa's software projects?",
+    },
+  ];
+
+  assert.equal(
+    buildRetrievalQuery({ message: "Yes", history }),
+    "Rafa works with React and Node.js. Would you like to hear about Rafa's software projects?\nThe visitor replied to this offer about Rafa: Yes",
+  );
+  assert.equal(
+    buildRetrievalQuery({ message: "No thanks", history }),
+    "Rafa works with React and Node.js. Would you like to hear about Rafa's software projects?\nThe visitor replied to this offer about Rafa: No thanks",
+  );
+});
+
+test("recognizes project estimate requests without intercepting interview questions", () => {
+  assert.equal(isProjectEstimateQuery("Can I get an estimate for a website?"), true);
+  assert.equal(isProjectEstimateQuery("How much would an app cost?"), true);
+  assert.equal(isProjectEstimateQuery("¿Cuánto costaría desarrollar una aplicación?"), true);
+  assert.equal(
+    isProjectEstimateQuery("How does Rafa estimate and break down a large software feature?"),
+    false,
+  );
+});
+
+test("estimate requests skip search and are marked for a static answer", async () => {
+  let generationInput;
+  const answerPortfolioQuestion = createTestChatService({
+    async search() {
+      assert.fail("estimate inquiries should not call semantic search");
+    },
+    async generate(input) {
+      generationInput = input;
+      return "Estimate response.";
+    },
+  });
+
+  const result = await answerPortfolioQuestion({
+    message: "Please give me a quote for a website",
+    locale: "en",
+    history: [],
+  });
+
+  assert.equal(generationInput.estimateInquiry, true);
+  assert.deepEqual(generationInput.hits, []);
+  assert.deepEqual(result.sources, []);
 });
 
 test("chat requests default to English and normalize content", () => {
