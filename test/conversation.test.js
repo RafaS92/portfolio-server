@@ -47,6 +47,10 @@ test("greetings and bot identity questions return localized answers without Open
     GREETING_ANSWERS.en,
   );
   assert.equal(
+    GREETING_ANSWERS.en,
+    "Hi! I’m RafaBot, an AI assistant for Rafa’s portfolio. I can help you learn about his experience, technical skills, projects, or professional services.",
+  );
+  assert.equal(
     await generateGroundedAnswer({
       message: "¿Quién eres?",
       locale: "es",
@@ -170,6 +174,12 @@ test("grounded generation uses the Responses API without storing responses", asy
   assert.equal(request.store, false);
   assert.equal(request.temperature, 0.2);
   assert.match(request.instructions, /Use only facts supported/);
+  assert.match(request.instructions, /warm, kind, and approachable AI assistant/);
+  assert.match(request.instructions, /You are not Rafa himself/);
+  assert.match(request.instructions, /friendly and thoughtful professional assistant/);
+  assert.match(request.instructions, /Give the direct answer first/);
+  assert.match(request.instructions, /Avoid repetitive openings/);
+  assert.match(request.instructions, /not processed by a search engine/);
   assert.match(request.instructions, /clearly unrelated to Rafa or his portfolio/);
   assert.match(request.instructions, /Rafael Salvador Valdez Vanegas/);
   assert.match(request.instructions, /obvious misspellings of Rafa or Rafael/);
